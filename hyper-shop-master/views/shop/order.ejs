@@ -1,0 +1,64 @@
+<%- include('../includes/head')%>
+</head>
+<body>
+    <!-- HEADER ===================== -->
+    <%- include('../includes/header/header',{user})%>
+    <div class="container">
+        <div class="row justify-content-center orders">
+          <% if(orders.length>0) {%>
+            <% for (let order of orders) { %>
+            <div class="col-lg-3"> 
+                <%- include('../includes/cart/orderStatus', {order})%>
+            </div>
+            <% } %>
+          <% } else { %>
+            <div id="error-page" class="row">
+              <div class="col-md-12 mx-auto" >
+                <div class="box text-center py-5">
+                  <p class="text-center"><img src="/img/hyper-shop.png" alt="Hyper template"></p>
+                  <h3>Do not have any order yet</h3>
+                  <p class="buttons"><a href="/products" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Continue shopping</a></p>
+                </div>
+              </div>
+          </div>
+          <% } %>
+        </div>
+    </div>
+    <div class="pages">
+        <nav
+          aria-label="Page navigation example"
+          class="d-flex justify-content-center"
+        >
+          <% if (lastPage > 0) { %>
+          <ul class="pagination">
+            <li class="page-item cursor-pointer"><a href="/order?page=1" class="page-link">First</a></li>
+            <% let i = (Number(currentPage) > 5 ? Number(currentPage) - 4 : 1) %> <%
+            if (i !== 1) { %>
+            <li class="page-item cursor-pointer"><a class="page-link">...</a></li>
+            <% } %> <% for (; i <= (Number(currentPage) + 4) && i <= lastPage; i++) {
+            %> 
+            <% if (i == currentPage) { %>
+            <li class="page-item cursor-pointer active">
+              <a  class="page-link"><%= i %></a>
+            </li>
+            <% } else { %>
+            <li class="page-item cursor-pointer">
+              <a href="/order?page=<%= i %>" class="page-link"><%= i %></a>
+            </li>
+            <% } %> <% if (i == Number(currentPage) + 4 && i < lastPage) { %>
+            <li  class="page-item cursor-pointer"><a class="page-link">...</a></li>
+            <% } %> <% } %> <% if (currentPage == lastPage) { %>
+            <li  class="page-item cursor-pointer"><a href="/order?page=<%= lastPage %>" class="page-link">Last</a></li>
+            <% } else { %>
+            <li>
+              <a href="/order?page=<%= lastPage %>" class="page-link cursor-pointer">Last</a>
+            </li>
+            <% } %>
+          </ul>
+          <% } %>
+        </nav>
+      </div>
+<%-include('../includes/footer/foot')%>
+<script src="/ajax/order-ajax.js"></script>
+</body>
+</html>

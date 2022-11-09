@@ -1,0 +1,50 @@
+<div id="order-summary" class="box">
+    <div class="box-header">
+        <h3 class="mb-0">Order summary</h3>
+    </div>
+    <% let totalPrice = 0 %>
+    <p class="text-muted">
+        <% for(let item of order.orderItems) { %>
+            <% totalPrice += item.product.price*item.quantity%>
+        <div class="row">
+            <div class="col-7">
+                <span><%=item.product.name%></span>
+            </div>
+            <div class="col-5">
+                <span>$<%=item.product.price%> x <%=item.quantity%></span><br>
+                <span>Size <%=item.size%></span>
+            </div>
+        </div>
+        <% } %>
+    </p>
+    <div class="table-responsive">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>Order subtotal</td>
+                    <th>$<%=totalPrice%></th>
+                </tr>
+                <tr>
+                    <td>Shipping and handling</td>
+                    <th>$10.00</th>
+                </tr>
+                <tr>
+                    <td>Tax</td>
+                    <th>$0.00</th>
+                </tr>
+                <tr>
+                    <td>Ordered Date</td>
+                    <th><%=order.orderedDate.toDateString()%></th>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <th><%=order.status%></th>
+                </tr>
+                <tr class="total">
+                    <td>Total</td>
+                    <th>$<%= totalPrice + 10 %></th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

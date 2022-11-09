@@ -1,0 +1,131 @@
+<%- include('../includes/head.ejs') %>
+<link href="/css/style.css" rel="stylesheet">
+<link href="/css/custom.css" rel="stylesheet">
+</head>
+<body>
+    <%- include('../includes/subHeader', {user})%>
+    <!-- CONTENT =============================-->
+    <section class="item content">
+        <div class="container toparea">
+            <div class="underlined-title">
+                <div class="editContent">
+                    <h1 class="text-center latestitems">Awesome Product</h1>
+                </div>
+                <div class="wow-hr type_short">
+                    <span class="wow-hr-h">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="row justify-content-between">
+                <div class="col-md-6">
+                    <div class="productbox">
+                        <img src="<%=product.image%>" alt="">
+                        <div class="clearfix">
+                        </div>
+                        <br/>
+                        <div class="product-details text-left">
+                            <p>
+                                <%= product.description %>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 off-set-2">
+                    <div class="big-text">
+                        <span><%=product.name%></span>
+                    </div>
+                    <div class="properties-box">
+                        <ul class="unstyle">
+                            <li><b class="propertyname">Brand: </b><%=product.brand%></li>
+                            <li><b class="propertyname">Color: </b><%=product.color%></li>
+                            <li><b class="propertyname">Price: </b><%=product.price%> $</li>
+                            <li><b class="propertyname">Brand: </b><%=product.brand%></li>
+                            <li><b class="propertyname">Material: </b><%=product.material%></li>
+
+                        </ul>
+                    </div>
+                    <form class="product-size">
+                        <div class="medium-text">
+                            <span>Available size</span>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <!-- <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked> -->
+                                    <label class="form-check-label" for="exampleRadios1">
+                                        7
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <!-- <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2"> -->
+                                    <label class="form-check-label" for="exampleRadios2">
+                                        7.5
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <!-- <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" > -->
+                                    <label class="form-check-label" for="exampleRadios3">
+                                        8
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <!-- <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked> -->
+                                    <label class="form-check-label" for="exampleRadios1">
+                                    8.5
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <!-- <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2"> -->
+                                    <label class="form-check-label" for="exampleRadios2">
+                                        9
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <!-- <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" > -->
+                                    <label class="form-check-label" for="exampleRadios3">
+                                        9.5
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div style="margin-top: 20px;">
+                        <div class="col-md-6">
+                            <a href="/products/editProduct/<%=product._id%>" class="btn btn-buynow" style="border-radius: 10px;">Edit</a>
+                        </div>
+                        <div class="col-md-6">
+                            <form action="/products/deleteProduct" method="post">
+                                <input type="hidden" name="productId" value="<%=product._id%>">
+                                <button class="btn btn-buynow" style="background-color: rgb(194, 53, 53); border-radius: 10px;">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMMENT ============================= -->
+    <section class="container toparea comment-box">
+        <span class="medium-text">Product review and feedback</span>
+        <div class="divide"></div>
+        <% if (comments.length> 0) { %>
+            <% for (comment of comments){ %>
+                <!-- <span></span> -->
+                <%- include('../includes/comment', {comment}) %> 
+               
+            <% } %>
+        <% } %>
+    </section>
+
+
+    <%- include('../includes/foot')%>
+    <script src="/ajax/response-ajax.js"></script>
+    
+</body>
+</html>

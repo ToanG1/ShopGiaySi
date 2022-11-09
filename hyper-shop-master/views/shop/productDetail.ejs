@@ -1,0 +1,42 @@
+<%- include('../includes/head')%>
+<link rel="stylesheet" href="/css/custom.css">
+</head>
+
+<body>
+    <!-- HEADER ===================== -->
+    <%- include('../includes/header/header', {user})%>
+        <!-- TOPAREA ============================ -->
+        <div id="all">
+            <div id="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!-- breadcrumb-->
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="#">Brand</a></li>
+                                    <li class="breadcrumb-item"><a href="#"><%=product.brand%></a></li>
+                                    <li aria-current="page" class="breadcrumb-item active"><%=product.name%></li>
+                                </ol>
+                            </nav>
+                        </div>
+                        <div class="col-lg-3 order-2 order-lg-1">
+                            <%- include('../includes/sideBar/category')%>
+                        </div>
+                        <div class="col-lg-9 order-1 order-lg-2">
+                            <%- include('../includes/bodyContent/itemInDetail', {product})%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+
+<%-include('../includes/footer/foot')%>
+<script src="/ajax/comments-ajax.js"></script>
+<script src="/js/addProductToCart.js"></script>
+<script src="/js/reRunScript.js"></script>
+</body>
+</html>

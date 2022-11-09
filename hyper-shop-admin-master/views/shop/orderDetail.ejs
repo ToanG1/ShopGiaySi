@@ -1,0 +1,104 @@
+<%- include('../includes/head.ejs') %>
+<link href="/css/style.css" rel="stylesheet">
+<link href="/css/custom.css" rel="stylesheet">
+</head>
+<body>
+    <%- include('../includes/subHeader', {user})%>
+
+    <!-- CONTENT ================================ -->
+    <section class="item content container">
+		<div class="clearfix mb-20 card">
+			<div class="pull-left">
+				<a href="/orders" class="btn btn-primary">Return to Order List</a>
+			</div>
+		</div>
+		<div class="row justify-content-between">
+            <div class="card" id="user-infor">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Order ID</th>
+                            <th scope="col">User</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Ordered Date</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="<%=order._id%>">
+                            <th scope="row"><%=order._id%></th>
+                            <td><%=order.user.email%></td>
+                            <td>09987765563</td>
+                            <td><%=order.address%></td>
+                            <td><%=order.orderedDate.toDateString()%></td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                                    <%=order.status%>
+                                    </button>
+                                    <div class="dropdown-menu" data-status="<%=order.status%>" aria-labelledby="dropdownMenuButton">
+                                        <div class="order-status">
+                                            <div class="dropdown-item card-item data-status" id="Pending-<%=order._id%>">Pending</div>
+                                            <div class="dropdown-item card-item data-status" id="Delivering-<%=order._id%>">Delivering</div>
+                                            <div class="dropdown-item card-item data-status" id="Delivered-<%=order._id%>">Delivered</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+			<div class="table-responsive card">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Product</th>
+                            <th>Quantity</th>
+                            <th>Unit price</th>
+                            <th>Discount</th>
+                            <th colspan="2">Total Per Item</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% let total = 0%>
+                        <% for (item of order.orderItems) { %>
+                        <tr id="row">
+                            <td><a href="/products/<%=item.product._id%>"><img class="small-image"src="<%=item.product.image%>" alt="<%=item.product.name%>">&nbsp;&nbsp;&nbsp;<%=item.product.name%></a></td>
+                            <td><a></a></td>
+                            <td>
+                                <%=item.quantity%>
+                            </td>
+                            <td>$<%=item.product.price%></td>
+                            <td>$0.00</td>
+                            <td>
+                                $
+                                <input id="totalPerItem" readonly style="border: none; outline: none; width: 40px;"  value="<%=item.quantity*item.product.price%>"/>
+                            </td>
+                        </tr>
+                        <% total+=item.quantity*item.product.price%>
+                        <% } %>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="5">Total</th>
+                            <th colspan="2" class="display-row">
+                                $<input id="total" style="border: none; outline: none;width:100px" readonly type="number" value="<%=total%>"/>
+                            </th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+		</div>
+	</div>
+	
+	</section>
+
+    <%- include('../includes/foot')%>
+    <script src="/ajax/user-ajax.js"></script>
+    <script src="/js/custom/toggle-orders-table.js"></script>
+    <script src="/ajax/change-orderstatus-indetail.js"></script>
+    <script src="/js/custom/rerun-change-orderstatus.js" id="rerun-script"></script>
+</body>
+</html>

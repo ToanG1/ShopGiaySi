@@ -1,0 +1,130 @@
+<%- include('../includes/head.ejs') %>
+<link href="css/style.css" rel="stylesheet">
+<link href="css/custom.css" rel="stylesheet">
+</head>
+<body>
+    <%- include('../includes/subHeader', {user})%>
+
+    <!-- CONTENT ================================ -->
+    <section class="item content container">
+        <div class="search-box">
+			<div class="container-1">
+				<span class="icon"><i class="fa fa-search"></i></span>
+				<input type="search" id="search" placeholder="Search..." />
+			</div>
+		</div>
+		<div class="row justify-content-between">
+			<div class="col-md-3">
+				<%- include('../includes/userFilterCard')%>
+			</div>
+			<div class="col-md-9 ">
+				<div class="toparea">
+					<div class="underlined-title">
+						<div class="editContent">
+							<h1 class="text-center latestitems">ADMIN LIST</h1>
+						</div>
+						<!-- 3 state button (lock, active, all) -->
+						<div class="o-switch btn-group" data-toggle="buttons" role="group" name="StateButton">
+							<label class="btn btn-primary active">
+							  <input type="radio" name="options" > All
+							</label>
+							<label class="btn btn-primary">
+							  <input type="radio" name="options" id="false"  > Active
+							</label>
+							<label class="btn btn-primary">
+							  <input type="radio" name="options" id="true" > Locked
+							</label>
+						        </div>
+						<!-- 3 state button (lock, active, all) -->
+						<div class="wow-hr type_short">
+							<span class="wow-hr-h">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							</span>
+						</div>
+					</div>
+					<div class="user-list">
+						<table class="table table-striped">
+							<thead>
+							  <tr>
+							    <th scope="col">#</th>
+							    <th scope="col">Name</th>
+							    <th scope="col">Email</th>
+							    <th scope="col">Action</th>
+							    <th scope="col">Detail</th>
+							  </tr>
+							</thead>
+							<tbody>
+							<%let count = 0%>
+							<% for(user of userList) { %>
+							  <tr>
+							    <th scope="row"><%=count+=1 %></th>
+							    <td><%= user.name %></td>
+							    <td><%= user.email %></td>
+							    <td>
+								<% if(!user.isLock){ %>
+									<button id="<%= user._id %>" class="btn btn-danger btn-sm ActionOnUserBtn">Block</button>
+								<% }else{ %>
+									<button id="<%= user._id %>" class="btn btn-success btn-sm ActionOnUserBtn">Unblock</button>
+								<% }%>
+							      </td>      
+							    <td>
+								<a class="btn btn-primary" href="/users/<%=user._id %>">
+								    Details
+								</a>
+							      </td>
+							  </tr>
+							  <% } %>
+							</tbody>
+						        </table>
+                    </div>
+				</div>
+				<div class="pages">
+					<nav aria-label="Page navigation example" class="d-flex justify-content-center">
+						<div class="pages">
+					
+							<nav
+							aria-label="Page navigation example"
+							class="d-flex justify-content-center"
+						  >
+							<% if (lastPage > 0) { %>
+							<ul class="pagination custom-hover">
+							  <li class="page-item custom-hover "><a class="page-link">First</a></li>
+
+							  <% let i = (Number(currentPage) > 5 ? Number(currentPage) - 4 : 1) %> <%
+							  if (i !== 1) { %>
+							  <li class="page-item custom-hover"><a class="page-link">...</a></li>
+							  <% } %> <% for (; i <= (Number(currentPage) + 4) && i <= lastPage; i++)
+							  { %> <% if (i == currentPage) { %>
+							  <li class="page-item custom-hover active"><a class="page-link"><%= i %></a></li>
+							  <% } else { %>
+							  <li class="page-item custom-hover">
+								<a class="page-link"><%= i %></a>
+							  </li>
+							  <% } %> <% if (i == Number(currentPage) + 4 && i < lastPage) { %>
+							  <li class="page-item custom-hover"><a class="page-link">...</a></li>
+							  <% } %> <% } %> <% if (currentPage == lastPage) { %>
+							  <li class="page-item custom-hover"><a class="page-link">Last</a></li>
+							  <% } else { %>
+							  <li>
+								<a class="page-link">Last</a>
+							  </li>
+							  <% } %>
+							</ul>
+							<% } %>
+						  </nav>
+						</div>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	</section>
+
+    <%- include('../includes/foot')%>
+    <script src="/ajax/admin-ajax.js"></script>
+
+</body>
+</html>

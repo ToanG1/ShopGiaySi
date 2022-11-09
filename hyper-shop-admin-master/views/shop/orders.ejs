@@ -1,0 +1,54 @@
+<%- include('../includes/head.ejs') %>
+<link href="/css/style.css" rel="stylesheet">
+<link href="/css/custom.css" rel="stylesheet">
+</head>
+<body>
+    <%- include('../includes/subHeader', {user})%>
+
+    <!-- CONTENT ================================ -->
+    <section class="item content container">
+		<div class="clearfix mb-20 card">
+			<div class="pull-left">
+				<h4 class="text-blue h4" id="order-table-name">Pending Orders List</h4>
+			</div>
+			<div class="col-md-6 col-sm-12 pull-right ">
+				<div class="dropdown row ">
+					<div style="margin-left: 400px;"class="btn btn-primary dropdown-toggle col-lg-3" role="button" data-toggle="dropdown">
+						Filter reports
+					</div>
+					<div class="dropdown-menu dropdown-menu-right">
+						<div class="dropdown-item card-item" style="cursor: pointer;" id="filter-pending">Pending</div>
+						<div class="dropdown-item card-item" style="cursor: pointer;" id="filter-delivering">Delivering</div>
+						<div class="dropdown-item card-item" style="cursor: pointer;" id="filter-delivered">Delivered</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row justify-content-between">
+			<% /*%>
+			<div style="margin-bottom: 200px;"class="col-md-12 card" id="all-table">
+				<%- include('../includes/order/ordersTable', {orders: allOrders})%>
+			</div>
+			<% */%>
+
+			<div style="margin-bottom: 200px;"class="col-md-12 card" id="pending-table">
+				<%- include('../includes/order/ordersTable', {orders: pendingOrders})%>
+			</div>
+			<div style="margin-bottom: 200px;"class="col-md-12 card hidden" id="delivering-table">
+				<%- include('../includes/order/ordersTable', {orders: deliveringOrders})%>
+			</div>
+			<div style="margin-bottom: 200px;"class="col-md-12 card hidden" id="delivered-table">
+				<%- include('../includes/order/ordersTable', {orders: deliveredOrders})%>
+			</div>
+		</div>
+	</div>
+	
+	</section>
+
+    <%- include('../includes/foot')%>
+    <script src="/ajax/user-ajax.js"></script>
+    <script src="/ajax/change-order-status.js"></script>
+    <script src="/js/custom/rerun-change-orderstatus.js" id="rerun-script"></script>
+    <script src="/js/custom/toggle-orders-table.js"></script>
+</body>
+</html>

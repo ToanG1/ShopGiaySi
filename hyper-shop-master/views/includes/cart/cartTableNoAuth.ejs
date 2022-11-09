@@ -1,0 +1,62 @@
+<!-- TABLE OF ITEM IN CART ======================================= -->
+<div class="box">
+    <form method="get" action="/cart/checkout">
+        <h1>Shopping cart</h1>
+        <% if(cart) { %>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th colspan="2">Product</th>
+                        <th>Quantity</th>
+                        <th>Unit price</th>
+                        <th>Discount</th>
+                        <th colspan="2">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% let total = 0%>
+                    <% for (let i=0;i<cart.length;i++) { %>
+                    <tr id="row-<%=cart[i].product._id%>">
+                        <td><a href="/products/<%=cart[i].product._id%>"><img src="https://hyper-shop-admin.herokuapp.com/<%=cart[i].product.image%>" alt="<%=cart[i].product.name%>"></a></td>
+                        <td><a href="/products/<%=cart[i].product._id%>"><%=cart[i].product.name%></a></td>
+                        <td>
+                            <input type="number" value="<%=cart[i].quantity%>" id="<%=cart[i].product._id%>" min="1" class="form-control item-quantity">
+                        </td>
+                        <td>$<%=cart[i].product.price%></td>
+                        <td>$0.00</td>
+                        <td>
+                            $
+                            <input id="totalPerItem-<%=cart[i].product._id%>" readonly style="border: none; outline: none; width: 40px;"  value="<%=cart[i].quantity*cart[i].product.price%>"/>   
+                        </td>
+                        <td><i class="fa fa-trash-o delete-product-btn" id="<%=cart[i].product._id%>"></i></td>
+                    </tr>
+                    <%total += cart[i].quantity*cart[i].product.price%>
+                    <% } %>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="5">Total</th>
+                        <th colspan="2" class="display-row">
+                            $<input id="total" style="border: none; outline: none;width:100px" readonly type="number" value="<%=total%>"/>
+                        </th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <% } %>
+        <!-- /.table-responsive-->
+        <div class="box-footer d-flex justify-content-between flex-column flex-lg-row">
+            <div class="left">
+                <a href="/products" class="btn btn-outline-secondary"><i
+                        class="fa fa-chevron-left"></i> Continue shopping</a>
+                    </div>
+            <% if(cart&&cart.length>0) { %>
+            <div class="right">                
+                <button type="submit" class="btn btn-primary">Proceed to checkout <i
+                        class="fa fa-chevron-right"></i></button>
+            </div>
+            <% }%>
+        </div>
+    </form>
+</div>

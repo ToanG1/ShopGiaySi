@@ -1,0 +1,58 @@
+<%- include('../includes/head.ejs') %>
+<link href="/css/style.css" rel="stylesheet">
+<link href="/css/custom.css" rel="stylesheet">
+</head>
+<body>
+    <%- include('../includes/subHeader',{user})%>
+    <section class="item content">
+        <div class="container toparea">
+            <div class="underlined-title">
+                <div class="editContent">
+                    <h1 class="text-center latestitems">My Profile</h1>
+                </div>
+                <div class="wow-hr type_short">
+                    <span class="wow-hr-h">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="wrapper-profile bg-white mt-sm-5">
+        <h4 class="pb-4 border-bottom">Account settings</h4>
+      
+        <form action="/admins/profile" method="POST">
+            <!-- Errors display -->
+            <% if(typeof(errors) != "undefined" ){ %> 
+                <% for(let error of errors){ %>
+                          <div class="alert alert-warning" role="alert"><%= error.msg%></div>
+                <% }%> 
+      <% } %>
+      <!-- Success message display -->
+      <% if(typeof(success_msg) != "undefined" ){ %>
+                <div class="alert alert-success" role="alert"><%= success_msg%></div>
+      <% } %>
+        <div class="py-2">
+            <div class="row py-2">
+
+                <div class="col-md-6"> <label for="firstname">Name</label> <input autocomplete="off" type="text" class="bg-light form-control" name="name" value="<%= user.name %>"> </div>
+                <div class="col-md-6 pt-md-0 pt-3"> <label for="lastname">Address</label> <input autocomplete="off" type="text" class="bg-light form-control" name="address" value="<%= user.address %>"> </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-md-6"> <label for="email">Email Address</label> <input readonly type="text" class="bg-light form-control" name="email" value="<%= user.email %>"> </div>
+                <div class="col-md-6 pt-md-0 pt-3"> <label for="phone">Phone Number</label> <input autocomplete="off" type="number" class="bg-light form-control" name="phone" value="<%= user.phone %>"> </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="save-profile">
+        <a style="margin-right: 20px;"class="btn btn-warning" href="/admins/updatepassword">Change password</a>
+
+            <button>Save changes</button>
+        </div>
+    </form>
+    <%- include('../includes/foot')%>
+</body>
+</html>

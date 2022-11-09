@@ -1,0 +1,162 @@
+<%- include('../includes/head.ejs') %>
+<link href="/css/style.css" rel="stylesheet">
+<link href="/css/custom.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.js" 
+		integrity="sha512-uLlukEfSLB7gWRBvzpDnLGvzNUluF19IDEdUoyGAtaO0MVSBsQ+g3qhLRL3GTVoEzKpc24rVT6X1Pr5fmsShBg==" 
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <%- include('../includes/subHeader', {user})%>
+
+	<section class="tag container">
+		<!-- SEARCH BAR ======================================== -->
+		<div class="search-box">
+			<div class="container-1">
+				<span class="icon"><i class="fa fa-search"></i></span>
+				<input type="search" id="search" placeholder="Search..." />
+			</div>
+		</div>
+	</section>
+	<!-- CONTENT =============================-->
+	<section class="item content container">
+		<div class="row justify-content-between">
+			<div class="col-md-3">
+				<div class="card sidebar-menu mb-4">
+					<div class="card-header">
+					  <h3 class="h4 card-title">Categories</h3>
+					</div>
+					<div class="card-body">
+					  <ul class="nav nav-pills flex-column category-menu">
+						<li>
+							<a id="revenueByDates" class="nav-link text-uppercase" style="cursor: pointer;">
+								DAYS
+							</a>
+							<a id="revenueByMonth" class="nav-link text-uppercase" style="cursor: pointer;">
+								MONTHS
+							</a>
+							<a id="revenueByYear" class="nav-link text-uppercase" style="cursor: pointer;">
+								YEARS
+							</a>
+						</li>
+						<li>
+						  	<a class="nav-link text-uppercase">
+							  <span class="badge badge-secondary">Days</span>
+							</a>
+						  	<a class="nav-link text-uppercase">
+							  <span class="badge badge-secondary">Months</span>
+							</a>
+						  	<a class="nav-link text-uppercase">
+							  <span class="badge badge-secondary">Years</span>
+							</a>
+						</li>
+					  </ul>
+					</div>
+				  </div>
+
+			</div>
+			<div class="col-md-9 ">
+				<div class="toparea" id="date-revenue">
+					<div class="underlined-title">
+						<div class="editContent">
+							<h1 class="text-center latestitems">REVENUE BY DAYS</h1>
+						</div>
+						<div class="wow-hr type_short">
+							<span class="wow-hr-h">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							</span>
+						</div>
+					</div>
+					<div class="card-box mb-30">
+						<canvas id="dateChart"></canvas>
+					</div>
+				</div>
+				<div class="toparea hidden" id="month-revenue">
+					<div class="underlined-title">
+						<div class="editContent">
+							<h1 class="text-center latestitems">REVENUE BY MONTHS</h1>
+						</div>
+						<div class="wow-hr type_short">
+							<span class="wow-hr-h">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							</span>
+						</div>
+					</div>
+					<div class="card-box mb-30" style="display: flex; align-items: center; flex-direction: column;">
+						<div class="loader" id='loader-month'></div>
+						<canvas id="lineChart"></canvas>
+					</div>
+				</div>
+				<div class="toparea hidden" id="year-revenue">
+					<div class="underlined-title">
+						<div class="editContent">
+							<h1 class="text-center latestitems">REVENUE BY YEAR</h1>
+						</div>
+						<div class="wow-hr type_short">
+							<span class="wow-hr-h">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							</span>
+						</div>
+					</div>
+					<div class="card-box mb-30" style="display: flex; align-items: center; flex-direction: column;">
+						<div class="loader" id='loader-year'></div>
+						<canvas id="yearChart"></canvas>
+					</div>
+				</div>
+				<div class="toparea">
+					<div class="underlined-title">
+						<div class="editContent">
+							<h1 class="text-center latestitems">BEST SELLING PRODUCTS</h1>
+						</div>
+						<div class="wow-hr type_short">
+							<span class="wow-hr-h">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							</span>
+						</div>
+					</div>
+					<div class="card-box mb-30">
+						<table class="data-table table nowrap">
+							<thead>
+								<tr>
+									<th class="table-plus datatable-nosort">Product</th>
+									<th>Name</th>
+									<th>Color</th>
+									<th>Price</th>
+									<th>Quantity</th>
+									<th>Sold</th>
+								</tr>
+							</thead>
+							<tbody> 
+								<% for(tp of topProducts){ %>
+									<%- include('./statisticalRow', tp)%>
+								<% } %>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+	
+	</section>
+	
+	<%- include('../includes/foot')%>
+
+	<script src="/js/productFilter.js"></script>
+    <script src="/ajax/products-ajax.js"></script>
+    <script src="/js/jquery-util.js"></script>
+	<script src="/js/custom/orders-by-dates.js"></script>
+	<script src="/js/custom/orders-by-month.js"></script>
+	<script src="/js/custom/orders-by-year.js"></script>
+	<script src="/js/custom/toggle-order-statistics.js"></script>
+</body>
+</html>

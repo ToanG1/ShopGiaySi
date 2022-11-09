@@ -1,0 +1,17 @@
+<div id="hot">
+  <div class="box py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="mb-0">Our best sellers</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="product-slider owl-carousel owl-theme">
+      <!-- ITEM =========================== -->
+      <% for (tp of hotProducts) { %> <%- include('./hotItem', tp)%> <% } %>
+    </div>
+  </div>
+</div>

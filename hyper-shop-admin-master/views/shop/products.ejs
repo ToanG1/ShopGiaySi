@@ -1,0 +1,109 @@
+<%- include('../includes/head.ejs') %>
+<link href="css/style.css" rel="stylesheet">
+<link href="css/custom.css" rel="stylesheet">
+</head>
+<body>
+    <%- include('../includes/subHeader', {user})%>
+
+	<section class="tag container">
+		<!-- SEARCH BAR ======================================== -->
+		<div class="search-box">
+			<div class="container-1">
+				<span class="icon"><i class="fa fa-search"></i></span>
+				<input type="search" id="search" placeholder="Search..." />
+			</div>
+		</div>
+	</section>
+	<!-- CONTENT =============================-->
+	<section class="item content container">
+		<div class="row justify-content-between">
+			<div class="col-md-3">
+				<%- include('../includes/sideBar/category')%>
+				
+
+				<%- include('../includes/sideBar/brandFilterCard')%>
+				<%- include('../includes/sideBar/closureTypeFilterCard')%>
+				<%- include('../includes/sideBar/colorFilterCard')%>
+				<%- include('../includes/sideBar/genderFilterCard')%>
+				<%- include('../includes/sideBar/materialFilterCard')%>
+				<%- include('../includes/sideBar/shoesHeightFilterCard')%>
+
+			</div>
+			<div class="col-md-9 ">
+				<div class="toparea">
+					<div class="underlined-title">
+						<div class="editContent">
+							<h1 class="text-center latestitems">OUR PRODUCTS</h1>
+						</div>
+						<div class="wow-hr type_short">
+							<span class="wow-hr-h">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							</span>
+						</div>
+					</div>
+					<div class="row products">
+						<% if (products.length>0){ %>
+							<% for(product of products ){ %>
+								<%-include("../includes/bodyContent/productBox")%>
+							<% } %>
+						<% }else { %>
+							<p>There is no product here</p>
+						<% } %>
+						<%/*%>
+						fix cái there is no product ở file products-ajax.js dòng 61 luôn nha
+						<%*/%>
+					</div>
+				</div>
+				<div class="pages">
+					
+					<nav
+					aria-label="Page navigation example"
+					class="d-flex justify-content-center"
+				  >
+					<% if (lastPage > 0) { %>
+					<ul class="pagination custom-hover">
+					  <li class="page-item custom-hover "><a class="page-link">First</a></li>
+					  <% let i = (Number(currentPage) > 5 ? Number(currentPage) - 4 : 1) %> <%
+					  if (i !== 1) { %>
+					  <li class="page-item custom-hover"><a class="page-link">...</a></li>
+					  <% } %> <% for (; i <= (Number(currentPage) + 4) && i <= lastPage; i++)
+					  { %> <% if (i == currentPage) { %>
+					  <li class="page-item custom-hover active"><a class="page-link"><%= i %></a></li>
+					  <% } else { %>
+					  <li class="page-item custom-hover">
+						<a class="page-link"><%= i %></a>
+					  </li>
+					  <% } %> <% if (i == Number(currentPage) + 4 && i < lastPage) { %>
+					  <li class="page-item custom-hover"><a class="page-link">...</a></li>
+					  <% } %> <% } %> <% if (currentPage == lastPage) { %>
+					  <li class="page-item custom-hover"><a class="page-link">Last</a></li>
+					  <% } else { %>
+					  <li>
+						<a class="page-link">Last</a>
+					  </li>
+					  <% } %>
+					</ul>
+					<% } %>
+				  </nav>
+				</div>
+				<% /* %> dùng cho session <% */ %>
+				<input type="hidden" id="productsPerPage" value="<%=productsPerPage%>" />
+				<input type="hidden" id="lastPage" value="<%=lastPage%>" />
+				<input type="hidden" id="productsCount" value="<%=productsCount%>" />
+				<input type="hidden" id="currentPage" value="<%=currentPage%>" />
+			</div>
+		</div>
+	</div>
+	
+	</section>
+	
+	<%- include('../includes/foot')%>
+
+	<script src="/js/productFilter.js"></script>
+    <script src="/ajax/products-ajax.js"></script>
+    <script src="/js/jquery-util.js"></script>
+	
+</body>
+</html>

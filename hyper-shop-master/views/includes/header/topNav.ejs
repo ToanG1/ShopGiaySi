@@ -1,0 +1,91 @@
+<div id="top">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 offer mb-3 mb-lg-0">
+        <% if(!user) { %>
+        <div class="btn btn-success btn-sm">Login to have best experience</div>
+        <% } else { %>
+        <div class="btn btn-success btn-sm">Hello, <%=user.name%></div>
+        <% } %>
+      </div>
+      <% if(!user) { %>
+      <div class="col-lg-6 text-center text-lg-right">
+        <ul class="menu list-inline mb-0">
+          <li class="list-inline-item">
+            <a href="/auth/signin">Login</a>
+          </li>
+          <li class="list-inline-item"><a href="/auth/signup">Register</a></li>
+          <li class="list-inline-item"><a href="/">Contact</a></li>
+        </ul>
+      </div>
+      <% } %> <% if(user) { %>
+      <div class="col-lg-2 offset-lg-4">
+        <form action="/auth/logout">
+          <button class="btn btn-primary navbar-btn" style="margin-left: 65px;">LOG OUT</button>
+        </form>
+      </div>
+
+      <% } %>
+    </div>
+  </div>
+  <div
+    id="login-modal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="Login"
+    aria-hidden="true"
+    class="modal fade"
+  >
+    <%/* này là để comment%> quăng cái popup đăng nhập vô comment đó bờ gô
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Customer login</h5>
+          <button
+            type="button"
+            data-dismiss="modal"
+            aria-label="Close"
+            class="close"
+          >
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="/auth/signin" method="post">
+            <div class="form-group">
+              <input
+                id="email-modal"
+                type="text"
+                name="email"
+                placeholder="email"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                id="password-modal"
+                type="password"
+                name="password"
+                placeholder="password"
+                class="form-control"
+              />
+            </div>
+            <p class="text-center">
+              <button class="btn btn-primary">
+                <i class="fa fa-sign-in"></i> Log in
+              </button>
+            </p>
+          </form>
+          <p class="text-center text-muted">Not registered yet?</p>
+          <p class="text-center text-muted">
+            <a href="/auth/signup"><strong>Register now</strong></a
+            >! It is easy and done in 1 minute and gives you access to special
+            discounts and much more!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <%*/%>
+  </div>
+</div>

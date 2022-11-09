@@ -1,0 +1,106 @@
+<div class="box info-bar">
+  <div class="row">
+    <div class="col-md-12 col-lg-4 p-0 products-showing">
+      Showing
+      <strong
+        ><%= productsPerPage<=productsCount?productsPerPage:productsCount
+        %></strong
+      >
+      of <strong><%= productsCount %></strong> products
+    </div>
+    <div
+      class="
+        col-md-12 col-lg-8
+        form-inline
+        d-block d-lg-flex
+        justify-content-between
+        flex-column flex-md-row
+        products-number-sort
+        p-0
+      "
+    >
+      <div class="products-number">
+        <strong>Show</strong>
+        <%if(productsPerPage==12) {%>
+        <a class="btn btn-primary btn-sm show-products-quantity">12</a>
+        <%} else {%>
+        <a class="btn btn-outline-secondary btn-sm show-products-quantity"
+          >12</a
+        >
+        <%}%> <%if(productsPerPage==24) {%>
+        <a class="btn btn-primary btn-sm show-products-quantity">24</a>
+        <%} else {%>
+        <a class="btn btn-outline-secondary btn-sm show-products-quantity"
+          >24</a
+        >
+        <%}%> <%if(productsPerPage===productsCount) {%>
+        <a class="btn btn-primary btn-sm show-products-quantity">All</a>
+        <%} else {%>
+        <a class="btn btn-outline-secondary btn-sm show-products-quantity"
+          >All</a
+        >
+        <%}%>
+
+        <span>products</span>
+      </div>
+      <div class="products-sort-by mt-2 mt-lg-0">
+        <strong>Sort by</strong>
+        <select name="sort-by" class="form-control sort-by">
+          <option value="price">Price</option>
+          <option value="name">Name</option>
+          <option value="createdDate">Release date</option>
+          <option value="viewCount">View count</option>
+        </select>
+        <span class="ml-1"
+          ><button class="btn btn-primary sort-order" id="asc">
+            <i class="bi bi-sort-down-alt"></i>
+          </button>
+          <button class="btn sort-order" id="desc">
+            <i class="bi bi-sort-down"></i></button
+        ></span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row products">
+  <% if (products.length>0) %> <%for(const product of products) {%>
+  <%-include('./productBox.ejs',{product} )%> <%}%>
+</div>
+<div class="pages">
+  <nav
+    aria-label="Page navigation example"
+    class="d-flex justify-content-center"
+  >
+    <% if (lastPage > 0) { %>
+    <ul class="pagination">
+      <li class="page-item cursor-pointer"><a class="page-link">First</a></li>
+      <% let i = (Number(currentPage) > 5 ? Number(currentPage) - 4 : 1) %> <%
+      if (i !== 1) { %>
+      <li class="page-item cursor-pointer"><a class="page-link">...</a></li>
+      <% } %> <% for (; i <= (Number(currentPage) + 4) && i <= lastPage; i++) {
+      %> <% if (i == currentPage) { %>
+      <li class="page-item cursor-pointer active">
+        <a class="page-link"><%= i %></a>
+      </li>
+      <% } else { %>
+      <li class="page-item cursor-pointer">
+        <a class="page-link"><%= i %></a>
+      </li>
+      <% } %> <% if (i == Number(currentPage) + 4 && i < lastPage) { %>
+      <li class="page-item cursor-pointer"><a class="page-link">...</a></li>
+      <% } %> <% } %> <% if (currentPage == lastPage) { %>
+      <li class="page-item cursor-pointer"><a class="page-link">Last</a></li>
+      <% } else { %>
+      <li>
+        <a class="page-link cursor-pointer">Last</a>
+      </li>
+      <% } %>
+    </ul>
+    <% } %>
+  </nav>
+</div>
+<% /* %> dùng cho session <% */ %>
+<input type="hidden" id="productsPerPage" value="<%=productsPerPage%>" />
+<input type="hidden" id="lastPage" value="<%=lastPage%>" />
+<input type="hidden" id="productsCount" value="<%=productsCount%>" />
+<input type="hidden" id="currentPage" value="<%=currentPage%>" />

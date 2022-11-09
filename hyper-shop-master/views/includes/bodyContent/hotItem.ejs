@@ -1,0 +1,24 @@
+<div class="item">
+  <div class="product">
+    <div class="flip-container">
+      <div class="flipper">
+        <div class="back">
+          <a href="/products/<%=tp.product[0]._id%>"
+            ><img
+              src="https://hyper-shop-admin.herokuapp.com<%=tp.product[0].image%>"
+              alt="<%=tp.product[0].name%>"
+              class="img-fluid"
+          /></a>
+        </div>
+      </div>
+    </div>
+    <div class="text">
+      <h3>
+        <a href="/tp.product[0]/<%=product._id%>" style="text-decoration: none"
+          ><%=tp.product[0].name%></a
+        >
+      </h3>
+      <p class="price"><del></del>$<%=tp.product[0].price%></p>
+    </div>
+  </div>
+</div>

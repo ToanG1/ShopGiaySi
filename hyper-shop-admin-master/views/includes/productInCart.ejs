@@ -1,0 +1,63 @@
+<form id="edd_checkout_cart_form" method="post">
+    <div id="edd_checkout_cart_wrap">
+        <table id="edd_checkout_cart" class="ajaxed">
+        <thead>
+        <tr class="edd_cart_header_row">
+            <th class="edd_cart_item_name">
+                 Item Name
+            </th>
+            <th class="edd_cart_item_price">
+                 Item Price
+            </th>
+            <th class="edd_cart_actions">
+                 Quantity
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+            <% if (products.length > 0) { %>
+                <% for (product of products) { %>
+                    <tr class="edd_cart_item" id="edd_cart_item_0_25" data-download-id="25">
+                        <td class="edd_cart_item_name">
+                            <div class="edd_cart_item_image">
+                                <img width="25" height="25" src="<%= product.image %>" alt="">
+                            </div>
+                            <span class="edd_checkout_cart_item_title"><%= product.name %></span>
+                        </td>
+                        <td class="edd_cart_item_price">
+                            $<%=product.price%>
+                        </td>
+                        <td class="edd_cart_actions">
+                            <div class="prod-quantity-input">
+                                <button class="increase-quantity">
+                                    <span>+</span>
+                                </button>
+                                <input type="number" id="number" value="<%=product.quantity%>" />
+                                <button class="decrease-quantity">
+                                    <span>-</span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                <% } %>
+            <% } %>
+        </tbody>
+        <tfoot>
+        <tr class="edd_cart_footer_row">
+            <th colspan="5">
+                <a class="edd-cart-saving-button edd-submit button " id="edd-save-cart-button" href="#">Save Cart</a>
+            </th>
+        </tr>
+        <tr class="edd_cart_footer_row edd_cart_discount_row" style="display:none;">
+            <th colspan="5" class="edd_cart_discount">
+            </th>
+        </tr>
+        <tr class="edd_cart_footer_row">
+            <th colspan="5" class="edd_cart_total">
+                 Total: <span class="edd_cart_amount" data-subtotal="<%=product.price%>" data-total="<%=product.price%>">$<%=product.price%></span>
+            </th>
+        </tr>
+        </tfoot>
+        </table>
+    </div>
+</form>

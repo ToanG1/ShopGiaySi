@@ -1,0 +1,28 @@
+<div class="card sidebar-menu mb-4">
+  <div class="card-header">
+    <h3 class="h4 card-title">
+      Material
+      <a href="#" class="btn btn-sm btn-danger pull-right material-clear"
+        ><i class="fa fa-times-circle"></i> Clear</a
+      >
+    </h3>
+  </div>
+  <div class="card-body">
+    <form>
+      <div class="form-group material-form">
+        <%for(material of materials){%>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="<%=material._id%>" />
+            <%=material._id.replace(/(^|\s)\S/g, letter =>
+            letter.toUpperCase());%>
+          </label>
+        </div>
+        <%}%>
+      </div>
+      <button class="btn btn-default btn-sm btn-primary material-button">
+        <i class="fa fa-pencil"></i> Apply
+      </button>
+    </form>
+  </div>
+</div>

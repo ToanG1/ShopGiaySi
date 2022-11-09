@@ -1,0 +1,26 @@
+<div class="card sidebar-menu mb-4">
+  <div class="card-header">
+    <h3 class="h4 card-title">
+      Brand<a href="#" class="btn btn-sm btn-danger pull-right brand-clear"
+        ><i class="fa fa-times-circle"></i> Clear</a
+      >
+    </h3>
+  </div>
+  <div class="card-body">
+    <form>
+      <div class="form-group brand-form">
+        <%for(brand of brands){%>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="<%=brand._id%>" />
+            <%=brand._id.replace(/(^|\s)\S/g, letter => letter.toUpperCase());%>
+          </label>
+        </div>
+        <%}%>
+      </div>
+      <button class="btn btn-default btn-sm btn-primary brand-button">
+        <i class="fa fa-pencil"></i> Apply
+      </button>
+    </form>
+  </div>
+</div>

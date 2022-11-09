@@ -1,0 +1,462 @@
+/* ============================== UTILITY ============================= */
+.divide {
+  border: 1px solid rgb(233, 233, 233);
+  margin: 10px 0;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.error {
+  font-size: 20px;
+  font-weight: 500;
+  color: orange;
+}
+
+/* DROPDOWN MENU */
+.display-flex{
+  display: flex;
+}
+
+.card-item{
+  padding: 5px;
+}
+
+.hidden{
+  display: none;
+}
+
+.data-status{
+  cursor:pointer;
+}
+
+/* ============================= REVENUE ============================ */
+.top-area{
+  padding: 0 20px;  
+}
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ============================= ORDER DETAIL ======================= */
+.small-image{
+  width: 50px;
+}
+
+/* ============================= SHOP ================================*/
+/* SEARCH BAR ======================== */
+.search-box {
+  margin: 20px 0;
+  width: 100%;
+  height: 50px;
+}
+
+/* Search 1 - bg change*/
+.container-1 {
+  width: 100%;
+  vertical-align: middle;
+  white-space: nowrap;
+  position: relative;
+}
+.container-1 input#search {
+  width: 100%;
+  height: 50px;
+  border: none;
+  font-size: 10pt;
+  float: left;
+  color: #262626;
+  padding-left: 45px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+
+  -webkit-transition: all 0.55s ease;
+  -moz-transition: all 0.55s ease;
+  -ms-transition: all 0.55s ease;
+  -o-transition: all 0.55s ease;
+  transition: all 0.55s ease;
+}
+
+.container-1 input#search::-webkit-input-placeholder {
+  color: #65737e;
+}
+.container-1 input#search:-moz-placeholder {
+  /* Firefox 18- */
+  color: #65737e;
+}
+.container-1 input#search::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #65737e;
+}
+.container-1 input#search:-ms-input-placeholder {
+  color: #65737e;
+}
+
+.container-1 .icon {
+  position: absolute;
+  top: 50%;
+  margin-left: 17px;
+  margin-top: 17px;
+  z-index: 1;
+  color: #4f5b66;
+}
+
+/* ANIMATION EFFECTS */
+.container-1 input#search:focus,
+.container-1 input#search:active {
+  outline: none;
+  background: #ffffff;
+}
+
+.tag {
+  margin-top: 20px;
+  /* background-color: blue; */
+}
+
+.tag-box {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+}
+
+.side-bar {
+  background-color: rgb(255, 255, 255);
+  overflow: auto;
+  height: 800px;
+  scroll-behavior: smooth;
+}
+
+.side-bar::-webkit-scrollbar-track {
+  /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); */
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
+
+.side-bar::-webkit-scrollbar {
+  width: 12px;
+  background-color: #f5f5f5;
+}
+
+.side-bar::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3); */
+  background-color: #00bba7;
+}
+
+.side-bar_title {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  font-weight: 400;
+}
+
+.apply-filter {
+  background-color: #00bba7;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.filter-button {
+  padding: 0 10px;
+  border-radius: 5px;
+  background-color: white;
+  color: #00bba7;
+  border: none;
+  outline: none;
+}
+
+.category {
+  margin: 10px;
+}
+
+.cat-title {
+  font-weight: 500;
+}
+
+.cat-content {
+  display: flex;
+  flex-direction: column;
+}
+
+/* pagination ==================== */
+
+.custom-hover:hover {
+  cursor: pointer;
+}
+.pages {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card {
+  background-color: white;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+/* ============================ PRODUCT DETAIL ===============================*/
+.product-size {
+  margin: 10px 0;
+}
+
+/* Cart =================== */
+
+.prod-quantity-input {
+  display: flex;
+}
+.prod-quantity-input input {
+  width: 40px;
+  height: 31px;
+  border: 1px solid #00bba7;
+  outline: none;
+}
+.edd_cart_actions input[type="number"]::-webkit-inner-spin-button,
+.edd_cart_actions input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.increase-quantity {
+  border: 1px solid #00bba7;
+  background-color: #00bba7;
+  border-radius: 10px 0 0 10px;
+  width: 9px;
+  margin-right: -5px;
+  padding: 1px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: 400;
+}
+.decrease-quantity {
+  border: 1px solid #00bba7;
+  background-color: #00bba7;
+  width: 9px;
+  border-radius: 0 10px 10px 0;
+  margin-left: -5px;
+  padding: 1px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: 400;
+}
+
+.value-button:hover {
+  cursor: pointer;
+}
+
+/* comment ====================== */
+.comment-box {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.comment {
+  background-color: white;
+}
+
+.comment-content {
+  margin-bottom: 20px;
+}
+
+.comment-response {
+  background-color: rgb(221, 221, 221);
+  padding: 15px 35px;
+  position: relative;
+}
+
+.rep-comment {
+  width: 100%;
+  border: none;
+  outline: none;
+}
+
+/* ============================== ADD PRODUCT ============================= */
+.box {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.box-footer-btn {
+  width: 200px;
+  margin: 0 10px;
+}
+
+/* ============================= USER LIST ================================ */
+.user-box {
+  background-color: #effffd;
+  padding: 0 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-email {
+  padding: 0 5px;
+  margin: 5px;
+  margin-left: 5px;
+  background-color: #00bba7;
+  color: whitesmoke;
+  font-weight: 500;
+  border-radius: 5px;
+}
+
+/* ===================================== USER PROFILE ==================================== */
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+.wrapper-profile {
+  padding: 30px 50px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  margin: 10px auto;
+  max-width: 600px;
+  background-color: whitesmoke;
+  margin-bottom: 30px;
+}
+
+h4 {
+  letter-spacing: -1px;
+  font-weight: 400;
+}
+
+.img {
+  width: 70px;
+  height: 70px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+#img-section p,
+#deactivate p {
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 10px;
+  text-align: justify;
+}
+
+#img-section b,
+#img-section button,
+#deactivate b {
+  font-size: 14px;
+}
+
+label {
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #777;
+  padding-left: 3px;
+}
+
+.form-control {
+  border-radius: 10px;
+}
+
+input[placeholder] {
+  font-weight: 500;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border: 1.5px solid #0779e4;
+}
+
+select {
+  display: block;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  height: 40px;
+  padding: 5px 10px;
+}
+
+select:focus {
+  outline: none;
+}
+
+.button {
+  background-color: #fff;
+  color: #0779e4;
+}
+
+.button:hover {
+  background-color: #0779e4;
+  color: #fff;
+}
+
+.btn-primary {
+  background-color: #0779e4;
+}
+
+.danger {
+  background-color: #fff;
+  color: #e20404;
+  border: 1px solid #ddd;
+}
+
+.danger:hover {
+  background-color: #e20404;
+  color: #fff;
+}
+
+@media (max-width: 576px) {
+  .wrapper {
+    padding: 25px 20px;
+  }
+
+  #deactivate {
+    line-height: 18px;
+  }
+}
+
+#save-profile {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+#save-profile button {
+  background-color: #00bba7;
+  outline: none;
+  border: 1px solid gray;
+  border-radius: 5px;
+  color: white;
+  font-weight: 500;
+}
+
+#save-profile button:hover {
+  background-color: rgb(137, 137, 212);
+  color: black;
+}
+
+#back-to-user-list {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}

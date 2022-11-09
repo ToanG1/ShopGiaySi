@@ -1,0 +1,204 @@
+<!-- ITEM IMAGE ================================================ -->
+<div id="productMain" class="row">
+  <div class="col-md-6">
+    <div data-slider-id="1" class="owl-carousel shop-detail-carousel">
+      <div class="item">
+        <img
+          src="https://hyper-shop-admin.herokuapp.com<%=product.image%>"
+          alt=""
+          class="img-fluid"
+        />
+      </div>
+      <%for (img of product.images){%>
+      <div class="item">
+        <img
+          src="https://hyper-shop-admin.herokuapp.com<%=img%>"
+          alt=""
+          class="img-fluid"
+        />
+      </div>
+      <%}%>
+    </div>
+    <div class="ribbon sale">
+      <div class="theribbon">Views <%=product.viewCount%></div>
+      <div class="ribbon-background"></div>
+    </div>
+    <!-- /.ribbon-->
+    <% /* %>
+    <div class="ribbon new">
+      <div class="theribbon">NEW</div>
+      <div class="ribbon-background"></div>
+    </div>
+    <% */ %>
+    <!-- /.ribbon-->
+  </div>
+  <div class="col-md-6">
+    <div class="box">
+      <h1 class="text-center"><%=product.name%></h1>
+      <p class="goToDescription">
+        <a href="#details" class="scroll-to"
+          >Scroll to product details, material &amp; care and sizing</a
+        >
+      </p>
+      <p class="text-center">
+        <select id="chooseSizeOpt">
+          <% for (size of product.countInStock) { if (size.quantity > 0) { %>
+          <option value="<%=size.size%>"><%=size.size%></option>
+          <% }} %>
+        </select>
+      </p>
+      <p class="price">$<%=product.price%></p>
+      <p class="text-center buttons">
+        <button class="btn btn-primary addToCartBtn" id="<%=product._id%>">
+          <i class="fa fa-shopping-cart"></i> Add to cart
+        </button>
+        <!-- <a href="basket.html"class="btn btn-outline-primary"><i class="fa fa-heart"></i> Add to wishlist</a> -->
+      </p>
+    </div>
+    <div data-slider-id="1" class="owl-thumbs">
+      <button class="owl-thumb-item">
+        <img
+          src="https://hyper-shop-admin.herokuapp.com<%=product.image%>"
+          alt=""
+          class="img-fluid"
+        />
+      </button>
+      <%for (img of product.images){%>
+      <button class="owl-thumb-item">
+        <img
+          src="https://hyper-shop-admin.herokuapp.com<%=img%>"
+          alt=""
+          class="img-fluid"
+        />
+      </button>
+      <%}%>
+    </div>
+  </div>
+</div>
+
+<!-- ITEM DETAIL ============================================== -->
+<div id="details" class="box">
+  <p></p>
+  <h4>Product details</h4>
+  <p><%=product.Description()%></p>
+  <h4>Material &amp; care</h4>
+  <ul>
+    <li><%=product.material%></li>
+    <li>hachine wash</li>
+  </ul>
+  <!-- <h4>Size &amp; Fit</h4>
+    <ul>
+        <li>Regular fit</li>
+        <li>The model (height 5'8" and chest 33") is wearing a size S</li>
+    </ul> -->
+  <blockquote>
+    <p>
+      <em
+        >Define style this season with Armani's new range of trendy tops,
+        crafted with intricate details. Create a chic statement look by teaming
+        this lace number with skinny jeans and pumps.</em
+      >
+    </p>
+  </blockquote>
+  <hr />
+  <div class="social">
+    <h4>Show it to your friends</h4>
+    <p>
+      <a href="#" class="external facebook"><i class="fa fa-facebook"></i></a
+      ><a href="#" class="external gplus"><i class="fa fa-google-plus"></i></a
+      ><a href="#" class="external twitter"><i class="fa fa-twitter"></i></a
+      ><a href="#" class="email"><i class="fa fa-envelope"></i></a>
+    </p>
+  </div>
+</div>
+
+<!-- RELATED PRODUCTS ======================================== -->
+<%-include('./relatedProducts')%>
+
+<!-- CUSTOMER COMMENTS ======================================== -->
+<div class="feedback">
+  <span class="medium-text">Product review and feedback</span>
+  <div class="divide"></div>
+  <div class="comments-list">
+    <% for (comment of comments.reverse()){ %>
+    <div class="comment">
+      <div class="customer-avatar">
+        <i class="fa fa-user-circle medium-text"></i>&nbsp &nbsp<span
+          ><%=comment.user.name%></span
+        >
+      </div>
+      <div class="comment-content">
+        <span class="light-gray-color"><%=comment.body%></span>
+      </div>
+      <%for(response of responses) { if(response.comment==comment.id){%>
+      <%for(res of response.commentRes){%>
+      <div class="response">
+        <i class="fa-solid fa-store"></i>&nbsp &nbsp<span class="red-color"
+          >Response by Hyper Shop</span
+        >
+        <div class="response-content"><%=res.body%></div>
+      </div>
+      <%}}}%>
+      <div class="divide"></div>
+    </div>
+    <% } %>
+  </div>
+
+  <div class="pages">
+    <nav
+      aria-label="Page navigation example"
+      class="d-flex justify-content-center"
+    >
+      <% if (commentsLastPage > 0) { %>
+      <ul class="pagination">
+        <li class="page-item cursor-pointer"><a class="page-link">First</a></li>
+        <% let i = (Number(commentsCurrentPage) > 5 ?
+        Number(commentsCurrentPage) - 4 : 1) %> <% if (i !== 1) { %>
+        <li class="page-item cursor-pointer"><a class="page-link">...</a></li>
+        <% } %> <% for (; i <= (Number(commentsCurrentPage) + 4) && i <=
+        commentsLastPage; i++) { %> <% if (i == commentsCurrentPage) { %>
+        <li class="page-item cursor-pointer active">
+          <a class="page-link"><%= i %></a>
+        </li>
+        <% } else { %>
+        <li class="page-item cursor-pointer">
+          <a class="page-link"><%= i %></a>
+        </li>
+        <% } %> <% if (i == Number(commentsCurrentPage) + 4 && i <
+        commentsLastPage) { %>
+        <li class="page-item cursor-pointer"><a class="page-link">...</a></li>
+        <% } %> <% } %> <% if (commentsCurrentPage == commentsLastPage) { %>
+        <li class="page-item cursor-pointer">
+          <a class="page-link" id="<%=commentsLastPage%>">Last</a>
+        </li>
+        <% } else { %>
+        <li>
+          <a class="page-link cursor-pointer" id="<%=commentsLastPage%>"
+            >Last</a
+          >
+        </li>
+        <% } %>
+      </ul>
+      <% } %>
+    </nav>
+  </div>
+
+  <form
+    class="comment-form"
+    action="/api/comments/<%=product._id%>"
+    method="post"
+  >
+    <div class="add-comment">
+      <input
+        type="text"
+        name="comment"
+        class="comment-input mb-3"
+        placeholder="leave a comment....."
+        autocomplete="off"
+      />
+    </div>
+    <button class="btn btn-info comment-button">Post</button>
+  </form>
+</div>
+
+<input type="hidden" id="productId" value="<%=product._id%>" />

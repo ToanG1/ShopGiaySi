@@ -1,0 +1,16 @@
+<tr>
+  <td class="table-plus">
+    <img src="<%=tp.product[0].image%>" width="70" height="70" alt="" />
+  </td>
+  <td>
+    <h5 class="font-16">
+      <a href="/products/<%=tp.product[0]._id%>"><%=tp.product[0].name%></a>
+    </h5>
+  </td>
+  <td><%=tp.product[0].color%></td>
+  <td>$<%=tp.product[0].price%></td>
+  <td>
+    <%=tp.product[0].countInStock.reduce((qty,currentSize)=>qty+currentSize.quantity,0)%>
+  </td>
+  <td><%=tp.count%></td>
+</tr>
