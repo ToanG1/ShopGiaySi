@@ -208,3 +208,7 @@ select:focus {
   cursor: pointer;
   color: #00bba7;
 }
+
+.hidden {
+  display: none;
+}
