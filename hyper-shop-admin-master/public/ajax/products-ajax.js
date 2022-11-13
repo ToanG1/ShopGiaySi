@@ -5,137 +5,137 @@ let sex = [];
 let material = [];
 let shoesHeight = [];
 let color = [];
-$(".pages").on("click", ".page-link", reloadProduct);
-$(".category-menu").on("click", ".category-filter", reloadProduct);
-$(".products-number").on("click", ".show-products-quantity", reloadProduct);
-$("#search").on("input", function (e) {
-  sessionStorage.removeItem("page"); //nếu products đc reload vì người dùng search, set page lại bằng 1
+$('.pages').on('click', '.page-link', reloadProduct);
+$('.category-menu').on('click', '.category-filter', reloadProduct);
+$('.products-number').on('click', '.show-products-quantity', reloadProduct);
+$('#search').on('input', function (e) {
+  sessionStorage.removeItem('page'); //nếu products đc reload vì người dùng search, set page lại bằng 1
   reloadProduct(e);
 });
 
-$(".brand-button").on("click", function (e) {
-  sessionStorage.removeItem("page"); //nếu products đc reload vì người dùng dùng filter, set page lại bằng 1
+$('.brand-button').on('click', function (e) {
+  sessionStorage.removeItem('page'); //nếu products đc reload vì người dùng dùng filter, set page lại bằng 1
   brand = []; //array cũ chỉ có brand giữ địa chỉ
-  $(".brand-form input:checked").each(function () {
+  $('.brand-form input:checked').each(function () {
     brand.push($(this).val());
   });
   reloadProduct(e);
 });
 
-$(".brand-clear").on("click", function (e) {
-  sessionStorage.removeItem("page");
+$('.brand-clear').on('click', function (e) {
+  sessionStorage.removeItem('page');
   brand = []; //array cũ chỉ có brand giữ địa chỉ
-  $(".brand-form input:checked").each(function () {
-    $(this).prop("checked", false);
+  $('.brand-form input:checked').each(function () {
+    $(this).prop('checked', false);
   });
   reloadProduct(e);
 });
 
-$(".closure-button").on("click", function (e) {
-  sessionStorage.removeItem("page");
+$('.closure-button').on('click', function (e) {
+  sessionStorage.removeItem('page');
   closureType = [];
-  $(".closure-form input:checked").each(function () {
+  $('.closure-form input:checked').each(function () {
     closureType.push($(this).val());
   });
   reloadProduct(e);
 });
 
-$(".closure-clear").on("click", function (e) {
-  sessionStorage.removeItem("page");
+$('.closure-clear').on('click', function (e) {
+  sessionStorage.removeItem('page');
   closureType = [];
-  $(".closure-form input:checked").each(function () {
-    $(this).prop("checked", false);
+  $('.closure-form input:checked').each(function () {
+    $(this).prop('checked', false);
   });
   reloadProduct(e);
 });
-$(".gender-button").on("click", function (e) {
-  sessionStorage.removeItem("page");
+$('.gender-button').on('click', function (e) {
+  sessionStorage.removeItem('page');
   sex = [];
-  $(".gender-form input:checked").each(function () {
+  $('.gender-form input:checked').each(function () {
     sex.push($(this).val());
   });
   reloadProduct(e);
 });
 
-$(".gender-clear").on("click", function (e) {
-  sessionStorage.removeItem("page");
+$('.gender-clear').on('click', function (e) {
+  sessionStorage.removeItem('page');
   sex = [];
-  $(".gender-form input:checked").each(function () {
-    $(this).prop("checked", false);
+  $('.gender-form input:checked').each(function () {
+    $(this).prop('checked', false);
   });
   reloadProduct(e);
 });
 
-$(".material-button").on("click", function (e) {
-  sessionStorage.removeItem("page");
+$('.material-button').on('click', function (e) {
+  sessionStorage.removeItem('page');
   material = [];
-  $(".material-form input:checked").each(function () {
+  $('.material-form input:checked').each(function () {
     material.push($(this).val());
   });
   reloadProduct(e);
 });
 
-$(".material-clear").on("click", function (e) {
-  sessionStorage.removeItem("page");
+$('.material-clear').on('click', function (e) {
+  sessionStorage.removeItem('page');
   material = [];
-  $(".material-form input:checked").each(function () {
-    $(this).prop("checked", false);
+  $('.material-form input:checked').each(function () {
+    $(this).prop('checked', false);
   });
   reloadProduct(e);
 });
-$(".shoesHeight-button").on("click", function (e) {
-  sessionStorage.removeItem("page");
+$('.shoesHeight-button').on('click', function (e) {
+  sessionStorage.removeItem('page');
   shoesHeight = [];
-  $(".shoesHeight-form input:checked").each(function () {
+  $('.shoesHeight-form input:checked').each(function () {
     shoesHeight.push($(this).val());
   });
   reloadProduct(e);
 });
 
-$(".shoesHeight-clear").on("click", function (e) {
-  sessionStorage.removeItem("page");
+$('.shoesHeight-clear').on('click', function (e) {
+  sessionStorage.removeItem('page');
   shoesHeight = [];
-  $(".shoesHeight-form input:checked").each(function () {
-    $(this).prop("checked", false);
+  $('.shoesHeight-form input:checked').each(function () {
+    $(this).prop('checked', false);
   });
   reloadProduct(e);
 });
-$(".color-button").on("click", function (e) {
-  sessionStorage.removeItem("page");
+$('.color-button').on('click', function (e) {
+  sessionStorage.removeItem('page');
   color = [];
-  $(".color-form input:checked").each(function () {
+  $('.color-form input:checked').each(function () {
     color.push($(this).val());
   });
   reloadProduct(e);
 });
 
-$(".color-clear").on("click", function (e) {
-  sessionStorage.removeItem("page");
+$('.color-clear').on('click', function (e) {
+  sessionStorage.removeItem('page');
   color = [];
-  $(".color-form input:checked").each(function () {
-    $(this).prop("checked", false);
+  $('.color-form input:checked').each(function () {
+    $(this).prop('checked', false);
   });
   reloadProduct(e);
 });
 
 function reloadProduct(e) {
-  const name = $("#search").val() !== "" ? $("#search").val() : null; //search by name
+  const name = $('#search').val() !== '' ? $('#search').val() : null; //search by name
 
   e.preventDefault();
-  const url = "/api/products";
-  let page = sessionStorage.getItem("page") || 1;
-  if (page === "First") page = 1;
-  if (page === "Last") page = sessionStorage.getItem("lastPage");
+  const url = '/api/products';
+  let page = sessionStorage.getItem('page') || 1;
+  if (page === 'First') page = 1;
+  if (page === 'Last') page = sessionStorage.getItem('lastPage');
   let lastPage;
-  let productsPerPage = sessionStorage.getItem("productsPerPage") || 12;
-  if (productsPerPage === "All")
+  let productsPerPage = sessionStorage.getItem('productsPerPage') || 12;
+  if (productsPerPage === 'All')
     //productsPerPage = sessionStorage.getItem('productsCount');
-    productsPerPage = "All"; //sẽ bị remove trong filter=> query all
+    productsPerPage = 'All'; //sẽ bị remove trong filter=> query all
   const filters = {
     name,
     productsPerPage,
     page,
-    category: sessionStorage.getItem("category"),
+    category: sessionStorage.getItem('category'),
     brand,
     color,
     sex,
@@ -143,35 +143,33 @@ function reloadProduct(e) {
     closureType,
     material,
   };
-  if (filters.category == "all categories") filters.category = null;
+  if (filters.category == 'all categories') filters.category = null;
   // remove các filter null or undefined
   Object.keys(filters).forEach(
-    (key) => filters[key] === undefined && delete filters[key]
+    (key) => filters[key] === undefined && delete filters[key],
   );
-  Object.keys(filters).forEach(
-    (key) => filters[key] === null && delete filters[key]
-  );
+  Object.keys(filters).forEach((key) => filters[key] === null && delete filters[key]);
 
-  if (page !== "...")
+  if (page !== '...')
     $.ajax({
       url,
       data: filters,
-      dataType: "json",
+      dataType: 'json',
       success: function (data) {
-        const urlPath = this.url.replace("/api", "");
-        window.history.replaceState(null, "", urlPath); //update url after ajax call success
+        const urlPath = this.url.replace('/api', '');
+        window.history.replaceState(null, '', urlPath); //update url after ajax call success
         lastPage = data.lastPage;
-        if (page === "Last") page = lastPage;
+        if (page === 'Last') page = lastPage;
 
-        sessionStorage.setItem("lastPage", lastPage);
-        sessionStorage.setItem("productsCount", data.productsCount);
+        sessionStorage.setItem('lastPage', lastPage);
+        sessionStorage.setItem('productsCount', data.productsCount);
         const productShowing = getProductShowing(
           data.productsPerPage,
-          data.productsCount
+          data.productsCount,
         ); // Showing ? of ? product
 
         const productsNumber = getProductsNumber(); //selected quantity of product
-        let productsList = "";
+        let productsList = '';
         let productBox;
         if (data.products.length > 0) {
           data.products.forEach((product) => {
@@ -180,13 +178,13 @@ function reloadProduct(e) {
           });
         } else {
           productsList =
-            "<div><p>Sorry, we don't have thing you need</p></div>";
+            '<div><p style="text-align: center">Sorry, we do not have thing you need</p></div>';
         }
         const pagesNumber = getPagesNumber(lastPage, page); //paging number ở dưới
-        $(".products").html(productsList);
-        $(".pages").html(pagesNumber);
-        $(".products-showing").html(productShowing);
-        $(".products-number").html(productsNumber);
+        $('.products').html(productsList);
+        $('.pages').html(pagesNumber);
+        $('.products-showing').html(productShowing);
+        $('.products-number').html(productsNumber);
       },
       error: function (error) {
         console.log(error);
@@ -237,21 +235,21 @@ function getProductsNumber() {
   let res = `
   <strong>Show</strong>`;
   res +=
-    sessionStorage.getItem("productsPerPage") == 2
+    sessionStorage.getItem('productsPerPage') == 2
       ? `<a class="btn btn-primary btn-sm show-products-quantity">2</a>`
       : `
     <a class="btn btn-outline-secondary btn-sm show-products-quantity"
     >2</a
   >`;
   res +=
-    sessionStorage.getItem("productsPerPage") == 4
+    sessionStorage.getItem('productsPerPage') == 4
       ? `<a class="btn btn-primary btn-sm show-products-quantity">4</a>`
       : `<a class="btn btn-outline-secondary btn-sm show-products-quantity"
   >4</a
 >`;
 
   res +=
-    sessionStorage.getItem("productsPerPage") === "All"
+    sessionStorage.getItem('productsPerPage') === 'All'
       ? `<a class="btn btn-primary btn-sm show-products-quantity">All</a>`
       : ` <a class="btn btn-outline-secondary btn-sm show-products-quantity"
 >All</a

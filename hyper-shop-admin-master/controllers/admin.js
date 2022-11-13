@@ -1,38 +1,38 @@
-const AdminService = require("../models/services/adminService");
-const ProductService = require("../models/services/productService");
-const UserService = require("../models/services/userService");
-const OrderService = require("../models/services/orderService");
-const bcrypt = require("bcrypt");
+const AdminService = require('../models/services/adminService');
+const ProductService = require('../models/services/productService');
+const UserService = require('../models/services/userService');
+const OrderService = require('../models/services/orderService');
+const bcrypt = require('bcrypt');
 
 exports.getAdmins = async (req, res, next) => {
   const admins = await AdminService.getAdmins();
-  res.status(200).render("shop/adminList", {
-    pageTitle: "Admin List",
+  res.status(200).render('shop/adminList', {
+    pageTitle: 'Admin List',
     admins,
     user: req.user,
   });
 };
 
 exports.getProfile = (req, res, next) => {
-  res.status(200).render("shop/profile", {
-    pageTitle: "Profile",
+  res.status(200).render('shop/profile', {
+    pageTitle: 'Profile',
     user: req.user,
   });
 };
 
 exports.postProfile = async (req, res, next) => {
-  const { name, phone, address } = req.body; //lấy các thông tin name, email,... từ requestz
+  const {name, phone, address} = req.body; //lấy các thông tin name, email,... từ requestz
   let errors = [];
   if (!name || !phone || !address) {
-    errors.push({ msg: "Please enter all fields" });
+    errors.push({msg: 'Please enter all fields'});
   }
   var phoneRegerx = /^([0][1-9]{9})$/;
   if (!phoneRegerx.test(phone)) {
-    errors.push({ msg: "Phone number need to be 10-digit format" });
+    errors.push({msg: 'Phone number need to be 10-digit format'});
   }
   if (errors.length > 0) {
-    return res.status(400).render("shop/profile", {
-      pageTitle: "Profile",
+    return res.status(400).render('shop/profile', {
+      pageTitle: 'Profile',
       errors: errors,
       categories: await ProductService.getCategoriesQuantity(),
       brands: await ProductService.getBrands(),
@@ -48,66 +48,63 @@ exports.postProfile = async (req, res, next) => {
       phone: req.body.phone,
     };
     await AdminService.updateProfile(newProfile);
-    res.status(200).redirect("/admins/profile");
+    res.status(200).redirect('/admins/profile');
   }
 };
 
 exports.getUpdatePassword = async (req, res, next) => {
-  res.status(200).render("auth/updatePassword", {
+  res.status(200).render('auth/updatePassword', {
     categories: await ProductService.getCategoriesQuantity(),
     brands: await ProductService.getBrands(),
     profile: req.user,
     user: true,
-    pageTitle: "Change password",
+    pageTitle: 'Change password',
   });
 };
 
 exports.postUpdatePassword = async (req, res, next) => {
-  const isMatch = await bcrypt.compare(
-    req.body.currentpassword,
-    req.user.password
-  );
+  const isMatch = await bcrypt.compare(req.body.currentpassword, req.user.password);
   if (isMatch) {
     const user = {
       password: req.body.password,
       _id: req.user._id,
     };
     const remp = await UserService.updatePassword(user);
-    res.render("auth/updatePassword", {
-      success_msg: "Password changed",
+    res.render('auth/updatePassword', {
+      success_msg: 'Password changed',
       categories: await ProductService.getCategoriesQuantity(),
       brands: await ProductService.getBrands(),
       user: req.user,
-      pageTitle: "Change password",
+      pageTitle: 'Change password',
     });
   }
-  res.render("auth/updatePassword", {
-    errors: [{ msg: "Wrong current password" }],
+  res.render('auth/updatePassword', {
+    errors: [{msg: 'Wrong current password'}],
     categories: await ProductService.getCategoriesQuantity(),
     brands: await ProductService.getBrands(),
     user: req.user,
-    pageTitle: "Change password",
+    pageTitle: 'Change password',
   });
 };
 
 //
 exports.getAdmin = async (req, res, next) => {
-  const profile = await AdminService.getAdmin({ _id: req.params.id });
-  if (!profile) return res.status(400).redirect("/"); //status?
-  res.status(200).render("shop/adminDetails", {
-    pageTitle: "Admin Details",
+  const profile = await AdminService.getAdmin({_id: req.params.id});
+  if (!profile) return res.status(400).redirect('/'); //status?
+  res.status(200).render('shop/adminDetails', {
+    pageTitle: 'Admin Details',
     profile,
     user: req.user,
   });
 };
 exports.getAddAdmin = async (req, res, next) => {
-  res.status(200).render("shop/addAdmin", {
-    pageTitle: "Add Admin",
+  res.status(200).render('shop/addAdmin', {
+    pageTitle: 'Add Admin',
     user: req.user,
   });
 };
 exports.addAdmin = async (req, res, next) => {
-  const { name, email, password, phone } = req.body;
+  const {name, email, password, phone} = req.body;
   try {
     await AdminService.addAdmin({
       name,
@@ -117,27 +114,40 @@ exports.addAdmin = async (req, res, next) => {
     });
   } catch (e) {
     console.log(e);
-    return res.status(400).render("shop/addAdmin", {
-      pageTitle: "Add Admin",
+    return res.status(400).render('shop/addAdmin', {
+      pageTitle: 'Add Admin',
       categories: await ProductService.getCategoriesQuantity(),
       user: req.user,
     }); //nếu catch đc bất kỳ lỗi nào thì chuyển về
   }
-  return res.status(201).redirect("/admins");
+  return res.status(201).redirect('/admins');
 };
 
 exports.getAdminList = async (req, res, next) => {
   const ITEMS_PER_PAGE = 10;
   let page = +req.query.page || 1;
+  const search = req.query.search;
 
   const totalUsers = await UserService.getUsers({
     isAdmin: 1,
   }).countDocuments();
-  const userList = await UserService.getUsers({ isAdmin: 1 })
-    .skip((page - 1) * ITEMS_PER_PAGE)
-    .limit(ITEMS_PER_PAGE);
-  res.status(200).render("shop/adminList", {
-    pageTitle: "Admin list",
+  let userList;
+
+  if (!search) {
+    userList = await UserService.getUsers({isAdmin: true})
+      .skip((page - 1) * ITEMS_PER_PAGE)
+      .limit(ITEMS_PER_PAGE);
+  } else {
+    const regex = new RegExp(`^.*${search}.*$`, 'i');
+    userList = await UserService.getUsers({
+      isAdmin: true,
+      $or: [{name: {$regex: regex}}, {email: {$regex: regex}}],
+    })
+      .skip((page - 1) * ITEMS_PER_PAGE)
+      .limit(ITEMS_PER_PAGE);
+  }
+  res.status(200).render('shop/adminList', {
+    pageTitle: 'Admin list',
     user: req.user,
     userList,
     totalUsers,
@@ -151,8 +161,8 @@ exports.getAdminList = async (req, res, next) => {
 };
 
 exports.getRevenue = async (req, res, next) => {
-  res.render("statistics/revenue", {
-    pageTitle: "Revenue",
+  res.render('statistics/revenue', {
+    pageTitle: 'Revenue',
     user: req.user,
     topProducts: await ProductService.getTopProducts(),
   });

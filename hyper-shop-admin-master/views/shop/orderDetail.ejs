@@ -57,7 +57,6 @@
                             <th colspan="2">Product</th>
                             <th>Quantity</th>
                             <th>Unit price</th>
-                            <th>Discount</th>
                             <th colspan="2">Total Per Item</th>
                         </tr>
                     </thead>
@@ -71,7 +70,6 @@
                                 <%=item.quantity%>
                             </td>
                             <td>$<%=item.product.price%></td>
-                            <td>$0.00</td>
                             <td>
                                 $
                                 <input id="totalPerItem" readonly style="border: none; outline: none; width: 40px;"  value="<%=item.quantity*item.product.price%>"/>

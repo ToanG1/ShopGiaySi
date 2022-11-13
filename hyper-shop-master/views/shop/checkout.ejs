@@ -65,6 +65,27 @@
         return true;
     }
 
+    const addressView = document.getElementById('addressView');
+const orderReviewView = document.getElementById('orderReviewView');
+const switchToAddress = document.getElementById('switchToAddress');
+const switchToOrderReview = document.getElementById('switchToOrderReview');
+
+switchToAddress.onclick = () => {
+
+  switchToAddress.className = 'nav-link flex-sm-fill text-sm-center active';
+  switchToOrderReview.className = 'nav-link flex-sm-fill text-sm-center';
+  addressView.hidden = false
+  orderReviewView.hidden = true
+};
+
+switchToOrderReview.onclick = () => {
+
+  switchToAddress.className = 'nav-link flex-sm-fill text-sm-center';
+  switchToOrderReview.className = 'nav-link flex-sm-fill text-sm-center active';
+  addressView.hidden = true
+  orderReviewView.hidden = false
+};
+
 </script>
 </body>
 </html>
