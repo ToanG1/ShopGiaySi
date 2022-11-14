@@ -1,0 +1,128 @@
+<div class="box container">
+  <form method="post" action="/products/import" role="form">
+    <h1>Import to Warehouse</h1>
+    <input
+      id="productId"
+      name="productId"
+      type="hidden"
+      class="form-control"
+      value="<%=product._id?product._id:product.id%>"
+    />
+    <div class="content py-3">
+      <div class="row">
+        <div class="col-md-6">
+          <label for="productName">Product name</label>
+          <div><%=product.name%></div>
+          <img src="<%= product.image%>" alt="shoes" />
+        </div>
+
+        <button type="button" id="addNewSize">New Size</button>
+        <div id="sizeItems">
+          <% for( let i = 0; i < product.countInStock.length; i++ ) { %>
+          <div id="size<%=product.countInStock[i].size%>Item">
+            <div class="col-md-6 col-lg-3">
+              <div class="form-group">
+                <label for="size<%=i%>">Size</label>
+                <input
+                  required
+                  id="size<%=i%>"
+                  name="size<%=i%>"
+                  type="number"
+                  class="form-control"
+                  value="<%=product.countInStock[i].size%>"
+                  disabled
+                />
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <div class="form-group">
+                <label for="quantity<%=i%>">Quantity</label>
+                <input
+                  required
+                  id="quantity<%=i%>"
+                  name="quantity<%=i%>"
+                  type="number"
+                  class="form-control"
+                  value="<%=i%>"
+                />
+              </div>
+            </div>
+          </div>
+          <% } %>
+        </div>
+        <input
+          id="sizesLength"
+          name="sizesLength"
+          type="hidden"
+          class="form-control"
+          value="<%=product.countInStock.length%>"
+        />
+      </div>
+    </div>
+
+    <div class="form-footer row">
+      <div class="col-lg-4 box-footer">
+        <button type="submit" class="btn btn-primary">
+          Save Change &nbsp; <i class="fa fa-chevron-right"></i>
+        </button>
+      </div>
+      <div class="col-lg-6 error"><%=error%></div>
+    </div>
+  </form>
+</div>
+
+<script>
+  var index = 0;
+  const addNewSize = document.getElementById("addNewSize");
+  const sizeItems = document.getElementById("sizeItems");
+  addNewSize.addEventListener("click", (e) => {
+    e.preventDefault();
+    sizeItems.innerHTML += `
+          <div id="newSizeItem${index}">
+              <div class="col-md-6 col-lg-3">
+                <div class="form-group">
+                  <label for="newSize${index}">Size</label>
+                  <input
+                    required
+                    id="newSize${index}"
+                    name="newSize${index}"
+                    type="number"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3">
+                <div class="form-group">
+                  <label for="newQuantity${index}">Quantity</label>
+                  <input
+                    required
+                    id="newQuantity${index}"
+                    name="newQuantity${index}"
+                    type="number"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+
+            </div>
+          `;
+    index++;
+  });
+
+  //submit
+  const countInStock = new Map();
+  const form = document.querySelector("form");
+  form.addEventListener("submit", (e) => {
+    const sizelength = document.getElementById("sizesLength").value;
+    for (let i = 0; i < parseInt(sizelength); i++) {
+      let size = document.getElementById(`size${i}`).value;
+      let quantity = document.getElementById(`quantity${i}`).value;
+      countInStock.set(size, quantity);
+    }
+    for (let i = 0; i < index; i++) {
+      let size = document.getElementById(`newSize${i}`).value;
+      let quantity = document.getElementById(`newQuantity${i}`).value;
+      countInStock.set(size, quantity);
+    }
+  });
+</script>

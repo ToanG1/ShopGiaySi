@@ -1,17 +1,17 @@
-const Product = require('../product');
-const OrderItem = require('../orderItem');
+const Product = require("../product");
+const OrderItem = require("../orderItem");
 
-exports.countProducts = filters => {
+exports.countProducts = (filters) => {
   return Product.find(filters).countDocuments();
 };
-exports.getProducts = filters => {
+exports.getProducts = (filters) => {
   return Product.find(filters);
 };
-exports.getProduct = id => {
+exports.getProduct = (id) => {
   return Product.findById(id);
 };
 
-exports.createProduct = newProduct => {
+exports.createProduct = (newProduct) => {
   const product = new Product({
     name: newProduct.name,
     brand: newProduct.brand,
@@ -27,8 +27,8 @@ exports.createProduct = newProduct => {
   return product.save();
 };
 
-exports.updateProduct = newProduct => {
-  return Product.findById(newProduct.id).then(product => {
+exports.updateProduct = (newProduct) => {
+  return Product.findById(newProduct.id).then((product) => {
     product.name = newProduct.name;
     product.brand = newProduct.brand;
     product.price = newProduct.price;
@@ -42,12 +42,19 @@ exports.updateProduct = newProduct => {
     return product.save();
   });
 };
+
+exports.importToWarehouse = (updatedProduct) => {
+  return Product.findById(updatedProduct.id).then((product) => {
+    console.log(updatedProduct.countInStock);
+  });
+};
+
 exports.getTopProducts = () => {
   return OrderItem.aggregate([
     { $match: { isOrdered: true } },
     {
       $group: {
-        _id: '$product',
+        _id: "$product",
         count: { $sum: 1 },
       },
     },
@@ -55,10 +62,10 @@ exports.getTopProducts = () => {
     { $limit: 10 },
     {
       $lookup: {
-        from: 'products',
-        localField: '_id',
-        foreignField: '_id',
-        as: 'product',
+        from: "products",
+        localField: "_id",
+        foreignField: "_id",
+        as: "product",
       },
     },
   ]);
@@ -68,7 +75,7 @@ exports.getCategoriesQuantity = async () => {
   const catsQty = await Product.aggregate([
     {
       $group: {
-        _id: '$category',
+        _id: "$category",
         count: { $sum: 1 },
       },
     },
@@ -84,7 +91,7 @@ exports.getBrands = () => {
   return Product.aggregate([
     {
       $group: {
-        _id: '$brand',
+        _id: "$brand",
         count: { $sum: 1 },
       },
     },
@@ -97,7 +104,7 @@ exports.getClosureTypes = () => {
   return Product.aggregate([
     {
       $group: {
-        _id: '$closureType',
+        _id: "$closureType",
         count: { $sum: 1 },
       },
     },
@@ -109,7 +116,7 @@ exports.getShoesHeights = () => {
   return Product.aggregate([
     {
       $group: {
-        _id: '$shoesHeight',
+        _id: "$shoesHeight",
         count: { $sum: 1 },
       },
     },
@@ -121,7 +128,7 @@ exports.getMaterials = () => {
   return Product.aggregate([
     {
       $group: {
-        _id: '$material',
+        _id: "$material",
         count: { $sum: 1 },
       },
     },
@@ -130,6 +137,6 @@ exports.getMaterials = () => {
   ]);
 };
 
-exports.deleteProduct = productId => {
+exports.deleteProduct = (productId) => {
   return Product.findByIdAndRemove(productId);
 };

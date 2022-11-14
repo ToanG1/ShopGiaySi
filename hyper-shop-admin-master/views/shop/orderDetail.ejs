@@ -29,7 +29,7 @@
                         <tr id="<%=order._id%>">
                             <th scope="row"><%=order._id%></th>
                             <td><%=order.user.email%></td>
-                            <td>09987765563</td>
+                            <td><%=order.phone%></td>
                             <td><%=order.address%></td>
                             <td><%=order.orderedDate.toDateString()%></td>
                             <td>
@@ -55,6 +55,7 @@
                     <thead>
                         <tr>
                             <th colspan="2">Product</th>
+                            <th>Size</th>
                             <th>Quantity</th>
                             <th>Unit price</th>
                             <th>Discount</th>
@@ -67,6 +68,7 @@
                         <tr id="row">
                             <td><a href="/products/<%=item.product._id%>"><img class="small-image"src="<%=item.product.image%>" alt="<%=item.product.name%>">&nbsp;&nbsp;&nbsp;<%=item.product.name%></a></td>
                             <td><a></a></td>
+                            <td><%=item.size%></td>
                             <td>
                                 <%=item.quantity%>
                             </td>
