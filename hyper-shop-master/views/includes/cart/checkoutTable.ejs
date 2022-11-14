@@ -105,8 +105,42 @@
     <!--Delivery method-->
     <div class="hidden" id="deliveryCheckout">
       <h1>Checkout - Delivery</h1>
+      <div class="display-flex">
+        <div id="delivery-option-group">
+          <div class="delivery-option-item" id="fastOption">
+            <label class="btn delivery-label" for="">Fast</label>
+            <p>
+              Delivery on 2 day after checkout time in state and 3 day out
+              state. Choose day and time suit to your wish, change information
+              after checkout
+            </p>
+          </div>
 
-      <div></div>
+          <div class="delivery-option-item" id="normalOption">
+            <label class="btn delivery-label" for="">Normal</label>
+            <p>
+              Delivery on 3 day after checkout time in state and 4 day out
+              state. Change information after checkout
+            </p>
+          </div>
+
+          <div class="delivery-option-item" id="economyOption">
+            <label class="btn delivery-label" for="">Economy</label>
+            <p>
+              Delivery on 7 day all state. Can not change information after
+              checkout
+            </p>
+          </div>
+        </div>
+        <div id="delivery-cost">
+          <label>Shipping Cost</label>
+          <div>From: 5 New Ustria, Horizontal, Florida</div>
+          <div id="destinationAddress">To:</div>
+          <div id="cost">Shipping and handling:</div>
+          <div id="tax">Tax:</div>
+          <div id="total">Total:</div>
+        </div>
+      </div>
 
       <div class="box-footer d-flex justify-content-between">
         <a class="btn btn-outline-secondary" id="addressCheckoutBtn">
@@ -154,6 +188,7 @@
 </div>
 
 <script>
+  //Checkout item
   const address = document.getElementById("addressCheckout");
   const delivery = document.getElementById("deliveryCheckout");
   const payment = document.getElementById("paymentCheckout");
@@ -188,6 +223,9 @@
   });
 
   deliveryCheckoutBtn.addEventListener("click", (e) => {
+    var addressText = document.getElementById("destinationAddress");
+    addressText.innerHTML += document.getElementById("address").value;
+
     console.log("click next to delivery");
     e.preventDefault();
     address.classList.add("hidden");
@@ -239,5 +277,48 @@
     paymentNavBtn.classList.remove("active");
     addressNavBtn.classList.add("disabled");
     addressNavBtn.classList.remove("active");
+  });
+
+  //Delivery option
+  const fastOption = document.getElementById("fastOption");
+  const normalOption = document.getElementById("normalOption");
+  const economyOption = document.getElementById("economyOption");
+
+  fastOption.addEventListener("click", (e) => {
+    var shipping = document.getElementById("cost");
+    var tax = document.getElementById("tax");
+    var total = document.getElementById("total");
+
+    shipping.innerHTML = "Shipping and handling: 8$";
+    tax.innerHTML = "Tax: 0.5$";
+    total.innerHTML = "Total: 8.5$";
+
+    fastOption.classList.add("choosed");
+    normalOption.classList.remove("choosed");
+    economyOption.classList.remove("choosed");
+  });
+  normalOption.addEventListener("click", (e) => {
+    var shipping = document.getElementById("cost");
+    var tax = document.getElementById("tax");
+    var total = document.getElementById("total");
+
+    shipping.innerHTML = "Shipping and handling: 5$";
+    tax.innerHTML = "Tax: 0.5$";
+    total.innerHTML = "Total: 5.5$";
+    fastOption.classList.remove("choosed");
+    normalOption.classList.add("choosed");
+    economyOption.classList.remove("choosed");
+  });
+  economyOption.addEventListener("click", (e) => {
+    var shipping = document.getElementById("cost");
+    var tax = document.getElementById("tax");
+    var total = document.getElementById("total");
+
+    shipping.innerHTML = "Shipping and handling: 3$";
+    tax.innerHTML = "Tax: 0.2$";
+    total.innerHTML = "Total: 3.2$";
+    fastOption.classList.remove("choosed");
+    normalOption.classList.remove("choosed");
+    economyOption.classList.add("choosed");
   });
 </script>
