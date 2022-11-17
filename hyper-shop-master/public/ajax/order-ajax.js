@@ -1,23 +1,23 @@
-$('.pages').on('click', '.page-link', function (e) {
+$(".pages").on("click", ".page-link", function (e) {
   e.preventDefault();
   let ordersCurrentPage = $(this).text();
-  if (ordersCurrentPage === 'First') ordersCurrentPage = 1;
-  else if (ordersCurrentPage === 'Last') ordersCurrentPage = $(this).attr('id');
+  if (ordersCurrentPage === "First") ordersCurrentPage = 1;
+  else if (ordersCurrentPage === "Last") ordersCurrentPage = $(this).attr("id");
 
-  const url = '/api/order';
-  if (ordersCurrentPage !== '...') {
+  const url = "/api/order";
+  if (ordersCurrentPage !== "...") {
     $.ajax({
       url,
       data: { page: ordersCurrentPage },
-      dataType: 'json',
+      dataType: "json",
       success: function (data) {
-        let ordersList = '';
+        let ordersList = "";
         //reverse để hiện thị bình luận mới nhất xuống dưới
         for (order of data.orders) {
           ordersList += getOrders(order);
         }
-        $('.orders').html(ordersList);
-        $('.pages').html(getPagesNumber(data.lastPage, data.currentPage));
+        $(".orders").html(ordersList);
+        $(".pages").html(getPagesNumber(data.lastPage, data.currentPage));
       },
       error: function (error) {
         console.log(error);
@@ -55,11 +55,11 @@ function getOrders(order) {
               </tr>
               <tr>
                   <td>Shipping and handling</td>
-                  <th>$10.00</th>
+                  <th>${order.shippingCost}</th>
               </tr>
               <tr>
-                  <td>Tax</td>
-                  <th>$0.00</th>
+                  <td>Payment method</td>
+                  <th>${order.paymentMethod}</th>
               </tr>
               <tr>
                   <td>Ordered Date</td>
@@ -71,7 +71,7 @@ function getOrders(order) {
               </tr>
               <tr class="total">
                   <td>Total</td>
-                  <th>$${totalPrice + 10}</th>
+                  <th>$${totalPrice + order.shippingCost}</th>
               </tr>
           </tbody>
       </table>

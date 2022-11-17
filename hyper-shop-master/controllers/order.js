@@ -1,13 +1,13 @@
-const ProductService = require('../models/services/productService'); // nhớ pass categories cho tất cả các view
-const OrderService = require('../models/services/orderService');
-const CartService = require('../models/services/cartService');
-const OrderItemService = require('../models/services/orderItemsService');
+const ProductService = require("../models/services/productService"); // nhớ pass categories cho tất cả các view
+const OrderService = require("../models/services/orderService");
+const CartService = require("../models/services/cartService");
+const OrderItemService = require("../models/services/orderItemsService");
 
 exports.getOrder = async (req, res, next) => {
   const count = await OrderService.countOrders({ user: req.user._id });
   const lastPage = Math.ceil(count / 3);
   const orders = await OrderService.getOrders(req.user, req.query.page);
-  res.status(200).render('shop/order', {
+  res.status(200).render("shop/order", {
     currentPage: req.query.page || 1,
     lastPage,
     user: req.user,
@@ -24,8 +24,9 @@ exports.postOrder = async (req, res, next) => {
     telephone: req.body.telephone,
   };
 
+  console.log(parseInt(req.body.shipcost) + req.body.payment);
   let cart = await CartService.getCartByUserId(req.user);
-  if(!cart){
+  if (!cart) {
     cart = await CartService.createNewCart(req.user);
   }
   if (cart.orderItems.length == 0) {
@@ -34,16 +35,20 @@ exports.postOrder = async (req, res, next) => {
   }
 
   //const updatedCart = await CartService.updateIsOrderedItem(req.user);
-  for(let i=0;i<cart.orderItems.length;i++){
-    const updateItem = await OrderItemService.updateIsOrdered(cart.orderItems[i]);
+  for (let i = 0; i < cart.orderItems.length; i++) {
+    const updateItem = await OrderItemService.updateIsOrdered(
+      cart.orderItems[i]
+    );
   }
   const order = await OrderService.createOrder({
     user: req.user,
     orderItems: cart.orderItems,
-    status: 'Pending',
+    status: "Pending",
     address: req.body.address,
     phone: req.body.phone,
     orderDate: new Date(),
+    shippingCost: parseInt(req.body.shipcost),
+    paymentMethod: req.body.payment,
   });
 
   cart.orderItems = [];
@@ -51,5 +56,5 @@ exports.postOrder = async (req, res, next) => {
 
   const orders = await OrderService.getOrders(req.user);
 
-  res.redirect('/order');
+  res.redirect("/order");
 };

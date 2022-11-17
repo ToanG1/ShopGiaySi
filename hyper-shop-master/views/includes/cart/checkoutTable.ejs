@@ -1,7 +1,7 @@
 <div class="box">
   <form method="post" action="/order">
     <!--Header nav-->
-    <h1>Checkout - Address</h1>
+    <h1>Checkout</h1>
     <div class="nav flex-column flex-md-row nav-pills text-center">
       <a
         href="checkout1.html"
@@ -104,7 +104,6 @@
 
     <!--Delivery method-->
     <div class="hidden" id="deliveryCheckout">
-      <h1>Checkout - Delivery</h1>
       <div class="display-flex">
         <div id="delivery-option-group">
           <div class="delivery-option-item" id="fastOption">
@@ -134,11 +133,11 @@
         </div>
         <div id="delivery-cost">
           <label>Shipping Cost</label>
-          <div>From: 5 New Ustria, Horizontal, Florida</div>
+          <div id="sourceAddress">From: 5 New Ustria, Horizontal, Florida</div>
           <div id="destinationAddress">To:</div>
           <div id="cost">Shipping and handling:</div>
           <div id="tax">Tax:</div>
-          <div id="total">Total:</div>
+          <div>Total: </div> <div id="total"></div>
         </div>
       </div>
 
@@ -155,7 +154,253 @@
 
     <!--Payment method-->
     <div class="hidden" id="paymentCheckout">
-      <h1>Checkout - Payment</h1>
+
+      <div>
+        <div class="container-fluid px-0" id="bg-div">
+          <div class="row justify-content-center">
+            <div class="col-12" id="payment-tab">
+              <div class="card card0">
+                <div class="d-flex" id="wrapper">
+                  <!-- Sidebar -->
+                  <div class="bg-light border-right" id="sidebar-wrapper">
+                    <div class="sidebar-heading pt-5 pb-4">
+                      <strong>PAY WITH</strong>
+                    </div>
+                    <div class="list-group list-group-flush">
+                      <a
+                        data-toggle="tab"
+                        href="#menu1"
+                        id="tab1"
+                        class="tabs list-group-item bg-light"
+                      >
+                        <div class="list-div my-2">
+                          <div class="fa fa-home"></div>
+                          &nbsp;&nbsp; Bank
+                        </div>
+                      </a>
+                      <a
+                        data-toggle="tab"
+                        href="#menu2"
+                        id="tab2"
+                        class="tabs list-group-item active"
+                      >
+                        <div class="list-div my-2">
+                          <div class="fa fa-credit-card"></div>
+                          &nbsp;&nbsp; Card
+                        </div>
+                      </a>
+                      <a
+                        data-toggle="tab"
+                        href="#menu3"
+                        id="tab3"
+                        class="tabs list-group-item bg-light"
+                      >
+                        <div class="list-div my-2">
+                          <div class="fa fa-qrcode"></div>
+                          &nbsp;&nbsp;&nbsp; Visa QR
+                          <span id="new-label">NEW</span>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <!-- Page Content -->
+                  <div id="page-content-wrapper">
+                    <div class="row pt-3" id="border-btm">
+                      <div class="col-4">
+                        <button
+                          class="btn btn-success mt-4 ml-3 mb-3"
+                          id="menu-toggle"
+                        >
+                          <div class="bar4"></div>
+                          <div class="bar4"></div>
+                          <div class="bar4"></div>
+                        </button>
+                      </div>
+                      <div class="col-8">
+                        <div class="row justify-content-right">
+                          <div class="col-12">
+                            <p class="mb-0 mr-4 mt-4 text-right">
+                              customer@email.com
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row justify-content-right">
+                          <div class="col-12">
+                            <p class="mb-0 mr-4 text-right">
+                              Pay <span class="top-highlight">/span>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row justify-content-center">
+                      <div class="text-center" id="test">Pay</div>
+                    </div>
+                    <div class="tab-content">
+                      <div id="menu1" class="tab-pane">
+                        <div class="row justify-content-center">
+                          <div class="col-11">
+                            <div class="form-card">
+                              <h3 class="mt-0 mb-4 text-center">
+                                Enter bank details to pay
+                              </h3>
+                              <div>
+                                <div class="row">
+                                  <div class="col-12">
+                                    <div class="input-group">
+                                      <input
+                                        type="text"
+                                        id="bk_nm"
+                                        placeholder="BBB Bank"
+                                      />
+                                      <label>BANK NAME</label>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-12">
+                                    <div class="input-group">
+                                      <input
+                                        type="text"
+                                        name="ben_nm"
+                                        id="ben-nm"
+                                        placeholder="John Smith"
+                                      />
+                                      <label>BENEFICIARY NAME</label>
+                                    </div>
+                                  </div>
+                                  <div class="col-12">
+                                    <div class="input-group">
+                                      <input
+                                        type="text"
+                                        name="scode"
+                                        placeholder="ABCDAB1S"
+                                        class="placeicon"
+                                        minlength="8"
+                                        maxlength="11"
+                                      />
+                                      <label>SWIFT CODE</label>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-12">
+                                    <input
+                                      type="submit"
+                                      value="Pay"
+                                      class="btn btn-success placeicon"
+                                    />
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-12">
+                                    <p class="text-center mb-5" id="below-btn">
+                                      <a href="#">Use a test card</a>
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div id="menu2" class="tab-pane in active">
+                        <div class="row justify-content-center">
+                          <div class="col-11">
+                            <div class="form-card">
+                              <h3 class="mt-0 mb-4 text-center">
+                                Enter your card details to pay
+                              </h3>
+                              <div>
+                                <div class="row">
+                                  <div class="col-12">
+                                    <div class="input-group">
+                                      <input
+                                        type="text"
+                                        id="cr_no"
+                                        placeholder="0000 0000 0000 0000"
+                                        minlength="19"
+                                        maxlength="19"
+                                      />
+                                      <label>CARD NUMBER</label>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-6">
+                                    <div class="input-group">
+                                      <input
+                                        type="text"
+                                        name="exp"
+                                        id="exp"
+                                        placeholder="MM/YY"
+                                        minlength="5"
+                                        maxlength="5"
+                                      />
+                                      <label>CARD EXPIRY</label>
+                                    </div>
+                                  </div>
+                                  <div class="col-6">
+                                    <div class="input-group">
+                                      <input
+                                        type="password"
+                                        name="cvcpwd"
+                                        placeholder="&#9679;&#9679;&#9679;"
+                                        class="placeicon"
+                                        minlength="3"
+                                        maxlength="3"
+                                      />
+                                      <label>CVV</label>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-12">
+                                    <input
+                                      type="submit"
+                                      value="Pay"
+                                      class="btn btn-success placeicon"
+                                    />
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-12">
+                                    <p class="text-center mb-5" id="below-btn">
+                                      <a href="#">Use a test card</a>
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div id="menu3" class="tab-pane">
+                        <div class="row justify-content-center">
+                          <div class="col-11">
+                            <h3 class="mt-0 mb-4 text-center">
+                              Scan the QR code to pay
+                            </h3>
+                            <div class="row justify-content-center">
+                              <div id="qr">
+                                <img
+                                  src="https://i.imgur.com/DD4Npfw.jpg"
+                                  width="200px"
+                                  height="200px"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div class="box-footer d-flex justify-content-between">
         <a class="btn btn-outline-secondary" id="deliveryCheckoutBtn">
@@ -170,7 +415,46 @@
 
     <!--Order Review-->
     <div class="hidden" id="reviewCheckout">
-      <h1>Checkout - Review</h1>
+      
+      <% if(cart) { %>
+        <div class="table-responsive">
+          <div id="sourceAddressReview"></div>
+          <div id="destinationAddressReview"></div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th colspan="2">Product</th>
+                        <th>Size</th>
+                        <th>Quantity</th>
+                        <th>Unit price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% let total = 0%>
+                    <% for (let i=0;i<cart.orderItems.length;i++) { %>
+                    <tr id="row-<%=cart.orderItems[i]._id%>">
+                        <td><a href="/products/<%=cart.orderItems[i].product._id%>"><img src="https://hyper-shop-admin.herokuapp.com/<%=cart.orderItems[i].product.image%>" alt="<%=cart.orderItems[i].product.name%>"></a></td>
+                        <td><a href="/products/<%=cart.orderItems[i].product._id%>"><%=cart.orderItems[i].product.name%></a></td>
+                        <td><%=cart.orderItems[i].size %>
+                        </td>
+                        <td><%=cart.orderItems[i].quantity%> </td>
+                        <td>$<%=cart.orderItems[i].product.price%></td>
+                        
+                    </tr>
+                    <%total += cart.orderItems[i].quantity*cart.orderItems[i].product.price%>
+                    <% } %>
+                    <input id="totalProductCost" type="hidden" value="<%=total%>">
+                </tbody>
+            </table>
+            <div id="deliveryChoice">Delivery method: </div>
+            <div id="deliveryCost">Shipping cost: </div>
+            <div id="total">Tổng tiền hàng: <%=total%>$</div>
+            <div id="totalCost">Total (*included ship and tax): </div> 
+            <div id="PaymentChoice">Payment: COD</div>
+            <input name="shipcost" id="shipcost" type="hidden" value="">
+            <input name="payment" id="payment" type="hidden" value="COD">
+        </div>
+        <% } %>
 
       <div class="box-footer d-flex justify-content-between">
         <a class="btn btn-outline-secondary" id="paymentCheckoutBtn">
@@ -277,13 +561,30 @@
     paymentNavBtn.classList.remove("active");
     addressNavBtn.classList.add("disabled");
     addressNavBtn.classList.remove("active");
+
+    // Review Order 
+    const sourceAddress = document.getElementById("sourceAddress").innerText;
+    const destinationAddress = document.getElementById("destinationAddress").innerText;
+
+    const sourceAddressReview = document.getElementById("sourceAddressReview");
+    const destinationAddressReview = document.getElementById("destinationAddressReview");
+    sourceAddressReview.innerText = sourceAddress;
+    destinationAddressReview.innerText = destinationAddress;
   });
 
   //Delivery option
   const fastOption = document.getElementById("fastOption");
   const normalOption = document.getElementById("normalOption");
   const economyOption = document.getElementById("economyOption");
+  const deliveryChoice = document.getElementById("deliveryChoice");
 
+  const totalCost = document.getElementById("totalCost");
+  const deliveryCost = document.getElementById("deliveryCost");
+  const totalProductCost = document.getElementById("totalProductCost").value;
+
+  const shipcostvalue = document.getElementById("shipcost");
+  
+  
   fastOption.addEventListener("click", (e) => {
     var shipping = document.getElementById("cost");
     var tax = document.getElementById("tax");
@@ -291,7 +592,15 @@
 
     shipping.innerHTML = "Shipping and handling: 8$";
     tax.innerHTML = "Tax: 0.5$";
-    total.innerHTML = "Total: 8.5$";
+    total.innerHTML = "8.5$";
+
+    var total = parseInt(totalProductCost) + 8.5;
+    deliveryCost.innerHTML ="Shipping cost: 8.5$";
+    totalCost.innerHTML ="Total (*included ship and tax): "+ total+"$";
+    deliveryChoice.innerHTML ="Delivery method: Fast delivery service";
+
+    shipcostvalue.value = "8.5";
+
 
     fastOption.classList.add("choosed");
     normalOption.classList.remove("choosed");
@@ -304,7 +613,15 @@
 
     shipping.innerHTML = "Shipping and handling: 5$";
     tax.innerHTML = "Tax: 0.5$";
-    total.innerHTML = "Total: 5.5$";
+    total.innerHTML = "5.5$";
+
+    var total = parseInt(totalProductCost) + 5.5;
+    deliveryCost.innerHTML ="Shipping cost: 5.5$";
+    totalCost.innerHTML = "Total (*included ship and tax): "+ total+"$";
+    deliveryChoice.innerHTML ="Delivery method: Normal delivery service";
+
+    shipcostvalue.value = "5.5";
+
     fastOption.classList.remove("choosed");
     normalOption.classList.add("choosed");
     economyOption.classList.remove("choosed");
@@ -316,9 +633,83 @@
 
     shipping.innerHTML = "Shipping and handling: 3$";
     tax.innerHTML = "Tax: 0.2$";
-    total.innerHTML = "Total: 3.2$";
+    total.innerHTML = "3.2$";
+
+    var total = parseInt(totalProductCost) + 3.2;
+    deliveryCost.innerHTML ="Shipping cost: 3.2$";
+    totalCost.innerHTML = "Total (*included ship and tax): "+ total+"$";
+    deliveryChoice.innerHTML ="Delivery method: Economy delivery service";
+
+    shipcostvalue.value = "3.2";
+
     fastOption.classList.remove("choosed");
     normalOption.classList.remove("choosed");
     economyOption.classList.add("choosed");
   });
+
+  //Payment method
+  const paymentChoice = document.getElementById("PaymentChoice");
+  
+  /*const tab1 = document.getElementById("tab1");
+  const tab2 = document.getElementById("tab2");
+  const tab3 = document.getElementById("tab3");
+
+  const menu = document.getElementById("menu-toggle");
+  const wrapper = document.getElementById("wrapper");
+
+  menu.addEventListener("click", (e) =>{
+    e.preventDefault();
+    wrapper.classList.toggle("toggled");
+  });
+
+  tab1.addEventListener("click", (e) =>{
+    e.preventDefault();
+    tab1.classList.add("active");
+    tab2.classList.remove("active");
+    tab3.classList.remove("active");
+  });
+  tab2.addEventListener("click", (e) =>{
+    e.preventDefault();
+    tab1.classList.remove("active");
+    tab2.classList.add("active");
+    tab3.classList.remove("active");
+  });
+  tab3.addEventListener("click", (e) =>{
+    e.preventDefault();
+    tab1.classList.remove("active");
+    tab2.classList.remove("active");
+    tab3.classList.add("active");
+  })*/
+
+  $(document).ready(function () {
+    //Menu Toggle Script
+    $("#menu").click(function (e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+    // For highlighting activated tabs
+    $("#tab1").click(function () {
+      $(".tabs").removeClass("active1");
+      $(".tabs").addClass("bg-light");
+      $("#tab1").addClass("active1");
+      $("#tab1").removeClass("bg-light");
+      $("#PaymentChoice").html("Bank");
+    });
+    $("#tab2").click(function () {
+      $(".tabs").removeClass("active1");
+      $(".tabs").addClass("bg-light");
+      $("#tab2").addClass("active1");
+      $("#tab2").removeClass("bg-light");
+      $("#PaymentChoice").html("Card");
+    });
+    $("#tab3").click(function () {
+      $(".tabs").removeClass("active1");
+      $(".tabs").addClass("bg-light");
+      $("#tab3").addClass("active1");
+      $("#tab3").removeClass("bg-light");
+      $("#PaymentChoice").html("QR");
+    });
+  });
+
+
 </script>
