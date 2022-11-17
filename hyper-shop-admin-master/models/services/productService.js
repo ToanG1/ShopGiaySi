@@ -45,7 +45,8 @@ exports.updateProduct = (newProduct) => {
 
 exports.importToWarehouse = (updatedProduct) => {
   return Product.findById(updatedProduct.id).then((product) => {
-    console.log(updatedProduct.countInStock);
+    product.countInStock = updatedProduct.countInStock;
+    return product.save();
   });
 };
 
@@ -96,7 +97,7 @@ exports.getBrands = () => {
       },
     },
     { $sort: { count: -1 } },
-    { $limit: 5 },
+    { $limit: 10 },
   ]);
 };
 

@@ -204,6 +204,11 @@ function getProductBox(product) {
           <a href="/products/editProduct/${product._id}" class="learn-more detailslearn col-6"
             ><i class="fa fa-shopping-cart"></i> Edit</a
           >
+          <a
+            href="/products/import/<%=product._id%>"
+            class="learn-more detailslearn col-6"
+            ><i class="fa fa-warehouse"></i> Import
+          </a>
           <a href="/products/${product._id}" class="learn-more detailslearn col-6"
             ><i class="fa fa-link"></i> Details</a
           >
