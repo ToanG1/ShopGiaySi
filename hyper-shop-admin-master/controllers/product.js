@@ -244,10 +244,9 @@ exports.postImportToWarehouse = (req, res, next) => {
     req,
     res,
     (err = async () => {
-      console.log("post");
       const product = {
-        id: req.body.id,
-        countInStock: req.body.sizes,
+        id: req.body._id,
+        countInStock: req.body._countInStock,
       };
       ProductService.importToWarehouse(product)
         .then((result) => {
