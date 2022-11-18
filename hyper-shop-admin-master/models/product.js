@@ -101,6 +101,18 @@ function updateProduct(newProduct) {
   });
 }
 
+function importToWarehouse(updatedProduct) {
+  return Product.findById(updatedProduct.id).then((product) => {
+    console.log("hi");
+    const arr = Array.from(product.countInStock, ([size, quantity]) => ({
+      size,
+      quantity,
+    }));
+    console.log(arr);
+    //product.countInStock = updateProduct.countInStock;
+  });
+}
+
 async function getCategoriesQuantity() {
   let res = [];
   let cats = [];

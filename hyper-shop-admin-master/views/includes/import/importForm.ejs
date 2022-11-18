@@ -1,0 +1,208 @@
+<div class="box container">
+  <form method="post" action="/products/import" role="form">
+    <h1>Import to Warehouse</h1>
+    <input
+      id="productId"
+      name="productId"
+      type="hidden"
+      class="form-control"
+      value="<%=product._id?product._id:product.id%>"
+    />
+    <div class="content py-3">
+      <div class="row">
+        <div class="col-md-6">
+          <label for="productName">Product name</label>
+          <div><%=product.name%></div>
+          <img src="<%= product.image%>" alt="shoes" />
+        </div>
+
+        <button type="button" id="addNewSize">New Size</button>
+        <div id="sizeItems">
+          <% for( let i = 0; i < product.countInStock.length; i++ ) { %>
+          <div id="size<%=product.countInStock[i].size%>Item">
+            <div class="col-md-6 col-lg-3">
+              <div class="form-group">
+                <label for="size<%=i%>">Size</label>
+                <input
+                  required
+                  id="size<%=i%>"
+                  name="size<%=i%>"
+                  type="number"
+                  class="form-control"
+                  value="<%=product.countInStock[i].size%>"
+                  disabled
+                />
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <div class="form-group">
+                <label for="quantity<%=i%>">Quantity</label>
+                <input
+                  required
+                  id="quantity<%=i%>"
+                  name="quantity<%=i%>"
+                  type="number"
+                  class="form-control"
+                  value="<%=i%>"
+                />
+              </div>
+            </div>
+            <button
+              type="button"
+              class="deleteSize"
+              id="<%=product.countInStock[i].size%>"
+            >
+              Delete
+            </button>
+          </div>
+
+          <% } %>
+        </div>
+        <input
+          id="sizesLength"
+          name="sizesLength"
+          type="hidden"
+          class="form-control"
+          value="<%=product.countInStock.length%>"
+        />
+      </div>
+    </div>
+
+    <div class="form-footer row">
+      <div class="col-lg-4 box-footer">
+        <button type="submit" class="btn btn-primary">
+          Save Change &nbsp; <i class="fa fa-chevron-right"></i>
+        </button>
+      </div>
+      <div class="col-lg-6 error" id="addRes"></div>
+    </div>
+  </form>
+</div>
+
+<script>
+  //delete size
+  var deleteSizeBtns = document.getElementsByClassName("deleteSize");
+
+  const deleteSizeHandler = async (event) => {
+    if (event.target.id.slice(0, 3) === "new") {
+      document.getElementById(
+        `newSizeItem${event.target.id.substr(3)}`
+      ).innerHTML = "";
+    } else {
+      document.getElementById(`size${event.target.id}Item`).innerHTML = "";
+    }
+  };
+
+  for (let btn of deleteSizeBtns) {
+    btn.addEventListener("click", deleteSizeHandler);
+  }
+
+  //add size item
+  var index = 0;
+  const addNewSize = document.getElementById("addNewSize");
+  const sizeItems = document.getElementById("sizeItems");
+  addNewSize.addEventListener("click", (e) => {
+    e.preventDefault();
+    sizeItems.innerHTML += `
+          <div id="newSizeItem${index}">
+              <div class="col-md-6 col-lg-3">
+                <div class="form-group">
+                  <label for="newSize${index}">Size</label>
+                  <input
+                    required
+                    id="newSize${index}"
+                    name="newSize${index}"
+                    type="number"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3">
+                <div class="form-group">
+                  <label for="newQuantity${index}">Quantity</label>
+                  <input
+                    required
+                    id="newQuantity${index}"
+                    name="newQuantity${index}"
+                    type="number"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+              <button
+              type="button"
+              class="deleteSize"
+              id="new${index}">
+              Delete
+            </button>
+            </div>
+          `;
+    index++;
+    var deleteSizeBtns = document.getElementsByClassName("deleteSize");
+    for (let btn of deleteSizeBtns) {
+      btn.addEventListener("click", deleteSizeHandler);
+    }
+  });
+
+  const importToWarehouse = async (id, countInStock) => {
+    const url = "/products/import";
+    let product = {
+      _id: id,
+      _countInStock: countInStock,
+    };
+    await fetch(url, {
+      method: "POST",
+      body: JSON.stringify(product),
+      headers: {
+        "Content-type": "application/json; charset=utf-8",
+      },
+    })
+      .then(async (response) => {
+        if (response.status >= 200 && response.status < 300) {
+          const resp = document.getElementById("addRes");
+          resp.innerHTML = "Thêm thành công";
+        } else {
+          await response.json().then((error) => {
+            console.log("ERROR: " + error);
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  //submit
+  var countInStock = [];
+  const form = document.querySelector("form");
+  form.addEventListener("submit", (e) => {
+    countInStock = [];
+    e.preventDefault();
+    const sizelength = document.getElementById("sizesLength").value;
+    for (let i = 0; i < parseInt(sizelength); i++) {
+      if (
+        document.getElementById(`size${i}`) !== null &&
+        document.getElementById(`quantity${i}`) !== null
+      ) {
+        let size = document.getElementById(`size${i}`).value;
+        let quantity = document.getElementById(`quantity${i}`).value;
+        countInStock.push({ size, quantity });
+      }
+    }
+    for (let i = 0; i < index; i++) {
+      if (
+        document.getElementById(`newSize${i}`) !== null &&
+        document.getElementById(`newQuantity${i}`) !== null
+      ) {
+        let size = document.getElementById(`newSize${i}`).value;
+        let quantity = document.getElementById(`newQuantity${i}`).value;
+        countInStock.push({ size, quantity });
+      }
+    }
+    //sort theo chieu tang dan size
+    countInStock.sort((a, b) => parseInt(a.size) - parseInt(b.size));
+
+    const idProd = document.getElementById("productId").value;
+    importToWarehouse(idProd, countInStock);
+  });
+</script>

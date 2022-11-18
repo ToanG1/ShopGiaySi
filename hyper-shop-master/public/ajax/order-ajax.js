@@ -57,11 +57,11 @@ function getOrders(order) {
               </tr>
               <tr>
                   <td>Shipping and handling</td>
-                  <th>$10.00</th>
+                  <th>${order.shippingCost}</th>
               </tr>
               <tr>
-                  <td>Tax</td>
-                  <th>$0.00</th>
+                  <td>Payment method</td>
+                  <th>${order.paymentMethod}</th>
               </tr>
               <tr>
                   <td>Ordered Date</td>
@@ -73,7 +73,7 @@ function getOrders(order) {
               </tr>
               <tr class="total">
                   <td>Total</td>
-                  <th>$${totalPrice + 10}</th>
+                  <th>$${totalPrice + order.shippingCost}</th>
               </tr>
           </tbody>
       </table>

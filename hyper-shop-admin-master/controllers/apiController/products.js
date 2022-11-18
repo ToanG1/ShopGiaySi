@@ -1,11 +1,11 @@
-const ProductService = require('../../models/services/productService');
+const ProductService = require("../../models/services/productService");
 
 exports.getProductsApi = (req, res, next) => {
   const page = +req.query.page || 1;
   let productsPerPage = +req.query.productsPerPage || 12;
   let productsCount;
   const name = req.query.name
-    ? { $regex: `.*${req.query.name}.*`, $options: 'i' }
+    ? { $regex: `.*${req.query.name}.*`, $options: "i" }
     : null;
   const filters = {
     name,
@@ -18,17 +18,17 @@ exports.getProductsApi = (req, res, next) => {
     material: req.query.material,
   };
   Object.keys(filters).forEach(
-    key => filters[key] === undefined && delete filters[key]
+    (key) => filters[key] === undefined && delete filters[key]
   ); // remove các filter null or undefined
   Object.keys(filters).forEach(
-    key => filters[key] === null && delete filters[key]
+    (key) => filters[key] === null && delete filters[key]
   ); // remove các filter null or undefined
-  const sortBy = req.query.sortBy || 'createdDate';
+  const sortBy = req.query.sortBy || "createdDate";
 
   ProductService.countProducts(filters)
-    .then(n => {
+    .then((n) => {
       productsCount = n;
-      if (req.query.productsPerPage === 'All') {
+      if (req.query.productsPerPage === "All") {
         productsPerPage = n;
       }
       return ProductService.getProducts(filters)
@@ -36,7 +36,7 @@ exports.getProductsApi = (req, res, next) => {
         .skip((page - 1) * productsPerPage)
         .limit(productsPerPage);
     })
-    .then(products => {
+    .then((products) => {
       res.status(200).send({
         products,
         productsPerPage,
