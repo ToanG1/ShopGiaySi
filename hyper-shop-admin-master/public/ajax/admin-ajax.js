@@ -1,21 +1,22 @@
-$(".pages").on("click", ".page-link", function () {
+function getAdmins() {
   const page = this.text;
-  const isLock = $("input[name='options']:checked").attr("id");
+  const isLock = $("input[name='options']:checked").attr('id');
 
-  if (page === "...") return;
+  if (page === '...') return;
   $.ajax({
-    url: "/api/users",
-    type: "GET",
+    url: '/api/users',
+    type: 'GET',
     data: {
       page,
       isAdmin: 1,
       isLock,
+      search: document.getElementById('search').value,
     },
-    dataType: "json",
+    dataType: 'json',
     success: function (data) {
-      const { users, page, lastPage } = data;
+      const {users, page, lastPage} = data;
       //xử lí data gửi về
-      let userList = "";
+      let userList = '';
       let userBox;
       let i = 1;
       users.forEach((user) => {
@@ -24,14 +25,16 @@ $(".pages").on("click", ".page-link", function () {
       });
       const pagesNumber = getPagesNumber(lastPage, page); //paging number ở dưới
       //xử lí data gửi về
-      $("table tbody").html(userList);
-      $(".pages").html(pagesNumber);
+      $('table tbody').html(userList);
+      $('.pages').html(pagesNumber);
     },
     error: function (error) {
       console.log(error);
     },
   });
-});
+}
+
+$('.pages').on('click', '.page-link', getAdmins);
 function getUserBox(user, number) {
   return `<tr>
           <th scope="row">${number}</th>
@@ -62,29 +65,29 @@ function getUserBox(user, number) {
 }
 
 //khóa mở người dùng
-for (let btn of document.getElementsByClassName("ActionOnUserBtn")) {
-  btn.addEventListener("click", ActionOnUserHandler);
+for (let btn of document.getElementsByClassName('ActionOnUserBtn')) {
+  btn.addEventListener('click', ActionOnUserHandler);
 }
 function ActionOnUserHandler(e) {
   e.preventDefault();
 
   //đổi trạng thái nút block hoặc unblock
-  if ($(this).text() === "Block") {
-    $(this).text("Unblock");
-    $(this).removeClass("btn-danger");
-    $(this).addClass("btn-success");
+  if ($(this).text() === 'Block') {
+    $(this).text('Unblock');
+    $(this).removeClass('btn-danger');
+    $(this).addClass('btn-success');
   } else {
-    $(this).text("Block");
-    $(this).removeClass("btn-success");
-    $(this).addClass("btn-danger");
+    $(this).text('Block');
+    $(this).removeClass('btn-success');
+    $(this).addClass('btn-danger');
   }
   $.ajax({
-    url: "/api/users",
-    type: "POST",
+    url: '/api/users',
+    type: 'POST',
     data: {
-      userId: $(this).attr("id"),
+      userId: $(this).attr('id'),
     },
-    dataType: "json",
+    dataType: 'json',
     success: function (data) {
       console.log(data.msg);
     },
@@ -125,24 +128,24 @@ function getPagesNumber(lastPage, page) {
   return res;
 }
 
-$("div[name='StateButton']").on("click", ".btn", function () {
+$("div[name='StateButton']").on('click', '.btn', function () {
   const page = 1;
 
-  const isLock = $(this).children("input").attr("id");
-  if (page === "...") return;
+  const isLock = $(this).children('input').attr('id');
+  if (page === '...') return;
   $.ajax({
-    url: "/api/users",
-    type: "GET",
+    url: '/api/users',
+    type: 'GET',
     data: {
       page,
       isAdmin: 1,
       isLock,
     },
-    dataType: "json",
+    dataType: 'json',
     success: function (data) {
-      const { users, page, lastPage } = data;
+      const {users, page, lastPage} = data;
       //xử lí data gửi về
-      let userList = "";
+      let userList = '';
       let userBox;
       let i = 1;
       users.forEach((user) => {
@@ -151,11 +154,15 @@ $("div[name='StateButton']").on("click", ".btn", function () {
       });
       const pagesNumber = getPagesNumber(lastPage, page); //paging number ở dưới
       //xử lí data gửi về
-      $("table tbody").html(userList);
-      $(".pages").html(pagesNumber);
+      $('table tbody').html(userList);
+      $('.pages').html(pagesNumber);
     },
     error: function (error) {
       console.log(error);
     },
   });
 });
+
+const searchBtn = document.getElementById('searchBtn');
+
+searchBtn.onclick = getAdmins;

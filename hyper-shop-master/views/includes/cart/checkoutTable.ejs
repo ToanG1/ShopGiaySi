@@ -1,5 +1,25 @@
 <div class="box">
   <form method="post" action="/order">
+<!-- <<<<<<< HEAD -->
+    <!-- <h1>Checkout - Address</h1>
+    <div class="nav flex-column flex-md-row nav-pills text-center">
+      <button
+        type="button"
+        id="switchToAddress"
+        class="nav-link flex-sm-fill text-sm-center active"
+      >
+        <i class="fa fa-map-marker"> </i>Address</button
+      ><button
+        type="button"
+        id="switchToOrderReview"
+        class="nav-link flex-sm-fill text-sm-center"
+      >
+        <i class="fa fa-eye"> </i>Order Review
+      </button>
+    </div>
+
+    <div class="content py-3" id="addressView"> -->
+<!-- // -->
     <!--Header nav-->
     <h1>Checkout</h1>
     <div class="nav flex-column flex-md-row nav-pills text-center">
@@ -32,6 +52,7 @@
 
     <!--Address-->
     <div class="content py-3" id="addressCheckout">
+<!-- >>>>>>> origin/master -->
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
@@ -45,6 +66,109 @@
               value="<%=user.name%>"
             />
           </div>
+<!-- <<<<<<< HEAD -->
+        <!-- </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              name="email"
+              id="email"
+              type="email"
+              readonly
+              class="form-control"
+              value="<%=user.email%>"
+            />
+          </div>
+        </div>
+      </div>
+ 
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input
+              name="phone"
+              id="phone"
+              type="text"
+              required
+              class="form-control"
+              maxlength="10"
+              onkeypress="return onlyNumberKey(event)"
+              value="<%=user.phone%>"
+            />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input
+              name="address"
+              id="address"
+              type="text"
+              required
+              class="form-control"
+              value="<%=user.address%>"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="orderReviewView" hidden>
+      <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th colspan="2">Product</th>
+                    <th>Quantity</th>
+                    <th>Size</th>
+                    <th>Unit price</th>
+                    <th colspan="3">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% let total = 0%>
+                <% for (let i=0;i<cart.orderItems.length;i++) { %>
+                <tr id="row-<%=cart.orderItems[i]._id%>">
+                    <td><a href="/products/<%=cart.orderItems[i].product._id%>"><img src="https://hyper-shop-admin.herokuapp.com/<%=cart.orderItems[i].product.image%>" alt="<%=cart.orderItems[i].product.name%>"></a></td>
+                    <td><a href="/products/<%=cart.orderItems[i].product._id%>"><%=cart.orderItems[i].product.name%></a></td>
+                    <td id="quantity-<%=cart.orderItems[i]._id%>">
+                        <input type="number" value="<%=cart.orderItems[i].quantity%>" readonly min="1" id="<%=cart.orderItems[i]._id%>" class="form-control item-quantity">
+                    </td>
+                    <td><%=cart.orderItems[i].size %>
+                    </td>
+                    <td>$<%=cart.orderItems[i].product.price%></td>
+                    <td>
+                        $<input id="totalPerItem-<%=cart.orderItems[i]._id%>" type="text" readonly style="border: none; outline: none; min-width: 75px; text-align: left;"  value="<%=cart.orderItems[i].quantity*cart.orderItems[i].product.price%>"/>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <%total += cart.orderItems[i].quantity*cart.orderItems[i].product.price%>
+                <% } %>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="5">Total</th>
+                    <th colspan="2" class="display-row">
+                        $<input id="total" style="border: none; outline: none;width:100px" readonly type="number" value="<%=total%>"/>
+                    </th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    </div>
+    <div class="box-footer d-flex justify-content-between">
+      <a href="/cart" class="btn btn-outline-secondary"
+        ><i class="fa fa-chevron-left"></i>Back to Basket</a
+      >
+      <button type="submit" class="btn btn-primary" id="confirmPurchase">
+        Confirm and Purchase<i class="fa fa-chevron-right"></i>
+      </button>
+    </div>
+  </form>
+</div> -->
+<!-- // -->
         </div>
         <div class="col-md-6">
           <div class="form-group">
@@ -713,3 +837,4 @@
 
 
 </script>
+<!-- >>>>>>> origin/master -->

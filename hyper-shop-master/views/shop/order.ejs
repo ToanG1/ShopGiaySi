@@ -7,7 +7,7 @@
         <div class="row justify-content-center orders">
           <% if(orders.length>0) {%>
             <% for (let order of orders) { %>
-            <div class="col-lg-3"> 
+            <div class="col-lg-4"> 
                 <%- include('../includes/cart/orderStatus', {order})%>
             </div>
             <% } %>

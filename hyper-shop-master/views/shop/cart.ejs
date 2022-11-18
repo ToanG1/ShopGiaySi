@@ -21,9 +21,9 @@
                         </div>
                         <div id="basket" class="col-lg-9">
                             <% if(user) { %>
-                                <%- include('../includes/cart/cartTable', {cart}) %>
+                                <%- include('../includes/cart/cartTable', {cart, isReview: false}) %>
                             <% } else {  %>
-                                <%- include('../includes/cart/cartTableNoAuth', {cart}) %>
+                                <%- include('../includes/cart/cartTableNoAuth', {cart, isReview: false}) %>
                             <% } %>                           
                         </div>
                         <!-- ORDER SUMMARY =========================================== -->

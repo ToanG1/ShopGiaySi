@@ -1,6 +1,6 @@
-const bcrypt = require("bcrypt"); //để băm pass
+const bcrypt = require('bcrypt'); //để băm pass
 //từ nay mọi thao tác đến db mình sẽ làm trong folder Service, code cũ sẽ refactor sau
-const User = require("../user");
+const User = require('../user');
 
 exports.signup = async (newUser) => {
   //them nguoi dung
@@ -16,7 +16,7 @@ exports.save = async (newUser) => {
 };
 
 // trả về plain data giúp tăng performance khi chỉ cần truy vấn sự tồn tại của một user
-exports.getUserLean =  (filter) => {
+exports.getUserLean = (filter) => {
   return User.findOne(filter).lean();
 };
 

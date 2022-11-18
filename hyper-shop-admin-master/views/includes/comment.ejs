@@ -1,10 +1,10 @@
 <div class="comment">
   <div class="comment-content extra-small-text">
-    <span>By: &nbsp </span><span><%=comment.user.name%></span>
+    <span>By: &nbsp </span><span><%=comment.user ? comment.user.name : "User"%></span>
     <div class="small-text black-color"><%=comment.body%></div>
     <div class="comments-reponse">
-      <%for(response of responses) { if(response.comment==comment.id){%>
-      <%for(res of response.commentRes){%>
+      <%for(response of responses) { if(response.comment==comment.id){%> <%for(res of
+      response.commentRes){%>
       <div class="comment-response">
         <div class="arrow"></div>
         <i class="fas fa-store"></i> &nbsp

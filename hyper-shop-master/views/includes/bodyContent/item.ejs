@@ -1,16 +1,21 @@
 <div class="item">
-    <div class="product">
-        <div class="flip-container">
-            <div class="flipper">
-                <div class="back"><a href="/products/<%=product._id%>"><img src="https://hyper-shop-admin.herokuapp.com<%=product.image%>" alt="<%=product.name%>" class="img-fluid"></a>
-                </div>
-            </div>
+  <div class="product">
+    <div class="flip-container">
+      <div class="flipper">
+        <div class="back">
+          <a href="/products/<%=product._id%>"
+            ><img src="<%=product.image%>" alt="<%=product.name%>" class="img-fluid"
+          /></a>
         </div>
-        <div class="text">
-            <h3><a href="/products/<%=product._id%>" style="text-decoration: none;"><%=product.name%></a></h3>
-            <p class="price">
-                <del></del>$<%=product.price%>
-            </p>
-        </div>
+      </div>
     </div>
+    <div class="text">
+      <h3>
+        <a href="/products/<%=product._id%>" style="text-decoration: none"
+          ><%=product.name%></a
+        >
+      </h3>
+      <p class="price"><del></del>$<%=product.price%></p>
+    </div>
+  </div>
 </div>

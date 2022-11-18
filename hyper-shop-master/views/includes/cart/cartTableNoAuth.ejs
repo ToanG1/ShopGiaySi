@@ -2,7 +2,7 @@
 <div class="box">
     <form method="get" action="/cart/checkout">
         <h1>Shopping cart</h1>
-        <% if(cart) { %>
+        <% if(cart && cart.orderItems && cart.orderItems.length > 0) { %>
         <div class="table-responsive">
             <table class="table">
                 <thead>
@@ -44,6 +44,15 @@
                 </tfoot>
             </table>
         </div>
+        <% } else { %>
+            <div id="error-page" class="row">
+              <div class="col-md-12 mx-auto mt-2" >
+                <div class="box text-center py-5">
+                  <p class="text-center"><img src="/img/hyper-shop.png" alt="Hyper template"></p>
+                  <h3>You don't have any items in cart yet</h3>
+                </div>
+              </div>
+          </div>
         <% } %>
         <!-- /.table-responsive-->
         <div class="box-footer d-flex justify-content-between flex-column flex-lg-row">

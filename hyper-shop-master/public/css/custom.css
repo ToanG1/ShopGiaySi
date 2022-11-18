@@ -5,6 +5,11 @@
   color: red;
 }
 
+.item-quantity {
+  width: auto;
+  min-width: 75px;
+}
+
 .light-gray-color {
   color: rgb(129, 129, 129);
 }
@@ -70,7 +75,7 @@
 }
 
 /* =========================== USER PROFILE ======================== */
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 .wrapper-profile {
   padding: 30px 50px;

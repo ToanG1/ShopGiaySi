@@ -1,6 +1,6 @@
-const ProductService = require("../models/services/productService"); // nhớ pass categories cho tất cả các view
-const cartService = require("../models/services/cartService");
-const { ObjectId } = require("mongodb");
+const ProductService = require('../models/services/productService'); // nhớ pass categories cho tất cả các view
+const cartService = require('../models/services/cartService');
+const {ObjectId} = require('mongodb');
 
 exports.getCart = async (req, res, next) => {
   let userCart = null;
@@ -21,14 +21,14 @@ exports.getCart = async (req, res, next) => {
         userCart = await cartService.createNewCart(req.user);
       }
     }
-    res.status(200).render("shop/cart", {
+    res.status(200).render('shop/cart', {
       categories: await ProductService.getCategoriesQuantity(),
       brands: await ProductService.getBrands(),
       user: req.user,
       cart: userCart,
     });
   } else {
-    res.status(200).render("shop/cart", {
+    res.status(200).render('shop/cart', {
       categories: await ProductService.getCategoriesQuantity(),
       brands: await ProductService.getBrands(),
       user: req.user,
@@ -38,17 +38,20 @@ exports.getCart = async (req, res, next) => {
 };
 
 exports.addToCart = async (req, res, next) => {
+  console.log(req.body.id);
   if (req.user) {
     let cart = await cartService.getCartByUserId(req.user);
     if (!cart) {
       cart = await cartService.createNewCart(req.user);
     }
     const product = await ProductService.getProduct(req.body.id);
+    console.log(product);
     await cartService.addSingleProductToCart(product, req.body.size, cart);
-    res.status(200).send("Add cart successfully");
+    res.status(200).send('Add cart successfully');
   } else {
     if (!req.session.cart) {
       //nếu session chưa có cart thì tạo cart cùng với sản phẩm
+
       ProductService.getProduct(req.body.id).then((product) => {
         req.session.cart = [
           {
@@ -57,7 +60,7 @@ exports.addToCart = async (req, res, next) => {
             size: req.body.size,
           },
         ];
-        res.status(200).send("Add cart successfully");
+        res.status(200).send('Add cart successfully');
       });
     } else {
       //nếu session đã có cart thì thêm sản phẩm vào cart
@@ -68,7 +71,7 @@ exports.addToCart = async (req, res, next) => {
           req.session.cart[i].size.toString() === req.body.size
         ) {
           req.session.cart[i].quantity += 1;
-          res.status(200).send("Add cart successfully");
+          res.status(200).send('Add cart successfully');
           checkExisted = true;
           break;
         }
@@ -80,7 +83,7 @@ exports.addToCart = async (req, res, next) => {
             quantity: 1,
             size: req.body.size,
           });
-          res.status(200).send("Add cart successfully");
+          res.status(200).send('Add cart successfully');
         });
       }
     }
@@ -88,10 +91,11 @@ exports.addToCart = async (req, res, next) => {
 };
 
 exports.getCheckout = async (req, res, next) => {
-  res.status(200).render("shop/checkout", {
+  res.status(200).render('shop/checkout', {
     categories: await ProductService.getCategoriesQuantity(),
     brands: await ProductService.getBrands(),
     user: req.user,
+    isReviewOrder: false,
     cart: await cartService.getCartByUserId(req.user),
   });
 };

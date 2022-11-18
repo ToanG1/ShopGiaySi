@@ -1,21 +1,20 @@
 const addToCartHandler = (event) => {
-  fetch("/cart/add", {
-    method: "post",
+  fetch('/cart/add', {
+    method: 'post',
     body: JSON.stringify({
       id: event.target.id,
-      size: document.getElementById("chooseSizeOpt").value,
+      size: document.getElementById('chooseSizeOpt').value,
     }),
     headers: {
-      "Content-type": "application/json",
+      'Content-type': 'application/json',
     },
   })
     .then((response) => {
       if (response.status >= 200 && response.status < 300) {
-        alert("Add product successfully");
         return response.json();
       } else {
         response.json().then((error) => {
-          console.log("ERROR: " + error);
+          console.log('ERROR: ' + error);
         });
       }
     })

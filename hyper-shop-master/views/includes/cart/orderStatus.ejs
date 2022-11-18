@@ -8,16 +8,17 @@
             <% totalPrice += item.product.price*item.quantity%>
         <div class="row">
             <div class="col-7">
-                <span><%=item.product.name%></span>
+                <span><strong><%=item.product.name%></strong></span>
             </div>
             <div class="col-5">
                 <span>$<%=item.product.price%> x <%=item.quantity%></span><br>
-                <span>Size <%=item.size%></span>
+                <span>Size: <%=item.size%></span>
             </div>
         </div>
+        <hr />
         <% } %>
     </p>
-    <div class="table-responsive">
+    <div class="table-responsive-lg">
         <table class="table">
             <tbody>
                 <tr>

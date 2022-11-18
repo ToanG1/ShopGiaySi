@@ -1,4 +1,15 @@
 <!-- ITEM IMAGE ================================================ -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title fs-5 text-success" id="staticBackdropLabel">Add product successfully</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div id="productMain" class="row">
   <div class="col-md-6">
     <div data-slider-id="1" class="owl-carousel shop-detail-carousel">
@@ -40,18 +51,36 @@
           >Scroll to product details, material &amp; care and sizing</a
         >
       </p>
-      <p class="text-center">
-        <select id="chooseSizeOpt">
+      <p class="text-center input-group">
+        <label class="input-group-text" for="chooseSizeOpt">Size</label>
+        <select
+          id="chooseSizeOpt"
+          class="form-select"
+          aria-label="Default select example"
+          <%- product.countInStock.some(count => count.quantity > 0) ? "" : "disabled" %>
+        >
           <% for (size of product.countInStock) { if (size.quantity > 0) { %>
-          <option value="<%=size.size%>"><%=size.size%></option>
+          <option value="<%=size.size%>" selected><%=size.size%></option>
           <% }} %>
         </select>
       </p>
       <p class="price">$<%=product.price%></p>
       <p class="text-center buttons">
-        <button class="btn btn-primary addToCartBtn" id="<%=product._id%>">
-          <i class="fa fa-shopping-cart"></i> Add to cart
-        </button>
+        <span
+          class="d-inline-block"
+          tabindex="0"
+          data-bs-toggle="<%= product.countInStock.some(count => count.quantity > 0) ? '' : 'tooltip'%>"
+          data-bs-title="Out Of Stock"
+        >
+          <button
+            class="btn btn-primary addToCartBtn"
+            id="<%=product._id%>"
+            data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+            <%- product.countInStock.some(count => count.quantity > 0) ? "" : "disabled" %>
+          >
+            <i class="fa fa-shopping-cart"></i> Add to cart
+          </button>
+        </span>
         <!-- <a href="basket.html"class="btn btn-outline-primary"><i class="fa fa-heart"></i> Add to wishlist</a> -->
       </p>
     </div>
@@ -94,9 +123,9 @@
   <blockquote>
     <p>
       <em
-        >Define style this season with Armani's new range of trendy tops,
-        crafted with intricate details. Create a chic statement look by teaming
-        this lace number with skinny jeans and pumps.</em
+        >Define style this season with Armani's new range of trendy tops, crafted with
+        intricate details. Create a chic statement look by teaming this lace number with
+        skinny jeans and pumps.</em
       >
     </p>
   </blockquote>
@@ -124,14 +153,14 @@
     <div class="comment">
       <div class="customer-avatar">
         <i class="fa fa-user-circle medium-text"></i>&nbsp &nbsp<span
-          ><%=comment.user.name%></span
+          ><%=comment.user ? comment.user.name : "User"%></span
         >
       </div>
       <div class="comment-content">
         <span class="light-gray-color"><%=comment.body%></span>
       </div>
-      <%for(response of responses) { if(response.comment==comment.id){%>
-      <%for(res of response.commentRes){%>
+      <%for(response of responses) { if(response.comment==comment.id){%> <%for(res of
+      response.commentRes){%>
       <div class="response">
         <i class="fa-solid fa-store"></i>&nbsp &nbsp<span class="red-color"
           >Response by Hyper Shop</span
@@ -145,18 +174,15 @@
   </div>
 
   <div class="pages">
-    <nav
-      aria-label="Page navigation example"
-      class="d-flex justify-content-center"
-    >
+    <nav aria-label="Page navigation example" class="d-flex justify-content-center">
       <% if (commentsLastPage > 0) { %>
       <ul class="pagination">
         <li class="page-item cursor-pointer"><a class="page-link">First</a></li>
-        <% let i = (Number(commentsCurrentPage) > 5 ?
-        Number(commentsCurrentPage) - 4 : 1) %> <% if (i !== 1) { %>
+        <% let i = (Number(commentsCurrentPage) > 5 ? Number(commentsCurrentPage) - 4 : 1)
+        %> <% if (i !== 1) { %>
         <li class="page-item cursor-pointer"><a class="page-link">...</a></li>
-        <% } %> <% for (; i <= (Number(commentsCurrentPage) + 4) && i <=
-        commentsLastPage; i++) { %> <% if (i == commentsCurrentPage) { %>
+        <% } %> <% for (; i <= (Number(commentsCurrentPage) + 4) && i <= commentsLastPage;
+        i++) { %> <% if (i == commentsCurrentPage) { %>
         <li class="page-item cursor-pointer active">
           <a class="page-link"><%= i %></a>
         </li>
@@ -164,8 +190,7 @@
         <li class="page-item cursor-pointer">
           <a class="page-link"><%= i %></a>
         </li>
-        <% } %> <% if (i == Number(commentsCurrentPage) + 4 && i <
-        commentsLastPage) { %>
+        <% } %> <% if (i == Number(commentsCurrentPage) + 4 && i < commentsLastPage) { %>
         <li class="page-item cursor-pointer"><a class="page-link">...</a></li>
         <% } %> <% } %> <% if (commentsCurrentPage == commentsLastPage) { %>
         <li class="page-item cursor-pointer">
@@ -173,9 +198,7 @@
         </li>
         <% } else { %>
         <li>
-          <a class="page-link cursor-pointer" id="<%=commentsLastPage%>"
-            >Last</a
-          >
+          <a class="page-link cursor-pointer" id="<%=commentsLastPage%>">Last</a>
         </li>
         <% } %>
       </ul>
@@ -183,11 +206,7 @@
     </nav>
   </div>
 
-  <form
-    class="comment-form"
-    action="/api/comments/<%=product._id%>"
-    method="post"
-  >
+  <form class="comment-form" action="/api/comments/<%=product._id%>" method="post">
     <div class="add-comment">
       <input
         type="text"

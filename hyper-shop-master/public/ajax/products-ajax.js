@@ -171,11 +171,9 @@ function reloadProduct(e) {
 
   // remove các filter null or undefined
   Object.keys(filters).forEach(
-    key => filters[key] === undefined && delete filters[key]
+    (key) => filters[key] === undefined && delete filters[key],
   );
-  Object.keys(filters).forEach(
-    key => filters[key] === null && delete filters[key]
-  );
+  Object.keys(filters).forEach((key) => filters[key] === null && delete filters[key]);
 
   if (page !== '...')
     $.ajax({
@@ -200,20 +198,20 @@ function reloadProduct(e) {
         sessionStorage.setItem('productsCount', data.productsCount);
         const productShowing = getProductShowing(
           data.queriedProductCount,
-          data.productsCount
+          data.productsCount,
         ); // Showing ? of ? product
 
         const productsNumber = getProductsNumber(); //selected quantity of product
         let productsList = '';
         let productBox;
         if (data.products.length > 0) {
-          data.products.forEach(product => {
+          data.products.forEach((product) => {
             productBox = getProductBox(product);
             productsList += productBox;
           });
         } else {
           productsList =
-            "<div><p>Sorry, we don't have thing you need</p></div>";
+            '<div><p style="text-align: center" >Sorry, we don\'t have thing you need</p></div>';
         }
         const pagesNumber = getPagesNumber(lastPage, page); //paging number ở dưới
         $('.products').html(productsList);
@@ -253,8 +251,6 @@ function getProductBox(product) {
       <p class="buttons">
         <a href="/products/${product._id}" class="btn btn-outline-secondary"
           >View detail</a
-        ><button id="${product._id}" class="btn btn-primary addToCartBtn"
-          ><i class="fa fa-shopping-cart"></i>Add to cart</button
         >
       </p>
     </div>

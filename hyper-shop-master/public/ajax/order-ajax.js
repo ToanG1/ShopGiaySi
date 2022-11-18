@@ -1,23 +1,23 @@
-$(".pages").on("click", ".page-link", function (e) {
+$('.pages').on('click', '.page-link', function (e) {
   e.preventDefault();
   let ordersCurrentPage = $(this).text();
-  if (ordersCurrentPage === "First") ordersCurrentPage = 1;
-  else if (ordersCurrentPage === "Last") ordersCurrentPage = $(this).attr("id");
+  if (ordersCurrentPage === 'First') ordersCurrentPage = 1;
+  else if (ordersCurrentPage === 'Last') ordersCurrentPage = $(this).attr('id');
 
-  const url = "/api/order";
-  if (ordersCurrentPage !== "...") {
+  const url = '/api/order';
+  if (ordersCurrentPage !== '...') {
     $.ajax({
       url,
-      data: { page: ordersCurrentPage },
-      dataType: "json",
+      data: {page: ordersCurrentPage},
+      dataType: 'json',
       success: function (data) {
-        let ordersList = "";
+        let ordersList = '';
         //reverse để hiện thị bình luận mới nhất xuống dưới
         for (order of data.orders) {
           ordersList += getOrders(order);
         }
-        $(".orders").html(ordersList);
-        $(".pages").html(getPagesNumber(data.lastPage, data.currentPage));
+        $('.orders').html(ordersList);
+        $('.pages').html(getPagesNumber(data.lastPage, data.currentPage));
       },
       error: function (error) {
         console.log(error);
@@ -27,7 +27,7 @@ $(".pages").on("click", ".page-link", function (e) {
 });
 
 function getOrders(order) {
-  orderHtml = `<div class="col-lg-3"> 
+  orderHtml = `<div class="col-lg-4"> 
   <div id="order-summary" class="box">
     <div class="box-header">
         <h3 class="mb-0">Order summary</h3>
@@ -38,12 +38,14 @@ function getOrders(order) {
     totalPrice += item.product.price * item.quantity;
     orderHtml += `<div class="row">
     <div class="col-7">
-        <span>${item.product.name}</span>
-    </div>
-    <div class="col-5">
-        <span>$${item.product.price} x ${item.quantity}</span>
-    </div>
-</div>`;
+                <span><strong>${item.product.name}</strong></span>
+            </div>
+            <div class="col-5">
+                <span>$${item.product.price} x ${item.quantity}</span><br>
+                <span>Size: ${item.size}</span>
+            </div>
+</div>
+<hr/>`;
   }
   orderHtml += `</p>
   <div class="table-responsive">

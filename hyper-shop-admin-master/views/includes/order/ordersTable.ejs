@@ -15,7 +15,7 @@
         <%let count = 0%> <% for(order of orders) { %>
         <tr id="<%=order._id%>">
           <th scope="row"><%=order._id%></th>
-          <td><%=order.user.email%></td>
+          <td><%=order.user ? order.user.email : "test@gmail.com"%></td>
           <td><%=order.phone%></td>
           <td><%=order.address%></td>
           <td>
