@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="productName">Product Name</label>
+                        <label for="productName">Tên sản phẩm</label>
                         <input value="<%=product?product.name:''%>" id="productName" required name="productName" type="text" class="form-control">
                     </div>
                 </div>
@@ -14,29 +14,29 @@
             <div class="row">
                 <div class="col-md-6 col-lg-3">
                     <div class="form-group">
-                        <label for="brand">Brand</label>
+                        <label for="brand">Thương hiệu</label>
                         <input value="<%=product?product.brand:''%>" id="brand" required name="brand" type="text" class="form-control">
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="form-group">
-                        <label for="price">Price</label>
+                        <label for="price">Giá tiền</label>
                         <input value="<%=product?product.price:''%>" min="0" id="price" required name ="price" type="number" class="form-control">
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="form-group">
-                        <label for="color">Color</label>
+                        <label for="color">Mẫu màu</label>
                         <input value="<%=product?product.color:''%>" id="color" required name="color" type="text" class="form-control">
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="form-group">
-                        <label for="gender">Gender</label>
+                        <label for="gender">Giới tính</label>
                         <select id="gender" required name='gender' class="form-control">
-                            <option value="men">men</option>
+                            <option value="men">Nam</option>
                             <option value="unisex">unisex</option>
-                            <option value="women">women</option>
+                            <option value="women">Nữ</option>
                         </select>
                     </div>
                 </div>
@@ -45,41 +45,41 @@
             <div class="row">
                 <div class="col-md-6 col-lg-3">
                     <div class="form-group">
-                        <label for="height">Height</label>
+                        <label for="height">Chiều cao giày</label>
                         <input value="<%=product?product.shoesHeight:''%>" id="height" required name='height' type="text" class="form-control" >
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="form-group">
-                        <label for="closure">Closure</label>
+                        <label for="closure">Kiểu giày</label>
                         <input value="<%=product?product.closureType:''%>" id="closure" required name='closure' type="text" class="form-control" >
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="form-group">
-                        <label for="material">Material</label>
+                        <label for="material">Chất liệu</label>
                         <select id="material" required name='material' class="form-control">
-                            <option value="plastic">plastic</option>
-                            <option value="canvas">canvas</option>
-                            <option value="leather">leather</option>
+                            <option value="plastic">Nhựa</option>
+                            <option value="canvas">Vải</option>
+                            <option value="leather">Da</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="form-group">
-                        <label for="category">Category</label>
+                        <label for="category">Loại giày</label>
                         <select id="category" required name="category" class="form-control">
-                            <option value="football">football</option>
-                            <option value="running">running</option>
-                            <option value="basketball">basketball</option>
-                            <option value="casual">casual</option>
-                            <option value="skateboard">skateboard</option>
+                            <option value="football">Bóng đá</option>
+                            <option value="running">Chạy bộ</option>
+                            <option value="basketball">Bóng rổ</option>
+                            <option value="casual">Thông dụng</option>
+                            <option value="skateboard">Trượt ván</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="image">Image</label>
+                        <label for="image">Ảnh</label>
                         <input required id="image" name='image' type="file" class="form-control">
                     </div>
                 </div>
@@ -88,7 +88,7 @@
             <div class="form-footer row ">
                 <div class="col-lg-4 box-footer-btn">
                     <button type="submit" class="btn btn-primary">
-                        Save Product &nbsp; <i class="fa fa-chevron-right"></i>
+                        Lưu sản phẩm &nbsp; <i class="fa fa-chevron-right"></i>
                     </button>
                 </div>
                 <div class="col-lg-6  error"><%=error%></div>
