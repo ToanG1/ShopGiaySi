@@ -1,6 +1,6 @@
 <div id="order-summary" class="box">
     <div class="box-header">
-        <h3 class="mb-0">Order summary</h3>
+        <h3 class="mb-0">Tóm tắt đơn hàng</h3>
     </div>
     <% let totalPrice = 0 %>
     <p class="text-muted">
@@ -22,27 +22,27 @@
         <table class="table">
             <tbody>
                 <tr>
-                    <td>Order subtotal</td>
+                    <td>Tỏng phụ đặt hàng</td>
                     <th>$<%=totalPrice%></th>
                 </tr>
                 <tr>
-                    <td>Shipping and handling</td>
+                    <td>Vận chuyển và xử lý</td>
                     <th>$<%=order.shippingCost%></th>
                 </tr>
                 <tr>
-                    <td>Payment method</td>
+                    <td>Phương thức thanh toán</td>
                     <th><%=order.paymentMethod%> </th>
                 </tr>
                 <tr>
-                    <td>Ordered Date</td>
+                    <td>Ngày đặt hàng</td>
                     <th><%=order.orderedDate.toDateString()%></th>
                 </tr>
                 <tr>
-                    <td>Status</td>
+                    <td>Trạng thái</td>
                     <th><%=order.status%></th>
                 </tr>
                 <tr class="total">
-                    <td>Total</td>
+                    <td>Tổng giá</td>
                     <th>$<%= totalPrice + + order.shippingCost %></th>
                 </tr>
             </tbody>

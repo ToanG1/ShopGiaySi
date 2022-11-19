@@ -3,25 +3,25 @@
     <div class="row">
       <div class="col-lg-6 offer mb-3 mb-lg-0">
         <% if(!user) { %>
-        <div class="btn btn-success btn-sm">Login to have best experience</div>
+        <div class="btn btn-success btn-sm">Đăng nhập để có trải nghiệm tốt nhất.</div>
         <% } else { %>
-        <div class="btn btn-success btn-sm">Hello, <%=user.name%></div>
+        <div class="btn btn-success btn-sm">Xin chào, <%=user.name%></div>
         <% } %>
       </div>
       <% if(!user) { %>
       <div class="col-lg-6 text-center text-lg-right">
         <ul class="menu list-inline mb-0">
           <li class="list-inline-item">
-            <a href="/auth/signin">Login</a>
+            <a href="/auth/signin">Đăng nhập</a>
           </li>
-          <li class="list-inline-item"><a href="/auth/signup">Register</a></li>
-          <li class="list-inline-item"><a href="/">Contact</a></li>
+          <li class="list-inline-item"><a href="/auth/signup">Đăng kí</a></li>
+          <li class="list-inline-item"><a href="/">Liên hệ</a></li>
         </ul>
       </div>
       <% } %> <% if(user) { %>
       <div class="col-lg-2 offset-lg-4">
         <form action="/auth/logout">
-          <button class="btn btn-primary navbar-btn" style="margin-left: 65px;">LOG OUT</button>
+          <button class="btn btn-primary navbar-btn" style="margin-left: 65px;">Đăng xuất</button>
         </form>
       </div>
 
@@ -40,7 +40,7 @@
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Customer login</h5>
+          <h5 class="modal-title">Đăng nhập khách hàng</h5>
           <button
             type="button"
             data-dismiss="modal"
@@ -72,15 +72,14 @@
             </div>
             <p class="text-center">
               <button class="btn btn-primary">
-                <i class="fa fa-sign-in"></i> Log in
+                <i class="fa fa-sign-in"></i> Đăng nhập
               </button>
             </p>
           </form>
-          <p class="text-center text-muted">Not registered yet?</p>
+          <p class="text-center text-muted">Chưa đăng kí?</p>
           <p class="text-center text-muted">
-            <a href="/auth/signup"><strong>Register now</strong></a
-            >! It is easy and done in 1 minute and gives you access to special
-            discounts and much more!
+            <a href="/auth/signup"><strong>Đăng kí ngay bây giờ</strong></a
+            >! Nó dễ dàng và được thực hiện trong 1 phút và cho phép bạn tiếp cận với các chương trình giảm giá đặc biệt và hơn thế nữa!
           </p>
         </div>
       </div>

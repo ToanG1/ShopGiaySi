@@ -10,7 +10,7 @@
 		<div class="search-box">
 			<div class="container-1">
 				<span class="icon"><i class="fa fa-search"></i></span>
-				<input type="search" id="search" placeholder="Search..." />
+				<input type="search" id="search" placeholder="Tìm kiếm..." />
 			</div>
 		</div>
 	</section>
@@ -33,7 +33,7 @@
 				<div class="toparea">
 					<div class="underlined-title">
 						<div class="editContent">
-							<h1 class="text-center latestitems">OUR PRODUCTS</h1>
+							<h1 class="text-center latestitems">DANH SÁCH CÁC SẢN PHẨM</h1>
 						</div>
 						<div class="wow-hr type_short">
 							<span class="wow-hr-h">
@@ -49,7 +49,7 @@
 								<%-include("../includes/bodyContent/productBox")%>
 							<% } %>
 						<% }else { %>
-							<p style="text-align: center">There is no product here</p>
+							<p style="text-align: center">Không có sản phẩm</p>
 						<% } %>
 						<%/*%>
 						fix cái there is no product ở file products-ajax.js dòng 61 luôn nha
@@ -64,7 +64,7 @@
 				  >
 					<% if (lastPage > 0) { %>
 					<ul class="pagination custom-hover">
-					  <li class="page-item custom-hover "><a class="page-link">First</a></li>
+					  <li class="page-item custom-hover "><a class="page-link">Đầu tiên</a></li>
 					  <% let i = (Number(currentPage) > 5 ? Number(currentPage) - 4 : 1) %> <%
 					  if (i !== 1) { %>
 					  <li class="page-item custom-hover"><a class="page-link">...</a></li>
@@ -81,7 +81,7 @@
 					  <li class="page-item custom-hover"><a class="page-link">Last</a></li>
 					  <% } else { %>
 					  <li>
-						<a class="page-link">Last</a>
+						<a class="page-link">Cuối cùng</a>
 					  </li>
 					  <% } %>
 					</ul>

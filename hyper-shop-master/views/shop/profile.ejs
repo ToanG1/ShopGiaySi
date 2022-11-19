@@ -12,8 +12,8 @@
                         <!-- breadcrumb-->
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                <li aria-current="page" class="breadcrumb-item active">Profile</li>
+                                <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                                <li aria-current="page" class="breadcrumb-item active">Hồ sơ</li>
                             </ol>
                         </nav>
                     </div>
@@ -22,9 +22,9 @@
         </div>
     </div>
     <div class="wrapper-profile bg-white mt-sm-5">
-        <h4 class="pb-4 border-bottom">Account settings</h4>
+        <h4 class="pb-4 border-bottom">Cài đặt tài khoản</h4>
         <div class="d-flex align-items-start py-3 border-bottom"> <img src="https://images.pexels.com/photos/1037995/pexels-photo-1037995.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="img" alt="">
-            <div class="pl-sm-4 pl-2" id="img-section"> <b>Profile Photo</b>
+            <div class="pl-sm-4 pl-2" id="img-section"> <b>Ảnh hồ sơ</b>
             </div>
         </div>
         <form action="/user/profile" method="POST">
@@ -41,12 +41,12 @@
         <div class="py-2">
             <div class="row py-2">
 
-                <div class="col-md-6"> <label for="firstname">Name</label> <input autocomplete="off" type="text" class="bg-light form-control" name="name" value="<%= profile.name %>"> </div>
-                <div class="col-md-6 pt-md-0 pt-3"> <label for="lastname">Address</label> <input autocomplete="off" type="text" class="bg-light form-control" name="address" value="<%= profile.address %>"> </div>
+                <div class="col-md-6"> <label for="firstname">Tên</label> <input autocomplete="off" type="text" class="bg-light form-control" name="name" value="<%= profile.name %>"> </div>
+                <div class="col-md-6 pt-md-0 pt-3"> <label for="lastname">Địa chỉ</label> <input autocomplete="off" type="text" class="bg-light form-control" name="address" value="<%= profile.address %>"> </div>
             </div>
             <div class="row py-2">
-                <div class="col-md-6"> <label for="email">Email Address</label> <input  readonly type="text" class="bg-light form-control" name="email" value="<%= profile.email %>"> </div>
-                <div class="col-md-6 pt-md-0 pt-3"> <label for="phone">Phone Number</label> <input type="number" autocomplete="off" class="bg-light form-control" name="phone" value="<%= profile.phone %>"> </div>
+                <div class="col-md-6"> <label for="email">Email </label> <input  readonly type="text" class="bg-light form-control" name="email" value="<%= profile.email %>"> </div>
+                <div class="col-md-6 pt-md-0 pt-3"> <label for="phone">Số điện thoại</label> <input type="number" autocomplete="off" class="bg-light form-control" name="phone" value="<%= profile.phone %>"> </div>
             </div>
             <!-- <div class="row py-2">
                 <div class="col-md-6"> <label for="country">Country</label> <select name="country" id="country" class="bg-light">
@@ -67,9 +67,9 @@
         </div>
     </div>
     <div id="save-profile">
-        <a class="btn btn-warning" href="/user/updatepassword">Change password</a>
+        <a class="btn btn-warning" href="/user/updatepassword">Đổi mật khẩi</a>
 
-            <button>Save changes</button>
+            <button>Lưu thay đổi</button>
 
         </div>
     </form>

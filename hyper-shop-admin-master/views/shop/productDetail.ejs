@@ -9,7 +9,7 @@
         <div class="container toparea">
             <div class="underlined-title">
                 <div class="editContent">
-                    <h1 class="text-center latestitems">Awesome Product</h1>
+                    <h1 class="text-center latestitems">Chi tiết sản phẩm</h1>
                 </div>
                 <div class="wow-hr type_short">
                     <span class="wow-hr-h">
@@ -39,17 +39,16 @@
                     </div>
                     <div class="properties-box">
                         <ul class="unstyle">
-                            <li><b class="propertyname">Brand: </b><%=product.brand%></li>
-                            <li><b class="propertyname">Color: </b><%=product.color%></li>
-                            <li><b class="propertyname">Price: </b><%=product.price%> $</li>
-                            <li><b class="propertyname">Brand: </b><%=product.brand%></li>
-                            <li><b class="propertyname">Material: </b><%=product.material%></li>
+                            <li><b class="propertyname">Thương hiệu: </b><%=product.brand%></li>
+                            <li><b class="propertyname">Mẫu màu: </b><%=product.color%></li>
+                            <li><b class="propertyname">Giá cả: </b><%=product.price%> $</li>
+                            <li><b class="propertyname">Chất liệu: </b><%=product.material%></li>
 
                         </ul>
                     </div>
                     <form class="product-size">
                         <div class="medium-text">
-                            <span>Available size</span>
+                            <span>Size giày có sẵn</span>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
@@ -67,12 +66,12 @@
                     </form>
                     <div style="margin-top: 20px;">
                         <div class="col-md-6">
-                            <a href="/products/editProduct/<%=product._id%>" class="btn btn-buynow" style="border-radius: 10px;">Edit</a>
+                            <a href="/products/editProduct/<%=product._id%>" class="btn btn-buynow" style="border-radius: 10px;">Cập nhật</a>
                         </div>
                         <div class="col-md-6">
                             <form action="/products/deleteProduct" method="post">
                                 <input type="hidden" name="productId" value="<%=product._id%>">
-                                <button class="btn btn-buynow" style="background-color: rgb(194, 53, 53); border-radius: 10px;">Delete</button>
+                                <button class="btn btn-buynow" style="background-color: rgb(194, 53, 53); border-radius: 10px;">Xóa</button>
                             </form>
                         </div>
                     </div>
@@ -83,7 +82,7 @@
 
     <!-- COMMENT ============================= -->
     <section class="container toparea comment-box">
-        <span class="medium-text">Product review and feedback</span>
+        <span class="medium-text">Đánh giá và phản hồi sản phẩm</span>
         <div class="divide"></div>
         <% if (comments.length> 0) { %>
             <% for (comment of comments){ %>
