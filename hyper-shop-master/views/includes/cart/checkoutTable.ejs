@@ -21,32 +21,32 @@
     <div class="content py-3" id="addressView"> -->
 <!-- // -->
     <!--Header nav-->
-    <h1>Checkout</h1>
+    <h1>Kiểm tra</h1>
     <div class="nav flex-column flex-md-row nav-pills text-center">
       <a
         href="checkout1.html"
         class="nav-link flex-sm-fill text-sm-center active"
         id="addressNavBtn"
       >
-        <i class="fa fa-map-marker"> </i>Address</a
+        <i class="fa fa-map-marker"> </i>Địa chỉ</a
       ><a
         href="#"
         class="nav-link flex-sm-fill text-sm-center disabled"
         id="deliveryNavBtn"
       >
-        <i class="fa fa-truck"> </i>Delivery Method</a
+        <i class="fa fa-truck"> </i>Phương thức vận chuyển</a
       ><a
         href="#"
         class="nav-link flex-sm-fill text-sm-center disabled"
         id="paymentNavBtn"
       >
-        <i class="fa fa-money"> </i>Payment Method</a
+        <i class="fa fa-money"> </i>Phương thức thanh toán</a
       ><a
         href="#"
         class="nav-link flex-sm-fill text-sm-center disabled"
         id="reviewNavBtn"
       >
-        <i class="fa fa-eye"> </i>Order Review</a
+        <i class="fa fa-eye"> </i>Đánh giá đơn hàng</a
       >
     </div>
 
@@ -56,7 +56,7 @@
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
-            <label for="name">Customer Name</label>
+            <label for="name">Tên sản phẩm</label>
             <input
               name="name"
               id="name"
@@ -188,7 +188,7 @@
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
-            <label for="phone">Phone</label>
+            <label for="phone">Số điện thoại</label>
             <input
               name="phone"
               id="phone"
@@ -203,7 +203,7 @@
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="address">Address</label>
+            <label for="address">Địa chỉ</label>
             <input
               name="address"
               id="address"
@@ -217,11 +217,11 @@
       </div>
       <div class="box-footer d-flex justify-content-between">
         <a href="/cart" class="btn btn-outline-secondary">
-          <i class="fa fa-chevron-left"></i>Back to Cart
+          <i class="fa fa-chevron-left"></i>Trở lại giỏ hàng
         </a>
 
         <a class="btn btn-primary" id="deliveryCheckoutBtn">
-          <i class="fa fa-chevron-right"></i>Next
+          <i class="fa fa-chevron-right"></i>Tiếp tục
         </a>
       </div>
     </div>
@@ -231,47 +231,43 @@
       <div class="display-flex">
         <div id="delivery-option-group">
           <div class="delivery-option-item" id="fastOption">
-            <label class="btn delivery-label" for="">Fast</label>
+            <label class="btn delivery-label" for="">Nhanh</label>
             <p>
-              Delivery on 2 day after checkout time in state and 3 day out
-              state. Choose day and time suit to your wish, change information
-              after checkout
+              Giao hàng vào 2 ngày sau thời gian thanh toán trong trạng thái và 3 ngày ra khỏi trạng thái. Chọn ngày và giờ phù hợp với mong muốn của bạn, thay đổi thông tin sau khi thanh toán.
             </p>
           </div>
 
           <div class="delivery-option-item" id="normalOption">
-            <label class="btn delivery-label" for="">Normal</label>
+            <label class="btn delivery-label" for="">Bình thường</label>
             <p>
-              Delivery on 3 day after checkout time in state and 4 day out
-              state. Change information after checkout
+              Giao hàng vào 3 ngày sau thời gian thanh toán trong trạng thái và 4 ngày ra khỏi trạng thái. Thay đổi thông tin sau khi thanh toán.
             </p>
           </div>
 
           <div class="delivery-option-item" id="economyOption">
             <label class="btn delivery-label" for="">Economy</label>
             <p>
-              Delivery on 7 day all state. Can not change information after
-              checkout
+              Giao hàng trong 7 ngày tất cả các bang. Không thể thay đổi thông tin sau khi thanh toán.
             </p>
           </div>
         </div>
         <div id="delivery-cost">
-          <label>Shipping Cost</label>
-          <div id="sourceAddress">From: 5 New Ustria, Horizontal, Florida</div>
-          <div id="destinationAddress">To:</div>
-          <div id="cost">Shipping and handling:</div>
-          <div id="tax">Tax:</div>
-          <div>Total: </div> <div id="total"></div>
+          <label>Giá vận chuyển</label>
+          <div id="sourceAddress">Từ: 5 New Ustria, Horizontal, Florida</div>
+          <div id="destinationAddress">Đến:</div>
+          <div id="cost">Vận chuyển và xử lý:</div>
+          <div id="tax">Phí:</div>
+          <div>Tổng: </div> <div id="total"></div>
         </div>
       </div>
 
       <div class="box-footer d-flex justify-content-between">
         <a class="btn btn-outline-secondary" id="addressCheckoutBtn">
-          Back<i class="fa fa-chevron-left"></i>
+          Trở lại<i class="fa fa-chevron-left"></i>
         </a>
 
         <a class="btn btn-primary" id="paymentCheckoutBtn">
-          Next<i class="fa fa-chevron-right"></i>
+          Tiếp tục<i class="fa fa-chevron-right"></i>
         </a>
       </div>
     </div>
@@ -288,7 +284,7 @@
                   <!-- Sidebar -->
                   <div class="bg-light border-right" id="sidebar-wrapper">
                     <div class="sidebar-heading pt-5 pb-4">
-                      <strong>PAY WITH</strong>
+                      <strong>THANH TOÁN BẰNG</strong>
                     </div>
                     <div class="list-group list-group-flush">
                       <a
@@ -299,7 +295,7 @@
                       >
                         <div class="list-div my-2">
                           <div class="fa fa-home"></div>
-                          &nbsp;&nbsp; Bank
+                          &nbsp;&nbsp; Chuyển khoản
                         </div>
                       </a>
                       <a
@@ -310,7 +306,7 @@
                       >
                         <div class="list-div my-2">
                           <div class="fa fa-credit-card"></div>
-                          &nbsp;&nbsp; Card
+                          &nbsp;&nbsp; Thẻ tín dụng
                         </div>
                       </a>
                       <a
@@ -351,14 +347,14 @@
                         <div class="row justify-content-right">
                           <div class="col-12">
                             <p class="mb-0 mr-4 text-right">
-                              Pay <span class="top-highlight">/span>
+                              Thanh toán <span class="top-highlight"></span>
                             </p>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="row justify-content-center">
-                      <div class="text-center" id="test">Pay</div>
+                      <div class="text-center" id="test">PAY</div>
                     </div>
                     <div class="tab-content">
                       <div id="menu1" class="tab-pane">
@@ -366,7 +362,7 @@
                           <div class="col-11">
                             <div class="form-card">
                               <h3 class="mt-0 mb-4 text-center">
-                                Enter bank details to pay
+                                Nhập chi tiết ngân hàng để thanh toán.
                               </h3>
                               <div>
                                 <div class="row">
@@ -377,7 +373,7 @@
                                         id="bk_nm"
                                         placeholder="BBB Bank"
                                       />
-                                      <label>BANK NAME</label>
+                                      <label>NGÂN HÀNG</label>
                                     </div>
                                   </div>
                                 </div>
@@ -390,7 +386,7 @@
                                         id="ben-nm"
                                         placeholder="John Smith"
                                       />
-                                      <label>BENEFICIARY NAME</label>
+                                      <label>TÊN HƯỞNG</label>
                                     </div>
                                   </div>
                                   <div class="col-12">
@@ -419,7 +415,7 @@
                                 <div class="row">
                                   <div class="col-md-12">
                                     <p class="text-center mb-5" id="below-btn">
-                                      <a href="#">Use a test card</a>
+                                      <a href="#">Sử dụng thẻ kiểm tra</a>
                                     </p>
                                   </div>
                                 </div>
@@ -433,7 +429,7 @@
                           <div class="col-11">
                             <div class="form-card">
                               <h3 class="mt-0 mb-4 text-center">
-                                Enter your card details to pay
+                                Nhập chi tiết thẻ của bạn để thanh toán.
                               </h3>
                               <div>
                                 <div class="row">
@@ -446,7 +442,7 @@
                                         minlength="19"
                                         maxlength="19"
                                       />
-                                      <label>CARD NUMBER</label>
+                                      <label>SỐ THẺ</label>
                                     </div>
                                   </div>
                                 </div>
@@ -461,7 +457,7 @@
                                         minlength="5"
                                         maxlength="5"
                                       />
-                                      <label>CARD EXPIRY</label>
+                                      <label>NGÀY THÁNG</label>
                                     </div>
                                   </div>
                                   <div class="col-6">
@@ -490,7 +486,7 @@
                                 <div class="row">
                                   <div class="col-md-12">
                                     <p class="text-center mb-5" id="below-btn">
-                                      <a href="#">Use a test card</a>
+                                      <a href="#">Sử dụng thẻ kiểm tra</a>
                                     </p>
                                   </div>
                                 </div>
@@ -503,7 +499,7 @@
                         <div class="row justify-content-center">
                           <div class="col-11">
                             <h3 class="mt-0 mb-4 text-center">
-                              Scan the QR code to pay
+                              QUÉT MÃ QR ĐỂ THANH TOÁN
                             </h3>
                             <div class="row justify-content-center">
                               <div id="qr">
@@ -528,11 +524,11 @@
 
       <div class="box-footer d-flex justify-content-between">
         <a class="btn btn-outline-secondary" id="deliveryCheckoutBtn">
-          Back<i class="fa fa-chevron-left"></i>
+          Quay lại<i class="fa fa-chevron-left"></i>
         </a>
 
         <a class="btn btn-primary" id="reviewCheckoutBtn">
-          Next<i class="fa fa-chevron-right"></i>
+          Tiếp tục<i class="fa fa-chevron-right"></i>
         </a>
       </div>
     </div>
@@ -547,10 +543,10 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th colspan="2">Product</th>
+                        <th colspan="2">Sản phẩm</th>
                         <th>Size</th>
-                        <th>Quantity</th>
-                        <th>Unit price</th>
+                        <th>Số lượng</th>
+                        <th>Giá thành/th>
                     </tr>
                 </thead>
                 <tbody>
@@ -570,11 +566,11 @@
                     <input id="totalProductCost" type="hidden" value="<%=total%>">
                 </tbody>
             </table>
-            <div id="deliveryChoice">Delivery method: </div>
-            <div id="deliveryCost">Shipping cost: </div>
+            <div id="deliveryChoice">Phương thức vận chuyển:</div>
+            <div id="deliveryCost">Phí vận chuyển:</div>
             <div id="total">Tổng tiền hàng: <%=total%>$</div>
-            <div id="totalCost">Total (*included ship and tax): </div> 
-            <div id="PaymentChoice">Payment: COD</div>
+            <div id="totalCost">Tổng (đã bao gồm phí ship và thuế): </div>
+            <div id="PaymentChoice">Thanh toán: COD</div>
             <input name="shipcost" id="shipcost" type="hidden" value="">
             <input name="payment" id="payment" type="hidden" value="COD">
         </div>
@@ -582,11 +578,11 @@
 
       <div class="box-footer d-flex justify-content-between">
         <a class="btn btn-outline-secondary" id="paymentCheckoutBtn">
-          Back<i class="fa fa-chevron-left"></i>
+          Quay lại<i class="fa fa-chevron-left"></i>
         </a>
 
         <button type="submit" class="btn btn-primary" id="confirmPurchase">
-          Next and confirm<i class="fa fa-chevron-right"></i>
+         Tiếp tục và xác nhận<i class="fa fa-chevron-right"></i>
         </button>
       </div>
     </div>

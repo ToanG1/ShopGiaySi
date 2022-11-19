@@ -10,7 +10,7 @@
         <div class="search-box">
 			<div class="container-1 d-flex align-items-center">
 				<button class="icon btn" style="margin-top: 8px;" id="searchBtn"><i class="fa fa-search"></i></button>
-				<input type="search" id="search" placeholder="Search..." />
+				<input type="search" id="search" placeholder="Tìm kiếm..." />
 			</div>
 		</div>
 		<div class="row justify-content-between">
@@ -21,18 +21,18 @@
 				<div class="toparea">
 					<div class="underlined-title">
 						<div class="editContent">
-							<h1 class="text-center latestitems">ADMIN LIST</h1>
+							<h1 class="text-center latestitems">DANH SÁCH ADMINS</h1>
 						</div>
 						<!-- 3 state button (lock, active, all) -->
 						<div class="o-switch btn-group" data-toggle="buttons" role="group" name="StateButton">
 							<label class="btn btn-primary active">
-							  <input type="radio" name="options" > All
+							  <input type="radio" name="options" > Tất cả
 							</label>
 							<label class="btn btn-primary">
-							  <input type="radio" name="options" id="false"  > Active
+							  <input type="radio" name="options" id="false"  > Hoạt động
 							</label>
 							<label class="btn btn-primary">
-							  <input type="radio" name="options" id="true" > Locked
+							  <input type="radio" name="options" id="true" > Đã khóa
 							</label>
 						        </div>
 						<!-- 3 state button (lock, active, all) -->
@@ -49,10 +49,10 @@
 							<thead>
 							  <tr>
 							    <th scope="col">#</th>
-							    <th scope="col">Name</th>
+							    <th scope="col">Têm</th>
 							    <th scope="col">Email</th>
-							    <th scope="col">Action</th>
-							    <th scope="col">Detail</th>
+							    <th scope="col">Trạng thái</th>
+							    <th scope="col">Chi tiết</th>
 							  </tr>
 							</thead>
 							<tbody>
@@ -64,9 +64,9 @@
 							    <td><%= user.email %></td>
 							    <td>
 								<% if(!user.isLock){ %>
-									<button id="<%= user._id %>" class="btn btn-danger btn-sm ActionOnUserBtn">Block</button>
+									<button id="<%= user._id %>" class="btn btn-danger btn-sm ActionOnUserBtn">Khóa</button>
 								<% }else{ %>
-									<button id="<%= user._id %>" class="btn btn-success btn-sm ActionOnUserBtn">Unblock</button>
+									<button id="<%= user._id %>" class="btn btn-success btn-sm ActionOnUserBtn">Mở khóa</button>
 								<% }%>
 							      </td>      
 							    <td>
@@ -90,7 +90,7 @@
 						  >
 							<% if (lastPage > 0) { %>
 							<ul class="pagination custom-hover">
-							  <li class="page-item custom-hover "><a class="page-link">First</a></li>
+							  <li class="page-item custom-hover "><a class="page-link">Đầu tiên</a></li>
 
 							  <% let i = (Number(currentPage) > 5 ? Number(currentPage) - 4 : 1) %> <%
 							  if (i !== 1) { %>
@@ -105,10 +105,10 @@
 							  <% } %> <% if (i == Number(currentPage) + 4 && i < lastPage) { %>
 							  <li class="page-item custom-hover"><a class="page-link">...</a></li>
 							  <% } %> <% } %> <% if (currentPage == lastPage) { %>
-							  <li class="page-item custom-hover"><a class="page-link">Last</a></li>
+							  <li class="page-item custom-hover"><a class="page-link">Cuối cùng</a></li>
 							  <% } else { %>
 							  <li>
-								<a class="page-link">Last</a>
+								<a class="page-link">Cuối cùng</a>
 							  </li>
 							  <% } %>
 							</ul>

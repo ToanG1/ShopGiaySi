@@ -1,12 +1,12 @@
 <div class="box info-bar">
   <div class="row">
     <div class="col-md-12 col-lg-4 p-0 products-showing">
-      Showing
+      Hiển thị
       <strong
         ><%= productsPerPage<=productsCount?productsPerPage:productsCount
         %></strong
       >
-      of <strong><%= productsCount %></strong> products
+      trên <strong><%= productsCount %></strong> sản phẩm
     </div>
     <div
       class="
@@ -20,7 +20,7 @@
       "
     >
       <div class="products-number">
-        <strong>Show</strong>
+        <strong>Hiển thị</strong>
         <%if(productsPerPage==12) {%>
         <a class="btn btn-primary btn-sm show-products-quantity">12</a>
         <%} else {%>
@@ -37,19 +37,19 @@
         <a class="btn btn-primary btn-sm show-products-quantity">All</a>
         <%} else {%>
         <a class="btn btn-outline-secondary btn-sm show-products-quantity"
-          >All</a
+          >Tất cả</a
         >
         <%}%>
 
-        <span>products</span>
+        <span>sản phẩm</span>
       </div>
       <div class="products-sort-by mt-2 mt-lg-0">
-        <strong>Sort by</strong>
+        <strong>Xếp xếp</strong>
         <select name="sort-by" class="form-control sort-by">
-          <option value="price">Price</option>
-          <option value="name">Name</option>
-          <option value="createdDate">Release date</option>
-          <option value="viewCount">View count</option>
+          <option value="price">Giá tiền</option>
+          <option value="name">Tên sản phẩm</option>
+          <option value="createdDate">Ngày sản xuất</option>
+          <option value="viewCount">Lượng người xem</option>
         </select>
         <span class="ml-1"
           ><button class="btn btn-primary sort-order" id="asc">
@@ -73,7 +73,7 @@
   >
     <% if (lastPage > 0) { %>
     <ul class="pagination">
-      <li class="page-item cursor-pointer"><a class="page-link">First</a></li>
+      <li class="page-item cursor-pointer"><a class="page-link">Đầu tiên</a></li>
       <% let i = (Number(currentPage) > 5 ? Number(currentPage) - 4 : 1) %> <%
       if (i !== 1) { %>
       <li class="page-item cursor-pointer"><a class="page-link">...</a></li>
@@ -92,7 +92,7 @@
       <li class="page-item cursor-pointer"><a class="page-link">Last</a></li>
       <% } else { %>
       <li>
-        <a class="page-link cursor-pointer">Last</a>
+        <a class="page-link cursor-pointer">Cuối cùng</a>
       </li>
       <% } %>
     </ul>

@@ -9,7 +9,7 @@
         src="/img/logo-small.png"
         alt="Hyper logo"
         class="d-inline-block d-md-none"
-      /><span class="sr-only">Hyper - go to homepage</span></a
+      /><span class="sr-only">Hyper - Đi tới trang chủ</span></a
     >
     <div class="navbar-buttons">
       <button
@@ -35,20 +35,20 @@
     </div>
     <div id="navigation" class="collapse navbar-collapse">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="/" class="nav-link">Trang chủ</a></li>
         <li class="nav-item dropdown menu-large">
           <a
             href="/products"
             data-hover="dropdown"
             data-delay="200"
             class="dropdown-toggle nav-link"
-            >Product<b class="caret"></b
+            >Sản phẩm<b class="caret"></b
           ></a>
           <ul class="dropdown-menu megamenu">
             <li>
               <div class="row">
                 <div class="col-md-6 col-lg-3">
-                  <h5>Category</h5>
+                  <h5>Loại giày</h5>
                   <ul class="list-unstyled mb-3">
                     <%for(c of categories.catsQty){%>
                     <li class="nav-item">
@@ -60,7 +60,7 @@
                   </ul>
                 </div>
                 <div class="col-md-6 col-lg-3">
-                  <h5>Brand</h5>
+                  <h5>Thương hiệu</h5>
                   <ul class="list-unstyled mb-3">
                     <%for(brand of brands){%>
                     <li class="nav-item">
@@ -77,9 +77,9 @@
         </li>
         <% if (user){ %>
         <li class="nav-item">
-          <a href="/user/profile" class="nav-link">Profile</a>
+          <a href="/user/profile" class="nav-link">Hồ sơ</a>
         </li>
-        <li class="nav-item"><a href="/order" class="nav-link">My Order</a></li>
+        <li class="nav-item"><a href="/order" class="nav-link">Đơn hàng của tôi</a></li>
         <% } %>
       </ul>
       <div class="navbar-buttons d-flex justify-content-end">
@@ -96,7 +96,7 @@
           class="navbar-collapse collapse d-none d-lg-block"
         >
           <a href="/cart" class="btn btn-primary navbar-btn"
-            ><i class="fa fa-shopping-cart"></i><span>CART</span></a
+            ><i class="fa fa-shopping-cart"></i><span>GIỎ HÀNG</span></a
           >
         </div>
       </div>
@@ -114,7 +114,7 @@
       <div class="input-group">
         <input
           type="text"
-          placeholder="Search"
+          placeholder="Tìm kiếm"
           class="form-control search"
           name="name"
         />

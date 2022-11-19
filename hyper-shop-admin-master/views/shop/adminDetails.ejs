@@ -21,26 +21,26 @@
         </div>
     </section>
     <div class="wrapper-profile bg-white mt-sm-5">
-        <h4 class="pb-4 border-bottom">Account Details</h4>
+        <h4 class="pb-4 border-bottom">Chi tiết tài khoản</h4>
         <div class="d-flex align-items-start py-3 border-bottom"> <img src="https://images.pexels.com/photos/1037995/pexels-photo-1037995.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="img" alt="">
             
         </div>
         <div class="py-2">
             <div class="row py-2">
-                <div class="col-md-6"> <label for="firstname">Name</label> <input type="text" class="bg-light form-control" value="<%= profile.name %>" readonly> </div>
+                <div class="col-md-6"> <label for="firstname">Tên</label> <input type="text" class="bg-light form-control" value="<%= profile.name %>" readonly> </div>
                 
             </div>
             <div class="row py-2">
-                <div class="col-md-6"> <label for="email">Email Address</label> <input type="text" class="bg-light form-control" value="<%= profile.email %>" readonly> </div>
-                <div class="col-md-6 pt-md-0 pt-3"> <label for="phone">Phone Number</label> <input type="tel" class="bg-light form-control" value="<%= profile.phone %>" readonly> </div>
+                <div class="col-md-6"> <label for="email">Email</label> <input type="text" class="bg-light form-control" value="<%= profile.email %>" readonly> </div>
+                <div class="col-md-6 pt-md-0 pt-3"> <label for="phone">Số điện thoại</label> <input type="tel" class="bg-light form-control" value="<%= profile.phone %>" readonly> </div>
             </div>
             
             </div>
             <div class="center" style="margin-top: 10px; margin-bottom: 0px">
                 <% if(!user.isLock){ %>
-                    <button id="<%= user._id %>" class="btn btn-danger btn-sm ActionOnUserBtn">Block</button>
+                    <button id="<%= user._id %>" class="btn btn-danger btn-sm ActionOnUserBtn">Khóa</button>
                 <% }else{ %>
-                    <button id="<%= user._id %>" class="btn btn-success btn-sm ActionOnUserBtn">Unblock</button>
+                    <button id="<%= user._id %>" class="btn btn-success btn-sm ActionOnUserBtn">Mở khóa</button>
                 <% }%>
             </div>
         </div>

@@ -16,8 +16,8 @@
               <div class="col-md-12 mx-auto" >
                 <div class="box text-center py-5">
                   <p class="text-center"><img src="/img/hyper-shop.png" alt="Hyper template"></p>
-                  <h3>Do not have any order yet</h3>
-                  <p class="buttons"><a href="/products" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Continue shopping</a></p>
+                  <h3>Chưa đặt đơn hàng nào</h3>
+                  <p class="buttons"><a href="/products" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Tiếp tục mua hàng</a></p>
                 </div>
               </div>
           </div>
@@ -31,7 +31,7 @@
         >
           <% if (lastPage > 0) { %>
           <ul class="pagination">
-            <li class="page-item cursor-pointer"><a href="/order?page=1" class="page-link">First</a></li>
+            <li class="page-item cursor-pointer"><a href="/order?page=1" class="page-link">Đầu tiên</a></li>
             <% let i = (Number(currentPage) > 5 ? Number(currentPage) - 4 : 1) %> <%
             if (i !== 1) { %>
             <li class="page-item cursor-pointer"><a class="page-link">...</a></li>
@@ -48,10 +48,10 @@
             <% } %> <% if (i == Number(currentPage) + 4 && i < lastPage) { %>
             <li  class="page-item cursor-pointer"><a class="page-link">...</a></li>
             <% } %> <% } %> <% if (currentPage == lastPage) { %>
-            <li  class="page-item cursor-pointer"><a href="/order?page=<%= lastPage %>" class="page-link">Last</a></li>
+            <li  class="page-item cursor-pointer"><a href="/order?page=<%= lastPage %>" class="page-link">Cuối cùng</a></li>
             <% } else { %>
             <li>
-              <a href="/order?page=<%= lastPage %>" class="page-link cursor-pointer">Last</a>
+              <a href="/order?page=<%= lastPage %>" class="page-link cursor-pointer">Cuối cùng</a>
             </li>
             <% } %>
           </ul>

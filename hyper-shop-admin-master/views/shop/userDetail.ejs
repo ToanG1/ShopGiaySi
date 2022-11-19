@@ -9,7 +9,7 @@
             <div class="container toparea">
                 <div class="underlined-title">
                     <div class="editContent">
-                        <h1 class="text-center latestitems">User Profile</h1>
+                        <h1 class="text-center latestitems">Hồ sơ người dùng</h1>
                     </div>
                     <div class="wow-hr type_short">
                         <span class="wow-hr-h">
@@ -22,7 +22,7 @@
             </div>
         </section>
         <div class="wrapper-profile bg-white mt-sm-5">
-            <h4 class="pb-4 border-bottom">User Detail Profile</h4>
+            <h4 class="pb-4 border-bottom">Chi tiết hồ sơ người dùng</h4>
             <div class="d-flex align-items-start py-3 border-bottom"> <img
                     src="https://images.pexels.com/photos/1037995/pexels-photo-1037995.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
                     class="img" alt="">
@@ -30,26 +30,26 @@
             <div class="py-2">
                 <div class="row py-2">
     
-                    <div class="col-md-6"> <label for="firstname">Name</label> <input readonly type="text" class="bg-light form-control" name="name" value="<%= user.name %>"> </div>
-                    <div class="col-md-6 pt-md-0 pt-3"> <label for="lastname">Address</label> <input readonly type="text" class="bg-light form-control" name="address" value="<%= user.address %>"> </div>
+                    <div class="col-md-6"> <label for="firstname">Tên</label> <input readonly type="text" class="bg-light form-control" name="name" value="<%= user.name %>"> </div>
+                    <div class="col-md-6 pt-md-0 pt-3"> <label for="lastname">Địa chỉ</label> <input readonly type="text" class="bg-light form-control" name="address" value="<%= user.address %>"> </div>
                 </div>
                 <div class="row py-2">
-                    <div class="col-md-6"> <label for="email">Email Address</label> <input readonly type="text" class="bg-light form-control" name="email" value="<%= user.email %>"> </div>
-                    <div class="col-md-6 pt-md-0 pt-3"> <label for="phone">Phone Number</label> <input readonly type="tel" class="bg-light form-control" name="phone" value="<%= user.phone %>"> </div>
+                    <div class="col-md-6"> <label for="email">Email</label> <input readonly type="text" class="bg-light form-control" name="email" value="<%= user.email %>"> </div>
+                    <div class="col-md-6 pt-md-0 pt-3"> <label for="phone">Số diện thoại</label> <input readonly type="tel" class="bg-light form-control" name="phone" value="<%= user.phone %>"> </div>
                 </div>
             </div>
             <div class="center" style="margin-top: 10px; margin-bottom: 0px">
                 <% if(!user.isLock){ %>
-                    <button id="<%= user._id %>" class="btn btn-danger btn-sm ActionOnUserBtn">Block</button>
+                    <button id="<%= user._id %>" class="btn btn-danger btn-sm ActionOnUserBtn">Khóa</button>
                 <% }else{ %>
-                    <button id="<%= user._id %>" class="btn btn-success btn-sm ActionOnUserBtn">Unblock</button>
+                    <button id="<%= user._id %>" class="btn btn-success btn-sm ActionOnUserBtn">Mở khóa</button>
                 <% }%>
             </div>
         </div>
         <div class="center">
             <a href="/users">
                 <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-chevron-left"></i>&nbsp; Back to User list 
+                    <i class="fas fa-chevron-left"></i>&nbsp; Quay lại danh sách người dùng
                 </button>
             </a>
         </div>

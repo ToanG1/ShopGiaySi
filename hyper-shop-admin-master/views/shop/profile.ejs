@@ -8,7 +8,7 @@
         <div class="container toparea">
             <div class="underlined-title">
                 <div class="editContent">
-                    <h1 class="text-center latestitems">My Profile</h1>
+                    <h1 class="text-center latestitems">HỒ SƠ</h1>
                 </div>
                 <div class="wow-hr type_short">
                     <span class="wow-hr-h">
@@ -21,7 +21,7 @@
         </div>
     </section>
     <div class="wrapper-profile bg-white mt-sm-5">
-        <h4 class="pb-4 border-bottom">Account settings</h4>
+        <h4 class="pb-4 border-bottom">Cài đặt tài khoản</h4>
       
         <form action="/admins/profile" method="POST">
             <!-- Errors display -->
@@ -37,20 +37,20 @@
         <div class="py-2">
             <div class="row py-2">
 
-                <div class="col-md-6"> <label for="firstname">Name</label> <input autocomplete="off" type="text" class="bg-light form-control" name="name" value="<%= user.name %>"> </div>
-                <div class="col-md-6 pt-md-0 pt-3"> <label for="lastname">Address</label> <input autocomplete="off" type="text" class="bg-light form-control" name="address" value="<%= user.address %>"> </div>
+                <div class="col-md-6"> <label for="firstname">Tên</label> <input autocomplete="off" type="text" class="bg-light form-control" name="name" value="<%= user.name %>"> </div>
+                <div class="col-md-6 pt-md-0 pt-3"> <label for="lastname">Địa chỉ</label> <input autocomplete="off" type="text" class="bg-light form-control" name="address" value="<%= user.address %>"> </div>
             </div>
             <div class="row py-2">
-                <div class="col-md-6"> <label for="email">Email Address</label> <input readonly type="text" class="bg-light form-control" name="email" value="<%= user.email %>"> </div>
-                <div class="col-md-6 pt-md-0 pt-3"> <label for="phone">Phone Number</label> <input autocomplete="off" type="number" class="bg-light form-control" name="phone" value="<%= user.phone %>"> </div>
+                <div class="col-md-6"> <label for="email">Email</label> <input readonly type="text" class="bg-light form-control" name="email" value="<%= user.email %>"> </div>
+                <div class="col-md-6 pt-md-0 pt-3"> <label for="phone">Số diện thoại</label> <input autocomplete="off" type="number" class="bg-light form-control" name="phone" value="<%= user.phone %>"> </div>
 
             </div>
         </div>
     </div>
     <div id="save-profile">
-        <a style="margin-right: 20px;"class="btn btn-warning" href="/admins/updatepassword">Change password</a>
+        <a style="margin-right: 20px;"class="btn btn-warning" href="/admins/updatepassword">Đổi mật khẩu</a>
 
-            <button>Save changes</button>
+            <button>Xác nhận lưu</button>
         </div>
     </form>
     <%- include('../includes/foot')%>
