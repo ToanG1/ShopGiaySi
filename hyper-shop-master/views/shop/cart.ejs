@@ -19,7 +19,7 @@
                                 </ol>
                             </nav>
                         </div>
-                        <div id="basket" class="col-lg-9">
+                        <div id="basket" >
                             <% if(user) { %>
                                 <%- include('../includes/cart/cartTable', {cart, isReview: false}) %>
                             <% } else {  %>
@@ -27,30 +27,6 @@
                             <% } %>                           
                         </div>
                         <!-- ORDER SUMMARY =========================================== -->
-                        <div class="col-lg-3">
-                            <div id="advantages" >
-                                <div class="container">
-                                    <div class="row mb-4 display-column">
-                                        <div class="col-md-12">
-                                            <div class="box clickable d-flex flex-column justify-content-center mb-0 h-100">
-                                                <div class="icon"><i class="fa fa-heart"></i></div>
-                                                <h3><a href="#">Chúng tôi tự về sản phẩm của mình</a></h3>
-                                                <p class="mb-0">Sản phẩm của cửa hàng luôn đạt chất lượng cao nhất có thể.</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="box clickable d-flex flex-column justify-content-center mb-0 h-100">
-                                                <div class="icon"><i class="fa fa-tags"></i></div>
-                                                <h3><a href="#">Giá thành tốt nhất</a></h3>
-                                                <p class="mb-0">Các sản phẩm ở cửa hàng luôn được bán với giá thành tốt nhất có thể.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- /.row-->
-                                </div>
-                                <!-- /.container-->
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

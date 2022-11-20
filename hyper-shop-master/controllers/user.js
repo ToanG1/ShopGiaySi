@@ -14,11 +14,11 @@ exports.postProfile = async (req, res, next) => {
   const { name, phone, address } = req.body; //lấy các thông tin name, email,... từ requestz
   let errors = [];
   if (!name || !phone || !address) {
-    errors.push({ msg: "Please enter all fields" });
+    errors.push({ msg: "Vui lòng điền đầy đủ thông tin" });
   }
   var phoneRegerx = /^([0][1-9]{9})$/;
   if (!phoneRegerx.test(phone)) {
-    errors.push({ msg: "Phone number need to be 10-digit format" });
+    errors.push({ msg: "Số điện thoại phải có 10 chữ số" });
   }
   if (errors.length > 0) {
     return res.status(400).render("shop/profile", {
@@ -62,14 +62,14 @@ exports.postUpdatePassword = async (req, res, next) => {
     };
     const remp = await UserService.updatePassword(user);
     res.render("auth/updatePassword", {
-      success_msg: "Password changed",
+      success_msg: "Đã thay đổi mật khẩu",
       categories: await ProductService.getCategoriesQuantity(),
       brands: await ProductService.getBrands(),
       user: req.user,
     });
   }
   res.render("auth/updatePassword", {
-    errors: [{ msg: "Wrong current password" }],
+    errors: [{ msg: "Mật khẩu hiện tại sai" }],
     categories: await ProductService.getCategoriesQuantity(),
     brands: await ProductService.getBrands(),
     user: req.user,

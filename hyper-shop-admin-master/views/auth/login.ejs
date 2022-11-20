@@ -5,13 +5,8 @@
 
    <body>
       <%- include('../includes/subHeader',{user})%>
-      <div class="overlay">
-         <div class="shop-name">
-            <h1>HYPER SHOP</h1>
-         </div>
-
          <!-- LOGN IN FORM by Omar Dsoky -->
-         <form method="POST">
+         <form method="POST" class="login__form">
             <!--   con = Container  for items in the form-->
             <div class="con">
                <!--     Start  header Content  -->
@@ -26,28 +21,12 @@
                <br>
                <div class="field-set">
 
-                  <!--   user name -->
-                  <span class="input-item">
-                     <i class="fa fa-user-circle"></i>
-                  </span>
                   <!--   user name Input-->
                   <input class="form-input" id="txt-input" type="text" placeholder="Tài khoản" name="email" required>
 
                   <br>
 
-                  <!--   Password -->
-
-                  <span class="input-item">
-                     <i class="fa fa-key"></i>
-                  </span>
-                  <!--   Password Input-->
                   <input class="form-input" type="password" placeholder="Mật khẩu" id="pwd" name="password" required>
-
-                  <!--      Show/hide password  -->
-                  <span>
-                     <i class="fa fa-eye" aria-hidden="true" type="button" id="eye"></i>
-                  </span>
-
 
                   <br>
                   <!--        buttons -->
@@ -75,7 +54,6 @@
             <!-- End Form -->
          </form>
       </div>
-      <%- include('../includes/foot')%>
    </body>
    <script src="/ajax/auth-ajax.js"></script>
 

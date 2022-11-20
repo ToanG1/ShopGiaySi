@@ -33,26 +33,26 @@ exports.signup = async (req, res, next) => {
   let user = {name, email, phone, password, confirmPassword};
   let errors = [];
   if (!name || !email || !phone || !password || !confirmPassword) {
-    errors.push({msg: 'Please enter all fields'});
+    errors.push({msg: 'Vui lòng điền hết thông tin'});
   }
 
   if (password.length == 0 || password != confirmPassword) {
-    errors.push({msg: 'Passwords do not match'});
+    errors.push({msg: 'Mật khẩu không trùng khớp'});
   }
 
   var phoneRegerx = /^([0][1-9]{9})$/;
   if (!phoneRegerx.test(phone)) {
-    errors.push({msg: 'Phone number need to be 10-digit format'});
+    errors.push({msg: 'Số điện phải 10 chữ số'});
   }
   //check email format
   var emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
   if (!emailRegex.test(email)) {
-    errors.push({msg: 'Email is invalid'});
+    errors.push({msg: 'Email không hợp lệ'});
   }
   //Check existed email
   const existsUser = await authService.getUserLean({email: email});
   if (existsUser) {
-    errors.push({msg: 'Email already registered'});
+    errors.push({msg: 'Email đã tồn tại'});
   }
   if (errors.length > 0) {
     return res.status(400).render('auth/signup', {
@@ -83,7 +83,7 @@ exports.signup = async (req, res, next) => {
         //validation pass -> save to db
         await authService.signup(user);
         return res.status(200).render('auth/signup', {
-          success_msg: 'Sign up success, verify email to log in',
+          success_msg: 'Đăng ký thành công, chờ xác nhận email để đăng nhập',
           categories: await ProductService.getCategoriesQuantity(),
           brands: await ProductService.getBrands(),
           user: req.user,
@@ -124,7 +124,7 @@ exports.postReset = async (req, res, next) => {
   const user = await authService.getUser({email: req.body.email});
   if (!user) {
     return res.render('auth/reset', {
-      errors: [{msg: 'This email is not registed yet!!!'}],
+      errors: [{msg: 'Email này chưa được đăng ký!!!'}],
       user: req.user,
       categories: await ProductService.getCategoriesQuantity(),
       brands: await ProductService.getBrands(),
@@ -143,7 +143,7 @@ exports.postReset = async (req, res, next) => {
   });
   try {
     res.render('auth/reset', {
-      success_msg: 'Check your email to reset password',
+      success_msg: 'Kiểm tra email để xác nhận mật khẩu mới',
       user: req.user,
       categories: await ProductService.getCategoriesQuantity(),
       brands: await ProductService.getBrands(),
@@ -185,6 +185,7 @@ exports.getNewPassword = async (req, res, next) => {
     resetToken: req.params.token,
   });
 };
+
 exports.postNewPassword = async (req, res, next) => {
   const {password, userId, resetToken} = req.body;
   //TODO: match password
@@ -206,7 +207,7 @@ exports.postNewPassword = async (req, res, next) => {
   //if token is valid
   else {
     res.render('auth/signin', {
-      success_msg: 'Reset password successfully, login here',
+      success_msg: 'Cập nhật mật khẩu mới thành công',
       categories: await ProductService.getCategoriesQuantity(),
       brands: await ProductService.getBrands(),
       user: user,
@@ -237,7 +238,7 @@ exports.emailVerify = async (req, res, next) => {
     user.verifyTokenExpiration = undefined;
     await UserService.saveUser(user);
     res.render('auth/updatePassword', {
-      success_msg: 'Account verify, you can login now',
+      success_msg: 'Tài khoản được cập nhật, hãy đăng nhập',
       categories: await ProductService.getCategoriesQuantity(),
       brands: await ProductService.getBrands(),
       user: req.user,
