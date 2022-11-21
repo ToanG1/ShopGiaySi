@@ -27,7 +27,9 @@
                 data-toggle="dropdown"
                 aria-expanded="false"
               >
-                <%=order.status%>
+                <%if (order.status == "Pending") {%> Chờ xử lý <%}%> <%if
+                (order.status == "Delivering") {%> Đang giao <%}%> <%if
+                (order.status == "Delivered") {%> Đã giao <%}%>
               </button>
               <div
                 class="dropdown-menu"
@@ -39,7 +41,7 @@
                     class="dropdown-item card-item data-status"
                     id="Pending-<%=order._id%>"
                   >
-                    Đang chờ
+                    Chờ xử lý
                   </div>
                   <div
                     class="dropdown-item card-item data-status"
@@ -58,7 +60,9 @@
             </div>
           </td>
           <td>
-            <a href="/orders/<%=order._id%>" class="btn btn-primary">Chi tiết</a>
+            <a href="/orders/<%=order._id%>" class="btn btn-primary"
+              >Chi tiết</a
+            >
           </td>
         </tr>
         <% } %>

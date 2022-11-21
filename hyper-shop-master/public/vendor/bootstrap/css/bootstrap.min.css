@@ -202,7 +202,7 @@ caption {
   caption-side: bottom;
 }
 th {
-  text-align: right;
+  text-align: left;
 }
 label {
   display: inline-block;

@@ -174,7 +174,7 @@
           <i class="fa fa-chevron-left"></i>Trở lại giỏ hàng
         </a>
 
-        <a class="btn btn-primary" id="deliveryCheckoutBtn">
+        <a class="btn btn-primary deliveryCheckoutBtn">
           <i class="fa fa-chevron-right"></i>Tiếp tục
         </a>
       </div>
@@ -220,11 +220,11 @@
       </div>
 
       <div class="box-footer d-flex justify-content-between">
-        <a class="btn btn-outline-secondary" id="addressCheckoutBtn">
+        <a class="btn btn-outline-secondary addressCheckoutBtn">
           Trở lại<i class="fa fa-chevron-left"></i>
         </a>
 
-        <a class="btn btn-primary" id="paymentCheckoutBtn">
+        <a class="btn btn-primary paymentCheckoutBtn" >
           Tiếp tục<i class="fa fa-chevron-right"></i>
         </a>
       </div>
@@ -415,11 +415,11 @@
       </div>
 
       <div class="box-footer d-flex justify-content-between">
-        <a class="btn btn-outline-secondary" id="deliveryCheckoutBtn">
+        <a class="btn btn-outline-secondary deliveryCheckoutBtn">
           Quay lại<i class="fa fa-chevron-left"></i>
         </a>
 
-        <a class="btn btn-primary" id="reviewCheckoutBtn">
+        <a class="btn btn-primary reviewCheckoutBtn">
           Tiếp tục<i class="fa fa-chevron-right"></i>
         </a>
       </div>
@@ -477,7 +477,7 @@
         <% } %>
 
           <div class="box-footer d-flex justify-content-between">
-            <a class="btn btn-outline-secondary" id="paymentCheckoutBtn">
+            <a class="btn btn-outline-secondary paymentCheckoutBtn" >
               Quay lại<i class="fa fa-chevron-left"></i>
             </a>
 
@@ -503,12 +503,12 @@
   const paymentNavBtn = document.getElementById("paymentNavBtn");
   const reviewNavBtn = document.getElementById("reviewNavBtn");
 
-  const addressCheckoutBtn = document.getElementById("addressCheckoutBtn");
-  const deliveryCheckoutBtn = document.getElementById("deliveryCheckoutBtn");
-  const paymentCheckoutBtn = document.getElementById("paymentCheckoutBtn");
-  const reviewCheckoutBtn = document.getElementById("reviewCheckoutBtn");
+  const addressCheckoutBtn = document.getElementsByClassName("addressCheckoutBtn");
+  const deliveryCheckoutBtn = document.getElementsByClassName("deliveryCheckoutBtn");
+  const paymentCheckoutBtn = document.getElementsByClassName("paymentCheckoutBtn");
+  const reviewCheckoutBtn = document.getElementsByClassName("reviewCheckoutBtn");
 
-  addressCheckoutBtn.addEventListener("click", (e) => {
+  const addressHandler = async (e) => {
     console.log("click next to address");
     e.preventDefault();
     address.classList.remove("hidden");
@@ -524,9 +524,8 @@
     paymentNavBtn.classList.remove("active");
     reviewNavBtn.classList.add("disabled");
     reviewNavBtn.classList.remove("active");
-  });
-
-  deliveryCheckoutBtn.addEventListener("click", (e) => {
+  };
+  const deliveryHandler = async (e) => {
     var addressText = document.getElementById("destinationAddress");
     addressText.innerHTML += document.getElementById("address").value;
 
@@ -545,9 +544,8 @@
     paymentNavBtn.classList.remove("active");
     reviewNavBtn.classList.add("disabled");
     reviewNavBtn.classList.remove("active");
-  });
-
-  paymentCheckoutBtn.addEventListener("click", (e) => {
+  };
+  const paymentHandler = async (e) => {
     console.log("click next to payment");
     e.preventDefault();
     address.classList.add("hidden");
@@ -563,9 +561,8 @@
     addressNavBtn.classList.remove("active");
     reviewNavBtn.classList.add("disabled");
     reviewNavBtn.classList.remove("active");
-  });
-
-  reviewCheckoutBtn.addEventListener("click", (e) => {
+  };
+  const reviewHandler = async (e) => {
     console.log("click next to review");
     e.preventDefault();
     address.classList.add("hidden");
@@ -581,7 +578,6 @@
     paymentNavBtn.classList.remove("active");
     addressNavBtn.classList.add("disabled");
     addressNavBtn.classList.remove("active");
-
     // Review Order 
     const sourceAddress = document.getElementById("sourceAddress").innerText;
     const destinationAddress = document.getElementById("destinationAddress").innerText;
@@ -590,7 +586,21 @@
     const destinationAddressReview = document.getElementById("destinationAddressReview");
     sourceAddressReview.innerText = sourceAddress;
     destinationAddressReview.innerText = destinationAddress;
-  });
+  };
+    
+
+    for (let btn of addressCheckoutBtn) {
+      btn.addEventListener("click", addressHandler);
+    }
+    for (let btn of deliveryCheckoutBtn) {
+      btn.addEventListener("click", deliveryHandler);
+    }
+    for (let btn of paymentCheckoutBtn) {
+      btn.addEventListener("click", paymentHandler);
+    }
+    for (let btn of reviewCheckoutBtn) {
+      btn.addEventListener("click", reviewHandler);
+    }
 
   //Delivery option
   const fastOption = document.getElementById("fastOption");
