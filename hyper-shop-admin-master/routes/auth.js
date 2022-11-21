@@ -8,13 +8,13 @@ const router = express.Router();
 
 router.get("/login", checkNotAuthenticated, authController.getLogin);
 
-// router.post("/login", checkNotAuthenticated, (req, res, next) =>
-//   passport.authenticate("local", {
-//     successRedirect: "/",
-//     failureRedirect: "/auth/login",
-//     failureFlash: true,
-//   })(req, res, next)
-// );
+router.post("/login", checkNotAuthenticated, (req, res, next) =>
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/auth/login",
+    failureFlash: true,
+  })(req, res, next)
+);
 
 router.get("/logout", (req, res, next) => {
   req.logout();

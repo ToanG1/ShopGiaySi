@@ -1,6 +1,6 @@
 <div class="box">
   <form method="post" action="/order">
-<!-- <<<<<<< HEAD -->
+    <!-- <<<<<<< HEAD -->
     <!-- <h1>Checkout - Address</h1>
     <div class="nav flex-column flex-md-row nav-pills text-center">
       <button
@@ -19,55 +19,31 @@
     </div>
 
     <div class="content py-3" id="addressView"> -->
-<!-- // -->
+    <!-- // -->
     <!--Header nav-->
     <h1>Kiểm tra</h1>
     <div class="nav flex-column flex-md-row nav-pills text-center">
-      <a
-        href="checkout1.html"
-        class="nav-link flex-sm-fill text-sm-center active"
-        id="addressNavBtn"
-      >
-        <i class="fa fa-map-marker"> </i>Địa chỉ</a
-      ><a
-        href="#"
-        class="nav-link flex-sm-fill text-sm-center disabled"
-        id="deliveryNavBtn"
-      >
-        <i class="fa fa-truck"> </i>Phương thức vận chuyển</a
-      ><a
-        href="#"
-        class="nav-link flex-sm-fill text-sm-center disabled"
-        id="paymentNavBtn"
-      >
-        <i class="fa fa-money"> </i>Phương thức thanh toán</a
-      ><a
-        href="#"
-        class="nav-link flex-sm-fill text-sm-center disabled"
-        id="reviewNavBtn"
-      >
-        <i class="fa fa-eye"> </i>Đánh giá đơn hàng</a
-      >
+      <a href="checkout1.html" class="nav-link flex-sm-fill text-sm-center active" id="addressNavBtn">
+        <i class="fa fa-map-marker"> </i>Địa chỉ</a><a href="#" class="nav-link flex-sm-fill text-sm-center disabled"
+        id="deliveryNavBtn">
+        <i class="fa fa-truck"> </i>Phương thức vận chuyển</a><a href="#"
+        class="nav-link flex-sm-fill text-sm-center disabled" id="paymentNavBtn">
+        <i class="fa fa-money"> </i>Phương thức thanh toán</a><a href="#"
+        class="nav-link flex-sm-fill text-sm-center disabled" id="reviewNavBtn">
+        <i class="fa fa-eye"> </i>Đánh giá đơn hàng</a>
     </div>
 
     <!--Address-->
     <div class="content py-3" id="addressCheckout">
-<!-- >>>>>>> origin/master -->
+      <!-- >>>>>>> origin/master -->
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
-            <label for="name">Tên sản phẩm</label>
-            <input
-              name="name"
-              id="name"
-              type="text"
-              readonly
-              class="form-control"
-              value="<%=user.name%>"
-            />
+            <label for="name">Tên người nhận</label>
+            <input name="name" id="name" type="text" readonly class="form-control" value="<%=user.name%>" />
           </div>
-<!-- <<<<<<< HEAD -->
-        <!-- </div>
+          <!-- <<<<<<< HEAD -->
+          <!-- </div>
         <div class="col-md-6">
           <div class="form-group">
             <label for="email">Email</label>
@@ -168,19 +144,12 @@
     </div>
   </form>
 </div> -->
-<!-- // -->
+          <!-- // -->
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <label for="email">Email</label>
-            <input
-              name="email"
-              id="email"
-              type="email"
-              readonly
-              class="form-control"
-              value="<%=user.email%>"
-            />
+            <input name="email" id="email" type="email" readonly class="form-control" value="<%=user.email%>" />
           </div>
         </div>
       </div>
@@ -189,29 +158,14 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="phone">Số điện thoại</label>
-            <input
-              name="phone"
-              id="phone"
-              type="text"
-              required
-              class="form-control"
-              maxlength="10"
-              onkeypress="return onlyNumberKey(event)"
-              value="<%=user.phone%>"
-            />
+            <input name="phone" id="phone" type="text" required class="form-control" maxlength="10"
+              onkeypress="return onlyNumberKey(event)" value="<%=user.phone%>" />
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <label for="address">Địa chỉ</label>
-            <input
-              name="address"
-              id="address"
-              type="text"
-              required
-              class="form-control"
-              value="<%=user.address%>"
-            />
+            <input name="address" id="address" type="text" required class="form-control" value="<%=user.address%>" />
           </div>
         </div>
       </div>
@@ -233,14 +187,16 @@
           <div class="delivery-option-item" id="fastOption">
             <label class="btn delivery-label" for="">Nhanh</label>
             <p>
-              Giao hàng vào 2 ngày sau thời gian thanh toán trong trạng thái và 3 ngày ra khỏi trạng thái. Chọn ngày và giờ phù hợp với mong muốn của bạn, thay đổi thông tin sau khi thanh toán.
+              Giao hàng vào 2 ngày sau thời gian thanh toán trong trạng thái và 3 ngày ra khỏi trạng thái. Chọn ngày và
+              giờ phù hợp với mong muốn của bạn, thay đổi thông tin sau khi thanh toán.
             </p>
           </div>
 
           <div class="delivery-option-item" id="normalOption">
             <label class="btn delivery-label" for="">Bình thường</label>
             <p>
-              Giao hàng vào 3 ngày sau thời gian thanh toán trong trạng thái và 4 ngày ra khỏi trạng thái. Thay đổi thông tin sau khi thanh toán.
+              Giao hàng vào 3 ngày sau thời gian thanh toán trong trạng thái và 4 ngày ra khỏi trạng thái. Thay đổi
+              thông tin sau khi thanh toán.
             </p>
           </div>
 
@@ -252,12 +208,14 @@
           </div>
         </div>
         <div id="delivery-cost">
-          <label>Giá vận chuyển</label>
-          <div id="sourceAddress">Từ: 5 New Ustria, Horizontal, Florida</div>
-          <div id="destinationAddress">Đến:</div>
-          <div id="cost">Vận chuyển và xử lý:</div>
-          <div id="tax">Phí:</div>
-          <div>Tổng: </div> <div id="total"></div>
+          <div>
+            <label class="delivery-cost-label">Giá vận chuyển</label>
+            <div id="sourceAddress">Từ: số 1 Võ Văn Ngân, Linh Trung, Thủ đức, Tp.HCM</div>
+            <div id="destinationAddress">Đến:</div>
+            <div id="cost">Vận chuyển và xử lý:</div>
+            <div class="delivery-cost-item">Thuế: <span id="tax">0.0$</div>
+          </div>
+          <div class="delivery-cost-item total"><span>Tổng: </span><span id="total">0.0$</span></div>
         </div>
       </div>
 
@@ -287,34 +245,19 @@
                       <strong>THANH TOÁN BẰNG</strong>
                     </div>
                     <div class="list-group list-group-flush">
-                      <a
-                        data-toggle="tab"
-                        href="#menu1"
-                        id="tab1"
-                        class="tabs list-group-item bg-light"
-                      >
+                      <a data-toggle="tab" href="#menu1" id="tab1" class="tabs list-group-item bg-light">
                         <div class="list-div my-2">
                           <div class="fa fa-home"></div>
                           &nbsp;&nbsp; Chuyển khoản
                         </div>
                       </a>
-                      <a
-                        data-toggle="tab"
-                        href="#menu2"
-                        id="tab2"
-                        class="tabs list-group-item active"
-                      >
+                      <a data-toggle="tab" href="#menu2" id="tab2" class="tabs list-group-item active">
                         <div class="list-div my-2">
                           <div class="fa fa-credit-card"></div>
                           &nbsp;&nbsp; Thẻ tín dụng
                         </div>
                       </a>
-                      <a
-                        data-toggle="tab"
-                        href="#menu3"
-                        id="tab3"
-                        class="tabs list-group-item bg-light"
-                      >
+                      <a data-toggle="tab" href="#menu3" id="tab3" class="tabs list-group-item bg-light">
                         <div class="list-div my-2">
                           <div class="fa fa-qrcode"></div>
                           &nbsp;&nbsp;&nbsp; Visa QR
@@ -327,14 +270,7 @@
                   <div id="page-content-wrapper">
                     <div class="row pt-3" id="border-btm">
                       <div class="col-4">
-                        <button
-                          class="btn btn-success mt-4 ml-3 mb-3"
-                          id="menu-toggle"
-                        >
-                          <div class="bar4"></div>
-                          <div class="bar4"></div>
-                          <div class="bar4"></div>
-                        </button>
+
                       </div>
                       <div class="col-8">
                         <div class="row justify-content-right">
@@ -368,11 +304,7 @@
                                 <div class="row">
                                   <div class="col-12">
                                     <div class="input-group">
-                                      <input
-                                        type="text"
-                                        id="bk_nm"
-                                        placeholder="BBB Bank"
-                                      />
+                                      <input type="text" id="bk_nm" placeholder="BBB Bank" />
                                       <label>NGÂN HÀNG</label>
                                     </div>
                                   </div>
@@ -380,36 +312,21 @@
                                 <div class="row">
                                   <div class="col-12">
                                     <div class="input-group">
-                                      <input
-                                        type="text"
-                                        name="ben_nm"
-                                        id="ben-nm"
-                                        placeholder="John Smith"
-                                      />
+                                      <input type="text" name="ben_nm" id="ben-nm" placeholder="John Smith" />
                                       <label>TÊN HƯỞNG</label>
                                     </div>
                                   </div>
                                   <div class="col-12">
                                     <div class="input-group">
-                                      <input
-                                        type="text"
-                                        name="scode"
-                                        placeholder="ABCDAB1S"
-                                        class="placeicon"
-                                        minlength="8"
-                                        maxlength="11"
-                                      />
+                                      <input type="text" name="scode" placeholder="ABCDAB1S" class="placeicon"
+                                        minlength="8" maxlength="11" />
                                       <label>SWIFT CODE</label>
                                     </div>
                                   </div>
                                 </div>
                                 <div class="row">
                                   <div class="col-md-12">
-                                    <input
-                                      type="submit"
-                                      value="Pay"
-                                      class="btn btn-success placeicon"
-                                    />
+                                    <input type="submit" value="Pay" class="btn btn-success placeicon" />
                                   </div>
                                 </div>
                                 <div class="row">
@@ -435,13 +352,8 @@
                                 <div class="row">
                                   <div class="col-12">
                                     <div class="input-group">
-                                      <input
-                                        type="text"
-                                        id="cr_no"
-                                        placeholder="0000 0000 0000 0000"
-                                        minlength="19"
-                                        maxlength="19"
-                                      />
+                                      <input type="text" id="cr_no" placeholder="0000 0000 0000 0000" minlength="19"
+                                        maxlength="19" />
                                       <label>SỐ THẺ</label>
                                     </div>
                                   </div>
@@ -449,38 +361,22 @@
                                 <div class="row">
                                   <div class="col-6">
                                     <div class="input-group">
-                                      <input
-                                        type="text"
-                                        name="exp"
-                                        id="exp"
-                                        placeholder="MM/YY"
-                                        minlength="5"
-                                        maxlength="5"
-                                      />
+                                      <input type="text" name="exp" id="exp" placeholder="MM/YY" minlength="5"
+                                        maxlength="5" />
                                       <label>NGÀY THÁNG</label>
                                     </div>
                                   </div>
                                   <div class="col-6">
                                     <div class="input-group">
-                                      <input
-                                        type="password"
-                                        name="cvcpwd"
-                                        placeholder="&#9679;&#9679;&#9679;"
-                                        class="placeicon"
-                                        minlength="3"
-                                        maxlength="3"
-                                      />
+                                      <input type="password" name="cvcpwd" placeholder="&#9679;&#9679;&#9679;"
+                                        class="placeicon" minlength="3" maxlength="3" />
                                       <label>CVV</label>
                                     </div>
                                   </div>
                                 </div>
                                 <div class="row">
                                   <div class="col-md-12">
-                                    <input
-                                      type="submit"
-                                      value="Pay"
-                                      class="btn btn-success placeicon"
-                                    />
+                                    <input type="submit" value="Pay" class="btn btn-success placeicon" />
                                   </div>
                                 </div>
                                 <div class="row">
@@ -503,11 +399,7 @@
                             </h3>
                             <div class="row justify-content-center">
                               <div id="qr">
-                                <img
-                                  src="https://i.imgur.com/DD4Npfw.jpg"
-                                  width="200px"
-                                  height="200px"
-                                />
+                                <img src="https://i.imgur.com/DD4Npfw.jpg" width="200px" height="200px" />
                               </div>
                             </div>
                           </div>
@@ -535,56 +427,64 @@
 
     <!--Order Review-->
     <div class="hidden" id="reviewCheckout">
-      
+
       <% if(cart) { %>
         <div class="table-responsive">
           <div id="sourceAddressReview"></div>
           <div id="destinationAddressReview"></div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th colspan="2">Sản phẩm</th>
-                        <th>Size</th>
-                        <th>Số lượng</th>
-                        <th>Giá thành/th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% let total = 0%>
-                    <% for (let i=0;i<cart.orderItems.length;i++) { %>
-                    <tr id="row-<%=cart.orderItems[i]._id%>">
-                        <td><a href="/products/<%=cart.orderItems[i].product._id%>"><img src="https://hyper-shop-admin.herokuapp.com/<%=cart.orderItems[i].product.image%>" alt="<%=cart.orderItems[i].product.name%>"></a></td>
-                        <td><a href="/products/<%=cart.orderItems[i].product._id%>"><%=cart.orderItems[i].product.name%></a></td>
-                        <td><%=cart.orderItems[i].size %>
-                        </td>
-                        <td><%=cart.orderItems[i].quantity%> </td>
-                        <td>$<%=cart.orderItems[i].product.price%></td>
-                        
-                    </tr>
-                    <%total += cart.orderItems[i].quantity*cart.orderItems[i].product.price%>
+          <table class="table">
+            <thead>
+              <tr>
+                <th colspan="2">Sản phẩm</th>
+                <th>Size</th>
+                <th>Số lượng</th>
+                <th>Giá thành/th>
+              </tr>
+            </thead>
+            <tbody>
+              <% let total=0%>
+                <% for (let i=0;i<cart.orderItems.length;i++) { %>
+                  <tr id="row-<%=cart.orderItems[i]._id%>">
+                    <td><a href="/products/<%=cart.orderItems[i].product._id%>"><img
+                          src="https://hyper-shop-admin.herokuapp.com/<%=cart.orderItems[i].product.image%>"
+                          alt="<%=cart.orderItems[i].product.name%>"></a></td>
+                    <td><a href="/products/<%=cart.orderItems[i].product._id%>">
+                        <%=cart.orderItems[i].product.name%>
+                      </a></td>
+                    <td>
+                      <%=cart.orderItems[i].size %>
+                    </td>
+                    <td>
+                      <%=cart.orderItems[i].quantity%>
+                    </td>
+                    <td>$<%=cart.orderItems[i].product.price%>
+                    </td>
+
+                  </tr>
+                  <%total +=cart.orderItems[i].quantity*cart.orderItems[i].product.price%>
                     <% } %>
-                    <input id="totalProductCost" type="hidden" value="<%=total%>">
-                </tbody>
-            </table>
-            <div id="deliveryChoice">Phương thức vận chuyển:</div>
-            <div id="deliveryCost">Phí vận chuyển:</div>
-            <div id="total">Tổng tiền hàng: <%=total%>$</div>
-            <div id="totalCost">Tổng (đã bao gồm phí ship và thuế): </div>
-            <div id="PaymentChoice">Thanh toán: COD</div>
-            <input name="shipcost" id="shipcost" type="hidden" value="">
-            <input name="payment" id="payment" type="hidden" value="COD">
+                      <input id="totalProductCost" type="hidden" value="<%=total%>">
+            </tbody>
+          </table>
+          <div id="deliveryChoice">Phương thức vận chuyển:</div>
+          <div id="deliveryCost">Phí vận chuyển:</div>
+          <div id="total">Tổng tiền hàng: <%=total%> VND</div>
+          <div id="totalCost">Tổng (đã bao gồm phí ship và thuế): </div>
+          <div id="PaymentChoice">Thanh toán: COD</div>
+          <input name="shipcost" id="shipcost" type="hidden" value="">
+          <input name="payment" id="payment" type="hidden" value="COD">
         </div>
         <% } %>
 
-      <div class="box-footer d-flex justify-content-between">
-        <a class="btn btn-outline-secondary" id="paymentCheckoutBtn">
-          Quay lại<i class="fa fa-chevron-left"></i>
-        </a>
+          <div class="box-footer d-flex justify-content-between">
+            <a class="btn btn-outline-secondary" id="paymentCheckoutBtn">
+              Quay lại<i class="fa fa-chevron-left"></i>
+            </a>
 
-        <button type="submit" class="btn btn-primary" id="confirmPurchase">
-         Tiếp tục và xác nhận<i class="fa fa-chevron-right"></i>
-        </button>
-      </div>
+            <button type="submit" class="btn btn-primary" id="confirmPurchase">
+              Tiếp tục và xác nhận<i class="fa fa-chevron-right"></i>
+            </button>
+          </div>
     </div>
 
     <!--footer btn-->
@@ -703,23 +603,23 @@
   const totalProductCost = document.getElementById("totalProductCost").value;
 
   const shipcostvalue = document.getElementById("shipcost");
-  
-  
+
+
   fastOption.addEventListener("click", (e) => {
     var shipping = document.getElementById("cost");
     var tax = document.getElementById("tax");
     var total = document.getElementById("total");
 
-    shipping.innerHTML = "Shipping and handling: 8$";
-    tax.innerHTML = "Tax: 0.5$";
-    total.innerHTML = "8.5$";
+    shipping.innerHTML = "Phí vận chuyển: 40.000VND";
+    tax.innerHTML = "2.000VND";
+    total.innerHTML = "42.0000VND";
 
-    var total = parseInt(totalProductCost) + 8.5;
-    deliveryCost.innerHTML ="Shipping cost: 8.5$";
-    totalCost.innerHTML ="Total (*included ship and tax): "+ total+"$";
-    deliveryChoice.innerHTML ="Delivery method: Fast delivery service";
+    var total = parseInt(totalProductCost) + 42000;
+    deliveryCost.innerHTML = "Phí vận chuyển 42.000VND";
+    totalCost.innerHTML = "Tổng (*đã bao gồm thuế): " + total + "VND";
+    deliveryChoice.innerHTML = "Phương thức giao hàng: dịch vụ giao hàng nhanh";
 
-    shipcostvalue.value = "8.5";
+    shipcostvalue.value = "42000";
 
 
     fastOption.classList.add("choosed");
@@ -731,16 +631,16 @@
     var tax = document.getElementById("tax");
     var total = document.getElementById("total");
 
-    shipping.innerHTML = "Shipping and handling: 5$";
-    tax.innerHTML = "Tax: 0.5$";
-    total.innerHTML = "5.5$";
+    shipping.innerHTML = "Phí vận chuyển: 30.000VND";
+    tax.innerHTML = "2.000VNĐ";
+    total.innerHTML = "32000";
 
-    var total = parseInt(totalProductCost) + 5.5;
-    deliveryCost.innerHTML ="Shipping cost: 5.5$";
-    totalCost.innerHTML = "Total (*included ship and tax): "+ total+"$";
-    deliveryChoice.innerHTML ="Delivery method: Normal delivery service";
+    var total = parseInt(totalProductCost) + 32000;
+    deliveryCost.innerHTML = "Phí vận chuyển 32.000VND";
+    totalCost.innerHTML = "Tổng (*đã bao gồm thuế): " + total + "VND";
+    deliveryChoice.innerHTML = "Phương thức giao hàng: dịch vụ giao hàng thông thường";
 
-    shipcostvalue.value = "5.5";
+    shipcostvalue.value = "32.0000VND";
 
     fastOption.classList.remove("choosed");
     normalOption.classList.add("choosed");
@@ -751,16 +651,16 @@
     var tax = document.getElementById("tax");
     var total = document.getElementById("total");
 
-    shipping.innerHTML = "Shipping and handling: 3$";
-    tax.innerHTML = "Tax: 0.2$";
-    total.innerHTML = "3.2$";
+    shipping.innerHTML = "Phí vận chuyển: 20.000VND";
+    tax.innerHTML = "2.000VND";
+    total.innerHTML = "22.000VND";
 
-    var total = parseInt(totalProductCost) + 3.2;
-    deliveryCost.innerHTML ="Shipping cost: 3.2$";
-    totalCost.innerHTML = "Total (*included ship and tax): "+ total+"$";
-    deliveryChoice.innerHTML ="Delivery method: Economy delivery service";
+    var total = parseInt(totalProductCost) + 22000;
+    deliveryCost.innerHTML = "Phí vận chuyển 22.000VND";
+    totalCost.innerHTML = "Tổng (*đã bao gồm thuế): " + total + "VND";
+    deliveryChoice.innerHTML = "Phương thức giao hàng: dịch vụ giao hàng tiết kiệm";
 
-    shipcostvalue.value = "3.2";
+    shipcostvalue.value = "22000";
 
     fastOption.classList.remove("choosed");
     normalOption.classList.remove("choosed");
@@ -769,7 +669,7 @@
 
   //Payment method
   const paymentChoice = document.getElementById("PaymentChoice");
-  
+
   /*const tab1 = document.getElementById("tab1");
   const tab2 = document.getElementById("tab2");
   const tab3 = document.getElementById("tab3");
