@@ -234,18 +234,18 @@ function getProductBox(product) {
       <div class="flipper">
         <div class="front">
           <a href="/products/${product._id}"
-            ><img src="https://hyper-shop-admin.herokuapp.com/${product.image}" alt="" class="img-fluid"
+            ><img src="${product.image}" alt="" class="img-fluid"
           /></a>
         </div>
         <div class="back">
           <a href="/products/${product._id}"
-            ><img src="https://hyper-shop-admin.herokuapp.com/${product.image}" alt="" class="img-fluid"
+            ><img src="${product.image}" alt="" class="img-fluid"
           /></a>
         </div>
       </div>
     </div>
     <a href="/products/${product._id}" class="invisible"
-      ><img src="https://hyper-shop-admin.herokuapp.com/${product.image}" alt="" class="img-fluid"
+      ><img src="${product.image}" alt="" class="img-fluid"
     /></a>
     <div class="text">
       <h3><a href="/products/${product._id}">${product.name}</a></h3>
@@ -261,16 +261,16 @@ function getProductBox(product) {
 `;
 }
 function getProductShowing(queriedProductCount, productsCount) {
-  return `Showing
+  return `Hiện
         <strong
           >${queriedProductCount}
           </strong
         >
-        of <strong>${productsCount}</strong> products`;
+        trong số <strong>${productsCount}</strong> sản phẩm`;
 }
 function getProductsNumber() {
   let res = `
-  <strong>Show</strong>`;
+  <strong>Hiện</strong>`;
   res +=
     sessionStorage.getItem("productsPerPage") == 12
       ? `<a class="btn btn-primary btn-sm show-products-quantity">12</a>`
@@ -291,7 +291,7 @@ function getProductsNumber() {
       : ` <a class="btn btn-outline-secondary btn-sm show-products-quantity"
 >All</a
 >`;
-  res += `<span>products</span>`;
+  res += `<span></span>`;
   return res;
 }
 function getPagesNumber(lastPage, page) {
