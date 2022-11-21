@@ -15,7 +15,7 @@
     <div data-slider-id="1" class="owl-carousel shop-detail-carousel">
       <div class="item">
         <img
-          src="https://hyper-shop-admin.herokuapp.com<%=product.image%>"
+          src="<%=product.image%>"
           alt=""
           class="img-fluid"
         />
@@ -23,7 +23,7 @@
       <%for (img of product.images){%>
       <div class="item">
         <img
-          src="https://hyper-shop-admin.herokuapp.com<%=img%>"
+          src="<%=img%>"
           alt=""
           class="img-fluid"
         />
@@ -78,7 +78,7 @@
             data-bs-toggle="modal" data-bs-target="#staticBackdrop"
             <%- product.countInStock.some(count => count.quantity > 0) ? "" : "disabled" %>
           >
-            <i class="fa fa-shopping-cart"></i> Add to cart
+            <i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng
           </button>
         </span>
         <!-- <a href="basket.html"class="btn btn-outline-primary"><i class="fa fa-heart"></i> Add to wishlist</a> -->
@@ -87,7 +87,7 @@
     <div data-slider-id="1" class="owl-thumbs">
       <button class="owl-thumb-item">
         <img
-          src="https://hyper-shop-admin.herokuapp.com<%=product.image%>"
+          src="<%=product.image%>"
           alt=""
           class="img-fluid"
         />
@@ -95,7 +95,7 @@
       <%for (img of product.images){%>
       <button class="owl-thumb-item">
         <img
-          src="https://hyper-shop-admin.herokuapp.com<%=img%>"
+          src="<%=img%>"
           alt=""
           class="img-fluid"
         />

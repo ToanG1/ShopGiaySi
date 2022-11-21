@@ -446,7 +446,7 @@
                 <% for (let i=0;i<cart.orderItems.length;i++) { %>
                   <tr id="row-<%=cart.orderItems[i]._id%>">
                     <td><a href="/products/<%=cart.orderItems[i].product._id%>"><img
-                          src="https://hyper-shop-admin.herokuapp.com/<%=cart.orderItems[i].product.image%>"
+                          src="<%=cart.orderItems[i].product.image%>"
                           alt="<%=cart.orderItems[i].product.name%>"></a></td>
                     <td><a href="/products/<%=cart.orderItems[i].product._id%>">
                         <%=cart.orderItems[i].product.name%>
