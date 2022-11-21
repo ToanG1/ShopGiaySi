@@ -51,9 +51,9 @@ const changeStatusHandler = async (e) => {
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <div class="order-status">
-                                        <div class="dropdown-item data-status" id="Pending-${order._id}">Pending</div>
-                                        <div class="dropdown-item data-status" id="Delivering-${order._id}">Delivering</div>
-                                        <div class="dropdown-item data-status" id="Delivered-${order._id}">Delivered</div>
+                                        <div class="dropdown-item data-status" id="Pending-${order._id}">Đang chờ</div>
+                                        <div class="dropdown-item data-status" id="Delivering-${order._id}">Đang chuyển</div>
+                                        <div class="dropdown-item data-status" id="Delivered-${order._id}">Đã nhận</div>
                                     </div>
                                 </div>
                             </div>
