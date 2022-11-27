@@ -18,7 +18,7 @@
                     <% let total = 0%>
                     <% for (let i=0;i<cart.orderItems.length;i++) { %>
                     <tr id="row-<%=cart.orderItems[i]._id%>">
-                        <td><a href="/products/<%=cart.orderItems[i].product._id%>"><img src="https://hyper-shop-admin.herokuapp.com/<%=cart.orderItems[i].product.image%>" alt="<%=cart.orderItems[i].product.name%>"></a></td>
+                        <td><a href="/products/<%=cart.orderItems[i].product._id%>"><img src="/<%=cart.orderItems[i].product.image%>" alt="<%=cart.orderItems[i].product.name%>"></a></td>
                         <td><a href="/products/<%=cart.orderItems[i].product._id%>"><%=cart.orderItems[i].product.name%></a></td>
                         <td id="quantity-<%=cart.orderItems[i]._id%>">
                             <input type="number" value="<%=cart.orderItems[i].quantity%>" <%- isReview ? 'readonly' : '' %> min="1" id="<%=cart.orderItems[i]._id%>" class="form-control item-quantity">
