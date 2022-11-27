@@ -1,14 +1,13 @@
-const Product = require('../product');
-const OrderItem = require('../orderItem');
-const { ObjectId } = require('mongodb');
+const Product = require("../product");
+const OrderItem = require("../orderItem");
+const { ObjectId } = require("mongodb");
 
-exports.getTopProducts = number => {
-
-  const data = OrderItem.aggregate([
+exports.getTopProducts = (number) => {
+  return OrderItem.aggregate([
     { $match: { isOrdered: true } },
     {
       $group: {
-        _id: '$product',
+        _id: "$product",
         count: { $sum: 1 },
       },
     },
@@ -16,10 +15,10 @@ exports.getTopProducts = number => {
     { $limit: 10 },
     {
       $lookup: {
-        from: 'products',
-        localField: '_id',
-        foreignField: '_id',
-        as: 'product',
+        from: "products",
+        localField: "_id",
+        foreignField: "_id",
+        as: "product",
       },
     },
   ]);
@@ -27,24 +26,24 @@ exports.getTopProducts = number => {
   return data
 };
 
-exports.getProductById = productId => {
+exports.getProductById = (productId) => {
   return Product.findOne({ _id: ObjectId(productId) });
 };
-exports.countProducts = filters => {
+exports.countProducts = (filters) => {
   return Product.find(filters).countDocuments();
 };
 
-exports.getProducts = filters => {
+exports.getProducts = (filters) => {
   return Product.find(filters);
 };
-exports.getProduct = id => {
+exports.getProduct = (id) => {
   return Product.findById(id);
 };
 exports.getCategoriesQuantity = async () => {
   const catsQty = await Product.aggregate([
     {
       $group: {
-        _id: '$category',
+        _id: "$category",
         count: { $sum: 1 },
       },
     },
@@ -61,7 +60,7 @@ exports.getBrands = () => {
   return Product.aggregate([
     {
       $group: {
-        _id: '$brand',
+        _id: "$brand",
         count: { $sum: 1 },
       },
     },
@@ -74,7 +73,7 @@ exports.getClosureTypes = () => {
   return Product.aggregate([
     {
       $group: {
-        _id: '$closureType',
+        _id: "$closureType",
         count: { $sum: 1 },
       },
     },
@@ -86,7 +85,7 @@ exports.getShoesHeights = () => {
   return Product.aggregate([
     {
       $group: {
-        _id: '$shoesHeight',
+        _id: "$shoesHeight",
         count: { $sum: 1 },
       },
     },
@@ -98,7 +97,7 @@ exports.getMaterials = () => {
   return Product.aggregate([
     {
       $group: {
-        _id: '$material',
+        _id: "$material",
         count: { $sum: 1 },
       },
     },
@@ -107,6 +106,6 @@ exports.getMaterials = () => {
   ]);
 };
 
-exports.getRelatedProducts = filter => {
+exports.getRelatedProducts = (filter) => {
   return Product.find(filter).limit(3);
 };
