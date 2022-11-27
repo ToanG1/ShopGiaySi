@@ -75,7 +75,7 @@
                             </td>
                             <td><%=item.product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})%></td>
                             <td>
-                                <input id="totalPerItem" readonly style="border: none; outline: none; width: 60px;"  value="<%=(item.quantity*item.product.price).toLocaleString('vi', {style : 'currency', currency : 'VND'})%>"/>
+                                <input id="totalPerItem" readonly style="border: none; outline: none; width: 110px;"  value="<%=(item.quantity*item.product.price).toLocaleString('vi', {style : 'currency', currency : 'VND'})%>"/>
                             </td>
                         </tr>
                         <% total+=item.quantity*item.product.price%>
@@ -102,6 +102,5 @@
     <script src="/ajax/change-orderstatus-indetail.js"></script>
     <script src="/js/custom/rerun-change-orderstatus.js" id="rerun-script"></script>
 
-    <%- include('../includes/foot.ejs')%>
 </body>
 </html>

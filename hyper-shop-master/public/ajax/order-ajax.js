@@ -30,7 +30,7 @@ function getOrders(order) {
   orderHtml = `<div class="col-lg-4"> 
   <div id="order-summary" class="box">
     <div class="box-header">
-        <h3 class="mb-0">Order summary</h3>
+        <h3 class="mb-0">Tóm tắt đơn hàng</h3>
     </div>
     <p class="text-muted">`;
   let totalPrice = 0;
@@ -41,38 +41,48 @@ function getOrders(order) {
                 <span><strong>${item.product.name}</strong></span>
             </div>
             <div class="col-5">
-                <span>$${item.product.price} x ${item.quantity}</span><br>
+                <span>${item.product.price}VND x ${item.quantity}</span><br>
                 <span>Size: ${item.size}</span>
             </div>
 </div>
 <hr/>`;
+  }
+  let status;
+  if (order.status == "Pending") {
+    status = "Đơn hàng đang chờ xử lý";
+  }
+  if (order.status == "Delivering") {
+    status = "Đơn hàng đang được giao";
+  }
+  if (order.status == "Delivered") {
+    status = "Đơn hàng đã giao thành công";
   }
   orderHtml += `</p>
   <div class="table-responsive">
       <table class="table">
           <tbody>
               <tr>
-                  <td>Order subtotal</td>
+                  <td>Tổng phụ đặt hàng</td>
                   <th>$${totalPrice}</th>
               </tr>
               <tr>
-                  <td>Shipping and handling</td>
+                  <td>Vận chuyển và xử lý</td>
                   <th>${order.shippingCost}</th>
               </tr>
               <tr>
-                  <td>Payment method</td>
+                  <td>Phương thức thanh toán</td>
                   <th>${order.paymentMethod}</th>
               </tr>
               <tr>
-                  <td>Ordered Date</td>
+                  <td>Ngày đặt hàng</td>
                   <th>${new Date(order.orderedDate).toDateString()}</th>
               </tr>
               <tr>
-                  <td>Status</td>
-                  <th>${order.status}</th>
+                  <td>Trạng thái</td>
+                  <th>${status}</th>
               </tr>
               <tr class="total">
-                  <td>Total</td>
+                  <td>Tổng giá</td>
                   <th>${totalPrice + order.shippingCost}VND</th>
               </tr>
           </tbody>
@@ -89,7 +99,7 @@ function getPagesNumber(lastPage, page) {
     class="d-flex justify-content-center"
   >`;
   if (lastPage > 0) {
-    res += `<ul class="pagination"><li class="page-item cursor-pointer"><a class="page-link">First</a></li>`;
+    res += `<ul class="pagination"><li class="page-item cursor-pointer"><a class="page-link">Đầu tiên</a></li>`;
     let i = Number(page) > 5 ? Number(page) - 4 : 1;
     if (i !== 1) {
       res += `<li class="page-item cursor-pointer"><a class="page-link">...</a></li>`;
@@ -105,7 +115,7 @@ function getPagesNumber(lastPage, page) {
       }
     }
     res += `<li class="page-item cursor-pointer">
-    <a class="page-link" id="${lastPage}">Last</a>
+    <a class="page-link cursor-pointer" id="${lastPage}">Cuối cùng</a>
   </li>`;
     res += `</ul>`;
   }

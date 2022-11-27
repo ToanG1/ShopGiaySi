@@ -27,18 +27,23 @@ const changeStatusHandler = async (e) => {
             const oldRow = document.getElementById(id);
             oldRow.remove();
             let table;
+            let status;
+            if (order.status == "Pending") {
+              table = document.getElementById("pending-table");
+              status = "Chờ xử lý";
+            }
             if (order.status == "Delivering") {
               table = document.getElementById("delivering-table");
+              status = "Đang giao";
             }
             if (order.status == "Delivered") {
               table = document.getElementById("delivered-table");
-            }
-            if (order.status == "Pending") {
-              table = document.getElementById("pending-table");
+              status = "Đã giao";
             }
             const tableBody = table.querySelector("tbody");
             const row = document.createElement("tr");
             row.setAttribute("id", order._id);
+
             row.innerHTML = `
                         <th scope="row">${order._id}</th>
                         <td>${order.user.email}</td>
@@ -47,7 +52,7 @@ const changeStatusHandler = async (e) => {
                         <td>
                             <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-                                    ${order.status}
+                                    ${status}
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <div class="order-status">
