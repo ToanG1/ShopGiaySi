@@ -3,7 +3,8 @@ const OrderItem = require('../orderItem');
 const { ObjectId } = require('mongodb');
 
 exports.getTopProducts = number => {
-  return OrderItem.aggregate([
+
+  const data = OrderItem.aggregate([
     { $match: { isOrdered: true } },
     {
       $group: {
@@ -22,6 +23,8 @@ exports.getTopProducts = number => {
       },
     },
   ]);
+
+  return data
 };
 
 exports.getProductById = productId => {
