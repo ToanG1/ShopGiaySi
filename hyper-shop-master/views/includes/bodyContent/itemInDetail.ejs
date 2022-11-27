@@ -15,7 +15,7 @@
     <div data-slider-id="1" class="owl-carousel shop-detail-carousel">
       <div class="item">
         <img
-          src="https://hyper-shop-admin.herokuapp.com<%=product.image%>"
+          src="<%=product.image%>"
           alt=""
           class="img-fluid"
         />
@@ -23,7 +23,7 @@
       <%for (img of product.images){%>
       <div class="item">
         <img
-          src="https://hyper-shop-admin.herokuapp.com<%=img%>"
+          src="<%=img%>"
           alt=""
           class="img-fluid"
         />
@@ -87,7 +87,7 @@
     <div data-slider-id="1" class="owl-thumbs">
       <button class="owl-thumb-item">
         <img
-          src="https://hyper-shop-admin.herokuapp.com<%=product.image%>"
+          src="<%=product.image%>"
           alt=""
           class="img-fluid"
         />
@@ -95,7 +95,7 @@
       <%for (img of product.images){%>
       <button class="owl-thumb-item">
         <img
-          src="https://hyper-shop-admin.herokuapp.com<%=img%>"
+          src="<%=img%>"
           alt=""
           class="img-fluid"
         />

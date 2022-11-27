@@ -1,7 +1,7 @@
 <!-- TABLE OF ITEM IN CART ======================================= -->
 <div class="box">
     <form method="get" action="/cart/checkout">
-        <h1><%- isReview ? '' : 'Shopping cart' %></h1>
+        <h1><%- isReview ? '' : 'Giỏ hàng' %></h1>
         <% if(cart && cart.orderItems.length > 0) { %>
         <div class="table-responsive">
             <table class="table">
@@ -18,16 +18,16 @@
                     <% let total = 0%>
                     <% for (let i=0;i<cart.orderItems.length;i++) { %>
                     <tr id="row-<%=cart.orderItems[i]._id%>">
-                        <td><a href="/products/<%=cart.orderItems[i].product._id%>"><img src="https://hyper-shop-admin.herokuapp.com/<%=cart.orderItems[i].product.image%>" alt="<%=cart.orderItems[i].product.name%>"></a></td>
+                        <td><a href="/products/<%=cart.orderItems[i].product._id%>"><img src="<%=cart.orderItems[i].product.image%>" alt="<%=cart.orderItems[i].product.name%>"></a></td>
                         <td><a href="/products/<%=cart.orderItems[i].product._id%>"><%=cart.orderItems[i].product.name%></a></td>
                         <td id="quantity-<%=cart.orderItems[i]._id%>">
                             <input type="number" value="<%=cart.orderItems[i].quantity%>" <%- isReview ? 'readonly' : '' %> min="1" id="<%=cart.orderItems[i]._id%>" class="form-control item-quantity">
                         </td>
                         <td><%=cart.orderItems[i].size %>
                         </td>
-                        <td>$<%=cart.orderItems[i].product.price%></td>
+                        <td><%=cart.orderItems[i].product.price%></td>
                         <td>
-                            $<input id="totalPerItem-<%=cart.orderItems[i]._id%>" type="text" readonly style="border: none; outline: none; min-width: 75px; text-align: left;"  value="<%=cart.orderItems[i].quantity*cart.orderItems[i].product.price%>"/>
+                            <input id="totalPerItem-<%=cart.orderItems[i]._id%>" type="text" readonly style="border: none; outline: none; min-width: 75px; text-align: left;"  value="<%=cart.orderItems[i].quantity*cart.orderItems[i].product.price%>"/>
                         </td>
                         <td>
                             <% if (!isReview) { %>
@@ -43,7 +43,7 @@
                     <tr>
                         <th colspan="5">Tổng</th>
                         <th colspan="2" class="display-row">
-                            $<input id="total" style="border: none; outline: none;width:100px" readonly type="number" value="<%=total%>"/>
+                            <input id="total" style="border: none; outline: none;width:100px" readonly value="<%=total%>"/>VND
                         </th>
                     </tr>
                 </tfoot>
@@ -69,7 +69,7 @@
                 <% if(cart.orderItems.length>0) { %>        
                 <div class="right">
                     <button type="submit" class="btn btn-primary">
-                        Kiểm tra <i class="fa fa-chevron-right"></i>
+                        Đặt hàng <i class="fa fa-chevron-right"></i>
                     </button>
                 </div>
                 <% } %>

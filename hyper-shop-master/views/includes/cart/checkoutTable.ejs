@@ -30,7 +30,7 @@
         class="nav-link flex-sm-fill text-sm-center disabled" id="paymentNavBtn">
         <i class="fa fa-money"> </i>Phương thức thanh toán</a><a href="#"
         class="nav-link flex-sm-fill text-sm-center disabled" id="reviewNavBtn">
-        <i class="fa fa-eye"> </i>Đánh giá đơn hàng</a>
+        <i class="fa fa-eye"> </i>Xác nhận đơn hàng</a>
     </div>
 
     <!--Address-->
@@ -174,7 +174,7 @@
           <i class="fa fa-chevron-left"></i>Trở lại giỏ hàng
         </a>
 
-        <a class="btn btn-primary" id="deliveryCheckoutBtn">
+        <a class="btn btn-primary deliveryCheckoutBtn">
           <i class="fa fa-chevron-right"></i>Tiếp tục
         </a>
       </div>
@@ -201,7 +201,7 @@
           </div>
 
           <div class="delivery-option-item" id="economyOption">
-            <label class="btn delivery-label" for="">Economy</label>
+            <label class="btn delivery-label" for="">Tiết kiệm</label>
             <p>
               Giao hàng trong 7 ngày tất cả các bang. Không thể thay đổi thông tin sau khi thanh toán.
             </p>
@@ -213,18 +213,18 @@
             <div id="sourceAddress">Từ: số 1 Võ Văn Ngân, Linh Trung, Thủ đức, Tp.HCM</div>
             <div id="destinationAddress">Đến:</div>
             <div id="cost">Vận chuyển và xử lý:</div>
-            <div class="delivery-cost-item">Thuế: <span id="tax">0.0$</div>
+            <div class="delivery-cost-item">Thuế: <span id="tax">0VND</div>
           </div>
-          <div class="delivery-cost-item total"><span>Tổng: </span><span id="total">0.0$</span></div>
+          <div class="delivery-cost-item total"><span>Tổng: </span><span id="total">0VND</span></div>
         </div>
       </div>
 
       <div class="box-footer d-flex justify-content-between">
-        <a class="btn btn-outline-secondary" id="addressCheckoutBtn">
+        <a class="btn btn-outline-secondary addressCheckoutBtn">
           Trở lại<i class="fa fa-chevron-left"></i>
         </a>
 
-        <a class="btn btn-primary" id="paymentCheckoutBtn">
+        <a class="btn btn-primary paymentCheckoutBtn" >
           Tiếp tục<i class="fa fa-chevron-right"></i>
         </a>
       </div>
@@ -249,19 +249,20 @@
                         <div class="list-div my-2">
                           <div class="fa fa-home"></div>
                           &nbsp;&nbsp; Chuyển khoản
+                          <span id="new-label">NEW</span>
                         </div>
                       </a>
                       <a data-toggle="tab" href="#menu2" id="tab2" class="tabs list-group-item active">
                         <div class="list-div my-2">
                           <div class="fa fa-credit-card"></div>
                           &nbsp;&nbsp; Thẻ tín dụng
+                          <span id="new-label">NEW</span>
                         </div>
                       </a>
                       <a data-toggle="tab" href="#menu3" id="tab3" class="tabs list-group-item bg-light">
                         <div class="list-div my-2">
                           <div class="fa fa-qrcode"></div>
-                          &nbsp;&nbsp;&nbsp; Visa QR
-                          <span id="new-label">NEW</span>
+                          &nbsp;&nbsp;&nbsp; COD
                         </div>
                       </a>
                     </div>
@@ -395,11 +396,9 @@
                         <div class="row justify-content-center">
                           <div class="col-11">
                             <h3 class="mt-0 mb-4 text-center">
-                              QUÉT MÃ QR ĐỂ THANH TOÁN
                             </h3>
                             <div class="row justify-content-center">
                               <div id="qr">
-                                <img src="https://i.imgur.com/DD4Npfw.jpg" width="200px" height="200px" />
                               </div>
                             </div>
                           </div>
@@ -415,11 +414,11 @@
       </div>
 
       <div class="box-footer d-flex justify-content-between">
-        <a class="btn btn-outline-secondary" id="deliveryCheckoutBtn">
+        <a class="btn btn-outline-secondary deliveryCheckoutBtn">
           Quay lại<i class="fa fa-chevron-left"></i>
         </a>
 
-        <a class="btn btn-primary" id="reviewCheckoutBtn">
+        <a class="btn btn-primary reviewCheckoutBtn">
           Tiếp tục<i class="fa fa-chevron-right"></i>
         </a>
       </div>
@@ -438,7 +437,7 @@
                 <th colspan="2">Sản phẩm</th>
                 <th>Size</th>
                 <th>Số lượng</th>
-                <th>Giá thành/th>
+                <th>Giá thành</th>
               </tr>
             </thead>
             <tbody>
@@ -446,7 +445,7 @@
                 <% for (let i=0;i<cart.orderItems.length;i++) { %>
                   <tr id="row-<%=cart.orderItems[i]._id%>">
                     <td><a href="/products/<%=cart.orderItems[i].product._id%>"><img
-                          src="https://hyper-shop-admin.herokuapp.com/<%=cart.orderItems[i].product.image%>"
+                          src="<%=cart.orderItems[i].product.image%>"
                           alt="<%=cart.orderItems[i].product.name%>"></a></td>
                     <td><a href="/products/<%=cart.orderItems[i].product._id%>">
                         <%=cart.orderItems[i].product.name%>
@@ -457,7 +456,7 @@
                     <td>
                       <%=cart.orderItems[i].quantity%>
                     </td>
-                    <td>$<%=cart.orderItems[i].product.price%>
+                    <td><%=cart.orderItems[i].product.price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'})%>
                     </td>
 
                   </tr>
@@ -477,7 +476,7 @@
         <% } %>
 
           <div class="box-footer d-flex justify-content-between">
-            <a class="btn btn-outline-secondary" id="paymentCheckoutBtn">
+            <a class="btn btn-outline-secondary paymentCheckoutBtn" >
               Quay lại<i class="fa fa-chevron-left"></i>
             </a>
 
@@ -503,12 +502,12 @@
   const paymentNavBtn = document.getElementById("paymentNavBtn");
   const reviewNavBtn = document.getElementById("reviewNavBtn");
 
-  const addressCheckoutBtn = document.getElementById("addressCheckoutBtn");
-  const deliveryCheckoutBtn = document.getElementById("deliveryCheckoutBtn");
-  const paymentCheckoutBtn = document.getElementById("paymentCheckoutBtn");
-  const reviewCheckoutBtn = document.getElementById("reviewCheckoutBtn");
+  const addressCheckoutBtn = document.getElementsByClassName("addressCheckoutBtn");
+  const deliveryCheckoutBtn = document.getElementsByClassName("deliveryCheckoutBtn");
+  const paymentCheckoutBtn = document.getElementsByClassName("paymentCheckoutBtn");
+  const reviewCheckoutBtn = document.getElementsByClassName("reviewCheckoutBtn");
 
-  addressCheckoutBtn.addEventListener("click", (e) => {
+  const addressHandler = async (e) => {
     console.log("click next to address");
     e.preventDefault();
     address.classList.remove("hidden");
@@ -524,9 +523,8 @@
     paymentNavBtn.classList.remove("active");
     reviewNavBtn.classList.add("disabled");
     reviewNavBtn.classList.remove("active");
-  });
-
-  deliveryCheckoutBtn.addEventListener("click", (e) => {
+  };
+  const deliveryHandler = async (e) => {
     var addressText = document.getElementById("destinationAddress");
     addressText.innerHTML += document.getElementById("address").value;
 
@@ -545,9 +543,8 @@
     paymentNavBtn.classList.remove("active");
     reviewNavBtn.classList.add("disabled");
     reviewNavBtn.classList.remove("active");
-  });
-
-  paymentCheckoutBtn.addEventListener("click", (e) => {
+  };
+  const paymentHandler = async (e) => {
     console.log("click next to payment");
     e.preventDefault();
     address.classList.add("hidden");
@@ -563,9 +560,8 @@
     addressNavBtn.classList.remove("active");
     reviewNavBtn.classList.add("disabled");
     reviewNavBtn.classList.remove("active");
-  });
-
-  reviewCheckoutBtn.addEventListener("click", (e) => {
+  };
+  const reviewHandler = async (e) => {
     console.log("click next to review");
     e.preventDefault();
     address.classList.add("hidden");
@@ -581,7 +577,6 @@
     paymentNavBtn.classList.remove("active");
     addressNavBtn.classList.add("disabled");
     addressNavBtn.classList.remove("active");
-
     // Review Order 
     const sourceAddress = document.getElementById("sourceAddress").innerText;
     const destinationAddress = document.getElementById("destinationAddress").innerText;
@@ -590,7 +585,21 @@
     const destinationAddressReview = document.getElementById("destinationAddressReview");
     sourceAddressReview.innerText = sourceAddress;
     destinationAddressReview.innerText = destinationAddress;
-  });
+  };
+    
+
+    for (let btn of addressCheckoutBtn) {
+      btn.addEventListener("click", addressHandler);
+    }
+    for (let btn of deliveryCheckoutBtn) {
+      btn.addEventListener("click", deliveryHandler);
+    }
+    for (let btn of paymentCheckoutBtn) {
+      btn.addEventListener("click", paymentHandler);
+    }
+    for (let btn of reviewCheckoutBtn) {
+      btn.addEventListener("click", reviewHandler);
+    }
 
   //Delivery option
   const fastOption = document.getElementById("fastOption");
@@ -632,8 +641,8 @@
     var total = document.getElementById("total");
 
     shipping.innerHTML = "Phí vận chuyển: 30.000VND";
-    tax.innerHTML = "2.000VNĐ";
-    total.innerHTML = "32000";
+    tax.innerHTML = "2.000VND";
+    total.innerHTML = "32.000VND";
 
     var total = parseInt(totalProductCost) + 32000;
     deliveryCost.innerHTML = "Phí vận chuyển 32.000VND";

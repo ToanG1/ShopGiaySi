@@ -200,15 +200,15 @@ function getProductBox(product) {
         <h3>${product.name}</h3>
         <p class="row">
           <a href="/products/editProduct/${product._id}" class="learn-more detailslearn col-6"
-            ><i class="fa fa-shopping-cart"></i> Edit</a
+            ><i class="fa fa-shopping-cart"></i> Cập nhật</a
           >
           <a
             href="/products/import/<%=product._id%>"
             class="learn-more detailslearn col-6"
-            ><i class="fa fa-warehouse"></i> Import
+            ><i class="fa fa-warehouse"></i> Kho hàng
           </a>
           <a href="/products/${product._id}" class="learn-more detailslearn col-6"
-            ><i class="fa fa-link"></i> Details</a
+            ><i class="fa fa-link"></i> Chi tiết</a
           >
         </p>
       </div>

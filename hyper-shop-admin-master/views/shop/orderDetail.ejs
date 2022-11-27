@@ -35,13 +35,15 @@
                             <td>
                                 <div class="dropdown">
                                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-                                    <%=order.status%>
+                                        <%if (order.status == "Pending") {%> Chờ xử lý <%}%> <%if
+                                        (order.status == "Delivering") {%> Đang giao <%}%> <%if
+                                        (order.status == "Delivered") {%> Đã giao <%}%>
                                     </button>
                                     <div class="dropdown-menu" data-status="<%=order.status%>" aria-labelledby="dropdownMenuButton">
                                         <div class="order-status">
-                                            <div class="dropdown-item card-item data-status" id="Pending-<%=order._id%>">Pending</div>
-                                            <div class="dropdown-item card-item data-status" id="Delivering-<%=order._id%>">Delivering</div>
-                                            <div class="dropdown-item card-item data-status" id="Delivered-<%=order._id%>">Delivered</div>
+                                            <div class="dropdown-item card-item data-status" id="Pending-<%=order._id%>">Chờ xử lý</div>
+                                            <div class="dropdown-item card-item data-status" id="Delivering-<%=order._id%>">Đang giao</div>
+                                            <div class="dropdown-item card-item data-status" id="Delivered-<%=order._id%>">Đã giao</div>
                                         </div>
                                     </div>
                                 </div>
@@ -71,10 +73,9 @@
                             <td>
                                 <%=item.quantity%>
                             </td>
-                            <td>$<%=item.product.price%></td>
+                            <td><%=item.product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})%></td>
                             <td>
-                                $
-                                <input id="totalPerItem" readonly style="border: none; outline: none; width: 40px;"  value="<%=item.quantity*item.product.price%>"/>
+                                <input id="totalPerItem" readonly style="border: none; outline: none; width: 60px;"  value="<%=(item.quantity*item.product.price).toLocaleString('vi', {style : 'currency', currency : 'VND'})%>"/>
                             </td>
                         </tr>
                         <% total+=item.quantity*item.product.price%>
@@ -84,7 +85,7 @@
                         <tr>
                             <th colspan="5">Tổng</th>
                             <th colspan="2" class="display-row">
-                                $<input id="total" style="border: none; outline: none;width:100px" readonly type="number" value="<%=total%>"/>
+                                <input id="total" style="border: none; outline: none;width:100px" readonly value="<%=total.toLocaleString('vi', {style : 'currency', currency : 'VND'})%>"/>
                             </th>
                         </tr>
                     </tfoot>
@@ -95,10 +96,12 @@
 	
 	</section>
 
-   
+    <%- include('../includes/foot')%>
     <script src="/ajax/user-ajax.js"></script>
     <script src="/js/custom/toggle-orders-table.js"></script>
     <script src="/ajax/change-orderstatus-indetail.js"></script>
     <script src="/js/custom/rerun-change-orderstatus.js" id="rerun-script"></script>
+
+    <%- include('../includes/foot.ejs')%>
 </body>
 </html>
