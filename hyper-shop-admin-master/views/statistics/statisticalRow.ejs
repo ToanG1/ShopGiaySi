@@ -8,7 +8,10 @@
     </h5>
   </td>
   <td><%=tp.product[0].color%></td>
-  <td>$<%=tp.product[0].price%></td>
+  <td>
+    <%=tp.product[0].price.toLocaleString('vi', {style : 'currency', currency :
+    'VND'})%>
+  </td>
   <td>
     <%=tp.product[0].countInStock.reduce((qty,currentSize)=>qty+currentSize.quantity,0)%>
   </td>

@@ -17,9 +17,9 @@
 						Lọc trạng thái
 					</div>
 					<div class="dropdown-menu dropdown-menu-right">
-						<div class="dropdown-item card-item" style="cursor: pointer;" id="filter-pending">Pending</div>
-						<div class="dropdown-item card-item" style="cursor: pointer;" id="filter-delivering">Delivering</div>
-						<div class="dropdown-item card-item" style="cursor: pointer;" id="filter-delivered">Delivered</div>
+						<div class="dropdown-item card-item" style="cursor: pointer;" id="filter-pending">Chờ xử lý</div>
+						<div class="dropdown-item card-item" style="cursor: pointer;" id="filter-delivering">Đang giao</div>
+						<div class="dropdown-item card-item" style="cursor: pointer;" id="filter-delivered">Đã giao</div>
 					</div>
 				</div>
 			</div>
@@ -45,7 +45,7 @@
 	
 	</section>
 
-   
+    <%- include('../includes/foot')%>
     <script src="/ajax/user-ajax.js"></script>
     <script src="/ajax/change-order-status.js"></script>
     <script src="/js/custom/rerun-change-orderstatus.js" id="rerun-script"></script>
