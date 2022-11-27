@@ -1,34 +1,28 @@
-<div class="col-lg-4 col-md-6 " >
+<div class="col-lg-4 col-md-6">
   <div class="product">
     <div class="flip-container">
       <div class="flipper">
         <div class="front">
           <a href="/products/<%=product._id%>"
-            ><img
-              src="<%=product.image%>"
-              alt=""
-              class="img-fluid"
+            ><img src="<%=product.image%>" alt="" class="img-fluid"
           /></a>
         </div>
         <div class="back">
           <a href="/products/<%=product._id%>"
-            ><img
-              src="<%=product.image%>"
-              alt=""
-              class="img-fluid "
+            ><img src="<%=product.image%>" alt="" class="img-fluid"
           /></a>
         </div>
       </div>
     </div>
     <a href="/products/<%=product._id%>" class="invisible"
-      ><img
-        src="<%=product.image%>"
-        alt=""
-        class="img-fluid"
+      ><img src="<%=product.image%>" alt="" class="img-fluid"
     /></a>
     <div class="text">
       <h3><a href="/products/<%=product._id%>"><%=product.name%></a></h3>
-      <p class="price"><del></del><%=product.price%>VND</p>
+      <p class="price">
+        <del></del><%=product.price.toLocaleString('it-IT', {style : 'currency',
+        currency : 'VND'})%>
+      </p>
       <p class="buttons">
         <a href="/products/<%=product._id%>" class="btn btn-outline-secondary"
           >Chi tiết</a

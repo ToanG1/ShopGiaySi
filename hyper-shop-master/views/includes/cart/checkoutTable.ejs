@@ -30,7 +30,7 @@
         class="nav-link flex-sm-fill text-sm-center disabled" id="paymentNavBtn">
         <i class="fa fa-money"> </i>Phương thức thanh toán</a><a href="#"
         class="nav-link flex-sm-fill text-sm-center disabled" id="reviewNavBtn">
-        <i class="fa fa-eye"> </i>Đánh giá đơn hàng</a>
+        <i class="fa fa-eye"> </i>Xác nhận đơn hàng</a>
     </div>
 
     <!--Address-->
@@ -201,7 +201,7 @@
           </div>
 
           <div class="delivery-option-item" id="economyOption">
-            <label class="btn delivery-label" for="">Economy</label>
+            <label class="btn delivery-label" for="">Tiết kiệm</label>
             <p>
               Giao hàng trong 7 ngày tất cả các bang. Không thể thay đổi thông tin sau khi thanh toán.
             </p>
@@ -213,9 +213,9 @@
             <div id="sourceAddress">Từ: số 1 Võ Văn Ngân, Linh Trung, Thủ đức, Tp.HCM</div>
             <div id="destinationAddress">Đến:</div>
             <div id="cost">Vận chuyển và xử lý:</div>
-            <div class="delivery-cost-item">Thuế: <span id="tax">0.0$</div>
+            <div class="delivery-cost-item">Thuế: <span id="tax">0VND</div>
           </div>
-          <div class="delivery-cost-item total"><span>Tổng: </span><span id="total">0.0$</span></div>
+          <div class="delivery-cost-item total"><span>Tổng: </span><span id="total">0VND</span></div>
         </div>
       </div>
 
@@ -249,19 +249,20 @@
                         <div class="list-div my-2">
                           <div class="fa fa-home"></div>
                           &nbsp;&nbsp; Chuyển khoản
+                          <span id="new-label">NEW</span>
                         </div>
                       </a>
                       <a data-toggle="tab" href="#menu2" id="tab2" class="tabs list-group-item active">
                         <div class="list-div my-2">
                           <div class="fa fa-credit-card"></div>
                           &nbsp;&nbsp; Thẻ tín dụng
+                          <span id="new-label">NEW</span>
                         </div>
                       </a>
                       <a data-toggle="tab" href="#menu3" id="tab3" class="tabs list-group-item bg-light">
                         <div class="list-div my-2">
                           <div class="fa fa-qrcode"></div>
-                          &nbsp;&nbsp;&nbsp; Visa QR
-                          <span id="new-label">NEW</span>
+                          &nbsp;&nbsp;&nbsp; COD
                         </div>
                       </a>
                     </div>
@@ -395,11 +396,9 @@
                         <div class="row justify-content-center">
                           <div class="col-11">
                             <h3 class="mt-0 mb-4 text-center">
-                              QUÉT MÃ QR ĐỂ THANH TOÁN
                             </h3>
                             <div class="row justify-content-center">
                               <div id="qr">
-                                <img src="https://i.imgur.com/DD4Npfw.jpg" width="200px" height="200px" />
                               </div>
                             </div>
                           </div>
@@ -438,7 +437,7 @@
                 <th colspan="2">Sản phẩm</th>
                 <th>Size</th>
                 <th>Số lượng</th>
-                <th>Giá thành/th>
+                <th>Giá thành</th>
               </tr>
             </thead>
             <tbody>
@@ -457,7 +456,7 @@
                     <td>
                       <%=cart.orderItems[i].quantity%>
                     </td>
-                    <td>$<%=cart.orderItems[i].product.price%>
+                    <td><%=cart.orderItems[i].product.price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'})%>
                     </td>
 
                   </tr>
@@ -642,8 +641,8 @@
     var total = document.getElementById("total");
 
     shipping.innerHTML = "Phí vận chuyển: 30.000VND";
-    tax.innerHTML = "2.000VNĐ";
-    total.innerHTML = "32000";
+    tax.innerHTML = "2.000VND";
+    total.innerHTML = "32.000VND";
 
     var total = parseInt(totalProductCost) + 32000;
     deliveryCost.innerHTML = "Phí vận chuyển 32.000VND";
