@@ -51,7 +51,7 @@ exports.importToWarehouse = (updatedProduct) => {
 };
 
 exports.getTopProducts = () => {
-  return OrderItem.aggregate([
+  const data = OrderItem.aggregate([
     { $match: { isOrdered: true } },
     {
       $group: {
@@ -70,6 +70,8 @@ exports.getTopProducts = () => {
       },
     },
   ]);
+  console.log({data})
+  return data
 };
 
 exports.getCategoriesQuantity = async () => {

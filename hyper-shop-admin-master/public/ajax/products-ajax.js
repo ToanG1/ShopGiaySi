@@ -203,7 +203,7 @@ function getProductBox(product) {
             ><i class="fa fa-shopping-cart"></i> Cập nhật</a
           >
           <a
-            href="/products/import/<%=product._id%>"
+            href="/products/import/${product._id}"
             class="learn-more detailslearn col-6"
             ><i class="fa fa-warehouse"></i> Kho hàng
           </a>
