@@ -1,5 +1,4 @@
-
-const ProductService = require('../../models/services/productService');
+const ProductService = require("../../models/services/productService");
 
 exports.getProductsApi = (req, res, next) => {
   //Product.test('color'); //test
@@ -8,19 +7,19 @@ exports.getProductsApi = (req, res, next) => {
   let productsPerPage = +req.query.productsPerPage || 12;
   let productsCount;
   const name = req.query.name
-    ? { $regex: `.*${req.query.name}.*`, $options: 'i' }
+    ? { $regex: `.*${req.query.name}.*`, $options: "i" }
     : null;
   let color = null;
   if (req.query.color) {
-    let colorRegexString = ''; //match chuỗi có sự xuất hiện của bất kỳ từ nào trong array
-    req.query.color.forEach(c => {
-      colorRegexString += c + '|';
+    let colorRegexString = ""; //match chuỗi có sự xuất hiện của bất kỳ từ nào trong array
+    req.query.color.forEach((c) => {
+      colorRegexString += c + "|";
     });
     colorRegexString = colorRegexString.slice(0, -1); //remove last '|' char
-    color = { $regex: `.*(${colorRegexString}).*`, $options: 'i' };
+    color = { $regex: `.*(${colorRegexString}).*`, $options: "i" };
   }
   let category = req.query.category;
-  if (category === 'all categories') {
+  if (category === "Tất cả sản phẩm") {
     category = null; //remove
   }
   const filters = {
@@ -34,25 +33,25 @@ exports.getProductsApi = (req, res, next) => {
     material: req.query.material,
   };
   Object.keys(filters).forEach(
-    key => filters[key] === undefined && delete filters[key]
+    (key) => filters[key] === undefined && delete filters[key]
   ); // remove các filter null or undefined
   Object.keys(filters).forEach(
-    key => filters[key] === null && delete filters[key]
+    (key) => filters[key] === null && delete filters[key]
   ); // remove các filter null or undefined
-  const sortBy = req.query.sortBy || 'price';
+  const sortBy = req.query.sortBy || "price";
   ProductService.countProducts(filters)
-    .then(n => {
+    .then((n) => {
       productsCount = n;
-      if (req.query.productsPerPage === 'All') {
+      if (req.query.productsPerPage === "All") {
         productsPerPage = n;
       }
       return ProductService.getProducts(filters)
-        .collation({ locale: 'en' })
+        .collation({ locale: "en" })
         .sort(sortBy)
         .skip((page - 1) * productsPerPage)
         .limit(productsPerPage);
     })
-    .then(products => {
+    .then((products) => {
       res.status(200).send({
         products,
         productsPerPage,
