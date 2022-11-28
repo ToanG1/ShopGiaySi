@@ -14,8 +14,8 @@ $(".log-in").on("click", function (e) {
       const { isSuccess, info } = data;
       if (isSuccess) window.location.href = "/";
       else {
-        $("#displayError").removeAttr("hidden");
-        $("#displayError").html(info.message);
+        $('#displayError').removeAttr('hidden');
+        $('#displayError').html(info.message);
       }
     },
     error: function (error) {
