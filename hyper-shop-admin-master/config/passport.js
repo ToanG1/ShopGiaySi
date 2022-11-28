@@ -8,14 +8,14 @@ function initialize(passport) {
   const authenticateUser = async (email, password, done) => {
     email = email.toLowerCase();
     const user = await authServices.getUserLean({ email });
-    if (!user) return done(null, false, { message: "Email not exists" });
+    if (!user) return done(null, false, { message: "Email không tồn tại" });
     if (!user.isAdmin)
-      return done(null, false, { message: "Email not exists" });
+      return done(null, false, { message: "Email không tồn tại" });
     try {
       if (await bcrypt.compare(password, user.password)) {
         const hashPassword = await bcrypt.hash(password, 10);
         done(null, user);
-      } else return done(null, false, { message: "Wrong password" });
+      } else return done(null, false, { message: "Sai mật khẩu" });
     } catch (e) {
       return done(e);
     }
