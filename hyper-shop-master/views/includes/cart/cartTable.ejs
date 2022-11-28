@@ -25,9 +25,13 @@
                         </td>
                         <td><%=cart.orderItems[i].size %>
                         </td>
-                        <td><%=cart.orderItems[i].product.price%></td>
+                        <td><%=cart.orderItems[i].product.price.toLocaleString("it-IT", {
+                            style: "currency",
+                            currency: "VND",
+                          })%></td>
                         <td>
-                            <input id="totalPerItem-<%=cart.orderItems[i]._id%>" type="text" readonly style="border: none; outline: none; min-width: 75px; text-align: left;"  value="<%=cart.orderItems[i].quantity*cart.orderItems[i].product.price%>"/>
+                            <input class="hidden" id="totalPerItem-<%=cart.orderItems[i]._id%>" type="text" readonly style="border: none; outline: none; min-width: 100px; text-align: left;"  value="<%=(cart.orderItems[i].quantity*cart.orderItems[i].product.price) %>"/>
+                            <div id="totalPerItemDisplay"><%=(cart.orderItems[i].quantity*cart.orderItems[i].product.price).toLocaleString('it-IT', {style : 'currency', currency : 'VND'})%></div>
                         </td>
                         <td>
                             <% if (!isReview) { %>
@@ -43,7 +47,8 @@
                     <tr>
                         <th colspan="5">Tổng</th>
                         <th colspan="2" class="display-row">
-                            <input id="total" style="border: none; outline: none;width:100px" readonly value="<%=total%>"/>VND
+                            <input class="hidden" id="total" style="border: none; outline: none;width:120px" readonly value="<%=total%>"/>
+                            <div id="totalDisplay"><%=total.toLocaleString('it-IT', {style : 'currency', currency : 'VND'})%></div>
                         </th>
                     </tr>
                 </tfoot>

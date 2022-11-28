@@ -14,11 +14,14 @@
     </div>
     <div class="text">
       <h3>
-        <a href="/tp.product[0]/<%=product._id%>" style="text-decoration: none"
+        <a href="/products/<%=tp.product[0]._id%>" style="text-decoration: none"
           ><%=tp.product[0].name%></a
         >
       </h3>
-      <p class="price"><del></del>$<%=tp.product[0].price%></p>
+      <p class="price">
+        <del></del><%=tp.product[0].price.toLocaleString('it-IT', {style :
+        'currency', currency : 'VND'})%>
+      </p>
     </div>
   </div>
 </div>
