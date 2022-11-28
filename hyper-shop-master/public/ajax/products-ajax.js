@@ -301,7 +301,7 @@ function getPagesNumber(lastPage, page) {
   class="d-flex justify-content-center"
 >`;
   if (lastPage > 0) {
-    res += `<ul class="pagination"><li class="page-item cursor-pointer"><a class="page-link">First</a></li>`;
+    res += `<ul class="pagination"><li class="page-item cursor-pointer"><a class="page-link">Đầu tiên</a></li>`;
     let i = Number(page) > 5 ? Number(page) - 4 : 1;
     if (i !== 1) {
       res += `<li class="page-item cursor-pointer"><a class="page-link">...</a></li>`;
@@ -317,7 +317,7 @@ function getPagesNumber(lastPage, page) {
       }
     }
     res += `<li class="page-item cursor-pointer">
-  <a class="page-link">Last</a>
+  <a class="page-link">Cuối cùng</a>
 </li>`;
     res += `</ul>`;
   }

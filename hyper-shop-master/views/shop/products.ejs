@@ -1,50 +1,51 @@
 <%- include('../includes/head')%>
-</head>
+    </head>
 
-<body>
-    <!-- HEADER =================================== -->
-    <%- include('../includes/header/header', {user})%>
-    <!-- TOPAREA ================================== -->
-    <div id="all">
-        <div id="content">
-            
-            <div class="container">
-                
-                <div class="row">
-                    <div class="col-lg-12">
-                        <!-- breadcrumb-->
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-                                <li aria-current="page" class="breadcrumb-item active">Sản phẩm</li>
-                            </ol>
-                        </nav>
-                    </div>
-                    
-                    <div class="col-lg-3">
-                        <!-- SIDEBAR CATEGORY  =============================-->
-                        <%- include('../includes/sideBar/category')%>
+    <body>
+        <!-- HEADER =================================== -->
+        <%- include('../includes/header/header', {user})%>
+            <!-- TOPAREA ================================== -->
+            <div id="all">
+                <div id="content">
 
-                        <%- include('../includes/sideBar/brandFilterCard')%>
-                        <%- include('../includes/sideBar/colorFilterCard')%>
-                        <%- include('../includes/sideBar/closureTypeFilterCard')%>
-                        <%- include('../includes/sideBar/shoesHeightFilterCard')%>
-                        <%- include('../includes/sideBar/materialFilterCard')%>
-                        <%- include('../includes/sideBar/genderFilterCard')%>
+                    <div class="container">
 
-                    </div>
-                    <div class="col-lg-9 products-list">
-                        <%- include('../includes/bodyContent/productList.ejs')%>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <!-- breadcrumb-->
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                                        <li aria-current="page" class="breadcrumb-item active">Sản phẩm</li>
+                                    </ol>
+                                </nav>
+                            </div>
+
+                            <div class="col-lg-3">
+                                <!-- SIDEBAR CATEGORY  =============================-->
+                                <%- include('../includes/sideBar/category')%>
+
+                                    <%- include('../includes/sideBar/brandFilterCard')%>
+                                        <%- include('../includes/sideBar/colorFilterCard')%>
+                                            <%- include('../includes/sideBar/closureTypeFilterCard')%>
+                                                <%- include('../includes/sideBar/shoesHeightFilterCard')%>
+                                                    <%- include('../includes/sideBar/materialFilterCard')%>
+                                                        <%- include('../includes/sideBar/genderFilterCard')%>
+
+                            </div>
+                            <div class="col-lg-9 products-list">
+                                <%- include('../includes/bodyContent/productList.ejs')%>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-<%-include('../includes/footer/foot')%>
-<script src="/js/productFilter.js"></script>
-<script src="/js/addProductToCart.js"></script>
-<script src="/js/reRunScript.js" id="reRunScript"></script>
-<script src="/ajax/products-ajax.js"></script>
-</body>
-</html>
+            <%-include("../includes/footer/foot.ejs")%>
+                <script src="/js/productFilter.js"></script>
+                <script src="/js/addProductToCart.js"></script>
+                <script src="/js/reRunScript.js" id="reRunScript"></script>
+                <script src="/ajax/products-ajax.js"></script>
+    </body>
+
+    </html>
