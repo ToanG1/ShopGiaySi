@@ -211,7 +211,7 @@
           <div>
             <label class="delivery-cost-label">Giá vận chuyển</label>
             <div id="sourceAddress">Từ: số 1 Võ Văn Ngân, Linh Trung, Thủ đức, Tp.HCM</div>
-            <div id="destinationAddress">Đến:</div>
+            <div id="destinationAddress">Đến: </div>
             <div id="cost">Vận chuyển và xử lý:</div>
             <div class="delivery-cost-item">Thuế: <span id="tax">0VND</div>
           </div>
@@ -224,7 +224,7 @@
           Trở lại<i class="fa fa-chevron-left"></i>
         </a>
 
-        <a class="btn btn-primary paymentCheckoutBtn" >
+        <a class="btn btn-primary reviewCheckoutBtn" >
           Tiếp tục<i class="fa fa-chevron-right"></i>
         </a>
       </div>
@@ -467,7 +467,7 @@
           </table>
           <div id="deliveryChoice">Phương thức vận chuyển:</div>
           <div id="deliveryCost">Phí vận chuyển:</div>
-          <div id="total">Tổng tiền hàng: <%=total%> VND</div>
+          <div id="total">Tổng tiền hàng: <%=total.toLocaleString('it-IT', {style : 'currency', currency : 'VND'})%></div>
           <div id="totalCost">Tổng (đã bao gồm phí ship và thuế): </div>
           <div id="PaymentChoice">Thanh toán: COD</div>
           <input name="shipcost" id="shipcost" type="hidden" value="">
@@ -476,7 +476,7 @@
         <% } %>
 
           <div class="box-footer d-flex justify-content-between">
-            <a class="btn btn-outline-secondary paymentCheckoutBtn" >
+            <a class="btn btn-outline-secondary deliveryCheckoutBtn" >
               Quay lại<i class="fa fa-chevron-left"></i>
             </a>
 
@@ -605,6 +605,7 @@
   const fastOption = document.getElementById("fastOption");
   const normalOption = document.getElementById("normalOption");
   const economyOption = document.getElementById("economyOption");
+ 
   const deliveryChoice = document.getElementById("deliveryChoice");
 
   const totalCost = document.getElementById("totalCost");
@@ -625,7 +626,7 @@
 
     var total = parseInt(totalProductCost) + 42000;
     deliveryCost.innerHTML = "Phí vận chuyển 42.000VND";
-    totalCost.innerHTML = "Tổng (*đã bao gồm thuế): " + total + "VND";
+    totalCost.innerHTML = "Tổng (*đã bao gồm thuế): " + total.toLocaleString('it-IT', {style : 'currency', currency : 'VND'});
     deliveryChoice.innerHTML = "Phương thức giao hàng: dịch vụ giao hàng nhanh";
 
     shipcostvalue.value = "42000";
@@ -646,10 +647,10 @@
 
     var total = parseInt(totalProductCost) + 32000;
     deliveryCost.innerHTML = "Phí vận chuyển 32.000VND";
-    totalCost.innerHTML = "Tổng (*đã bao gồm thuế): " + total + "VND";
+    totalCost.innerHTML = "Tổng (*đã bao gồm thuế): " + total.toLocaleString('it-IT', {style : 'currency', currency : 'VND'});
     deliveryChoice.innerHTML = "Phương thức giao hàng: dịch vụ giao hàng thông thường";
 
-    shipcostvalue.value = "32.0000VND";
+    shipcostvalue.value = "32000";
 
     fastOption.classList.remove("choosed");
     normalOption.classList.add("choosed");
@@ -666,7 +667,7 @@
 
     var total = parseInt(totalProductCost) + 22000;
     deliveryCost.innerHTML = "Phí vận chuyển 22.000VND";
-    totalCost.innerHTML = "Tổng (*đã bao gồm thuế): " + total + "VND";
+    totalCost.innerHTML = "Tổng (*đã bao gồm thuế): " + total.toLocaleString('it-IT', {style : 'currency', currency : 'VND'});
     deliveryChoice.innerHTML = "Phương thức giao hàng: dịch vụ giao hàng tiết kiệm";
 
     shipcostvalue.value = "22000";
