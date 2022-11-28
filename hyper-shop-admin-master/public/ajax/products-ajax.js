@@ -171,7 +171,21 @@ function reloadProduct(e) {
         ); // Showing ? of ? product
 
         const productsNumber = getProductsNumber(); //selected quantity of product
-        let productsList = "";
+        let productsList = `<table class="table table-striped" style="width:95%; margin-left:30px;">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Tên</th>
+            <th scope="col">Màu</th>
+            <th scope="col">Loại</th>
+            <th scope="col">Số lượng</th>
+          <th>Sửa</th>
+          <th>Nhập hàng</th>
+          
+          </tr>
+        </thead>
+      <tbody>
+        `;
         let productBox;
         if (data.products.length > 0) {
           data.products.forEach((product) => {
@@ -195,46 +209,29 @@ function reloadProduct(e) {
 }
 
 function getProductBox(product) {
-  return `<div class="col-md-4">
-  <div class="productbox">
-    <div class="fadeshop">
-      <div class="captionshop text-center" style="display: none">
-        <h3>${product.name}</h3>
-        <p class="row">
-          <a href="/products/editProduct/${
-            product._id
-          }" class="learn-more detailslearn col-6"
-            ><i class="fa fa-shopping-cart"></i> Cập nhật</a
-          >
-          <a
-            href="/products/import/${product._id}"
-            class="learn-more detailslearn col-6"
-            ><i class="fa fa-warehouse"></i> Kho hàng
-          </a>
-          <a href="/products/${
-            product._id
-          }" class="learn-more detailslearn col-6"
-            ><i class="fa fa-link"></i> Chi tiết</a
-          >
-        </p>
-      </div>
-      <span class="maxproduct"
-        ><img src="${product.image}" alt="shoes"
-      /></span>
-    </div>
-    <div class="product-details">
-      <a href="/products/${product._id}">
-      <h1>${product.name}</h1>
-      </a>
-      <span class="price">
-        <span class="edd_price">${product.price.toLocaleString("it-IT", {
-          style: "currency",
-          currency: "VND",
-        })}</span>
-      </span>
-    </div>
-  </div>
-</div>
+  return `<tr>
+  <th scope="row"></th>
+    <td><a href="/products/${product._id}"
+    class="learn-more detailslearn col-6"
+    >${product.name}</a></td>
+    <td>${product.color}</td>
+    <td>${product.category}</td>
+    <td>${product.countInStock.reduce(
+      (qty, currentSize) => qty + currentSize.quantity,
+      0
+    )}</td>
+  <td><a href="/products/editProduct/${product._id}"
+    class="learn-more detailslearn col-6"
+    ><i class="fa fa-shopping-cart"></i></a
+  ></td>
+  <td><a href="/products/import/${product._id}"
+    class="learn-more detailslearn col-6"
+    ><i class="fa fa-warehouse"></i>
+  </a></td>
+  <td><a href="/products/${product._id}"
+    class="learn-more detailslearn col-6"
+    ><i class="fa fa-link"></i></a></td>
+</tr>
 `;
 }
 function getProductShowing(productsPerPage, productsCount) {
