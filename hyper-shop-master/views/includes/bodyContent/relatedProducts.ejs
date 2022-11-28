@@ -27,7 +27,10 @@
       /></a>
       <div class="text">
         <h3><%= product.name %></h3>
-        <p class="price">$<%= product.price %></p>
+        <p class="price">
+          <%= product.price.toLocaleString('it-IT', {style : 'currency',
+          currency : 'VND'}) %>
+        </p>
       </div>
     </div>
     <!-- /.product-->
