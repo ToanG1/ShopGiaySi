@@ -22,6 +22,8 @@ exports.getTopProducts = (number) => {
       },
     },
   ]);
+
+  return data
 };
 
 exports.getProductById = (productId) => {

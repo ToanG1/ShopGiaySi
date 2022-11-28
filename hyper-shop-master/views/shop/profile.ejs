@@ -1,54 +1,71 @@
 <%- include('../includes/head')%>
-</head>
-<body>
-    <!-- HEADER ===================== -->
-    <%- include('../includes/header/header', {user})%>
-    <!-- TOPAREA ============================ -->
-    <div id="all">
-        <div id="content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <!-- breadcrumb-->
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
-                                <li aria-current="page" class="breadcrumb-item active">Hồ sơ</li>
-                            </ol>
-                        </nav>
+    </head>
+
+    <body>
+        <!-- HEADER ===================== -->
+        <%- include('../includes/header/header', {user})%>
+            <!-- TOPAREA ============================ -->
+            <div id="all">
+                <div id="content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <!-- breadcrumb-->
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                                        <li aria-current="page" class="breadcrumb-item active">Hồ sơ</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="wrapper-profile bg-white mt-sm-5">
-        <h4 class="pb-4 border-bottom">Cài đặt tài khoản</h4>
-        <div class="d-flex align-items-start py-3 border-bottom"> <img src="https://images.pexels.com/photos/1037995/pexels-photo-1037995.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="img" alt="">
-            <div class="pl-sm-4 pl-2" id="img-section"> <b>Ảnh hồ sơ</b>
-            </div>
-        </div>
-        <form action="/user/profile" method="POST">
-            <!-- Errors display -->
-            <% if(typeof(errors) != "undefined" ){ %> 
-                <% for(let error of errors){ %>
-                          <div class="alert alert-warning" role="alert"><%= error.msg%></div>
-                <% }%> 
-      <% } %>
-      <!-- Success message display -->
-      <% if(typeof(success_msg) != "undefined" ){ %>
-                <div class="alert alert-success" role="alert"><%= success_msg%></div>
-      <% } %>
-        <div class="py-2">
-            <div class="row py-2">
+            <div class="wrapper-profile bg-white mt-sm-5">
+                <h4 class="pb-4 border-bottom">Cài đặt tài khoản</h4>
+                <div class="d-flex align-items-start py-3 border-bottom"> <img
+                        src="https://images.pexels.com/photos/1037995/pexels-photo-1037995.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                        class="img" alt="">
+                    <div class="pl-sm-4 pl-2" id="img-section"> <b>Ảnh hồ sơ</b>
+                    </div>
+                </div>
+                <form action="/user/profile" method="POST">
+                    <!-- Errors display -->
+                    <% if(typeof(errors) !="undefined" ){ %>
+                        <% for(let error of errors){ %>
+                            <div class="alert alert-warning" role="alert">
+                                <%= error.msg%>
+                            </div>
+                            <% }%>
+                                <% } %>
+                                    <!-- Success message display -->
+                                    <% if(typeof(success_msg) !="undefined" ){ %>
+                                        <div class="alert alert-success" role="alert">
+                                            <%= success_msg%>
+                                        </div>
+                                        <% } %>
+                                            <div class="py-2">
+                                                <div class="row py-2">
 
-                <div class="col-md-6"> <label for="firstname">Tên</label> <input autocomplete="off" type="text" class="bg-light form-control" name="name" value="<%= profile.name %>"> </div>
-                <div class="col-md-6 pt-md-0 pt-3"> <label for="lastname">Địa chỉ</label> <input autocomplete="off" type="text" class="bg-light form-control" name="address" value="<%= profile.address %>"> </div>
-            </div>
-            <div class="row py-2">
-                <div class="col-md-6"> <label for="email">Email </label> <input  readonly type="text" class="bg-light form-control" name="email" value="<%= profile.email %>"> </div>
-                <div class="col-md-6 pt-md-0 pt-3"> <label for="phone">Số điện thoại</label> <input type="number" autocomplete="off" class="bg-light form-control" name="phone" value="<%= profile.phone %>"> </div>
-            </div>
-            <!-- <div class="row py-2">
+                                                    <div class="col-md-6"> <label for="firstname">Tên</label> <input
+                                                            autocomplete="off" type="text" class="bg-light form-control"
+                                                            name="name" value="<%= profile.name %>"> </div>
+                                                    <div class="col-md-6 pt-md-0 pt-3"> <label for="lastname">Địa
+                                                            chỉ</label> <input autocomplete="off" type="text"
+                                                            class="bg-light form-control" name="address"
+                                                            value="<%= profile.address %>"> </div>
+                                                </div>
+                                                <div class="row py-2">
+                                                    <div class="col-md-6"> <label for="email">Email </label> <input
+                                                            readonly type="text" class="bg-light form-control"
+                                                            name="email" value="<%= profile.email %>"> </div>
+                                                    <div class="col-md-6 pt-md-0 pt-3"> <label for="phone">Số điện
+                                                            thoại</label> <input type="number" autocomplete="off"
+                                                            class="bg-light form-control" name="phone"
+                                                            value="<%= profile.phone %>"> </div>
+                                                </div>
+                                                <!-- <div class="row py-2">
                 <div class="col-md-6"> <label for="country">Country</label> <select name="country" id="country" class="bg-light">
                         <option value="india" selected>India</option>
                         <option value="usa">USA</option>
@@ -64,15 +81,16 @@
                         </select> </div>
                 </div>
             </div> -->
-        </div>
-    </div>
-    <div id="save-profile">
-        <a class="btn btn-warning" href="/user/updatepassword">Đổi mật khẩi</a>
+                                            </div>
+            </div>
+            <div id="save-profile">
+                <a class="btn btn-warning" href="/user/updatepassword">Đổi mật khẩu</a>
 
-            <button>Lưu thay đổi</button>
+                <button>Lưu thay đổi</button>
 
-        </div>
-    </form>
-<%-include('../includes/footer/foot')%>
-</body>
-</html>
+            </div>
+            </form>
+            <%- include('../includes/footer/foot.ejs')%>
+    </body>
+
+    </html>
