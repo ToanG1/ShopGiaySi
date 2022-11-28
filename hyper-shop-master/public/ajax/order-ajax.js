@@ -37,11 +37,14 @@ function getOrders(order) {
   for (item of order.orderItems) {
     totalPrice += item.product.price * item.quantity;
     orderHtml += `<div class="row">
-    <div class="col-7">
+    <div class="col-5">
                 <span><strong>${item.product.name}</strong></span>
             </div>
-            <div class="col-5">
-                <span>${item.product.price}VND x ${item.quantity}</span><br>
+            <div class="col-7">
+                <span>${item.product.price.toLocaleString("it-IT", {
+                  style: "currency",
+                  currency: "VND",
+                })} x ${item.quantity}</span><br>
                 <span>Size: ${item.size}</span>
             </div>
 </div>
@@ -63,11 +66,17 @@ function getOrders(order) {
           <tbody>
               <tr>
                   <td>Tổng phụ đặt hàng</td>
-                  <th>$${totalPrice}</th>
+                  <th>${totalPrice.toLocaleString("it-IT", {
+                    style: "currency",
+                    currency: "VND",
+                  })}</th>
               </tr>
               <tr>
                   <td>Vận chuyển và xử lý</td>
-                  <th>${order.shippingCost}</th>
+                  <th>${order.shippingCost.toLocaleString("it-IT", {
+                    style: "currency",
+                    currency: "VND",
+                  })}</th>
               </tr>
               <tr>
                   <td>Phương thức thanh toán</td>
@@ -83,7 +92,13 @@ function getOrders(order) {
               </tr>
               <tr class="total">
                   <td>Tổng giá</td>
-                  <th>${totalPrice + order.shippingCost}VND</th>
+                  <th>${(totalPrice + order.shippingCost).toLocaleString(
+                    "it-IT",
+                    {
+                      style: "currency",
+                      currency: "VND",
+                    }
+                  )}</th>
               </tr>
           </tbody>
       </table>

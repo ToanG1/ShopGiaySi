@@ -41,7 +41,10 @@
                         <ul class="unstyle">
                             <li><b class="propertyname">Thương hiệu: </b><%=product.brand%></li>
                             <li><b class="propertyname">Mẫu màu: </b><%=product.color%></li>
-                            <li><b class="propertyname">Giá cả: </b><%=product.price%> VND</li>
+                            <li><b class="propertyname">Giá cả: </b><%=product.price.toLocaleString("it-IT", {
+                                style: "currency",
+                                currency: "VND",
+                              })%></li>
                             <li><b class="propertyname">Chất liệu: </b><% if (product.material == "plastic") { %>
                              Nhựa
                             <% } %> </li>

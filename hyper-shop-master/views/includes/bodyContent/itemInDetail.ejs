@@ -64,7 +64,8 @@
           <% }} %>
         </select>
       </p>
-      <p class="price"><%=product.price%>VND</p>
+      <p class="price"><%=product.price.toLocaleString('it-IT', {style :
+        'currency', currency : 'VND'})%></p>
       <p class="text-center buttons">
         <span
           class="d-inline-block"

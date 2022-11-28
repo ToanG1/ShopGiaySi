@@ -31,7 +31,10 @@
         <h1><%=product.name%></h1>
       </a>
       <span class="price">
-        <span class="edd_price">$<%=product.price%></span>
+        <span class="edd_price"
+          ><%=product.price.toLocaleString("it-IT", { style: "currency",
+          currency: "VND", })%></span
+        >
       </span>
     </div>
   </div>
