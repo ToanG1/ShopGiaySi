@@ -8,6 +8,16 @@ exports.getUser = (filter) => {
 exports.getUsers = (filter) => {
   return User.find(filter);
 };
+exports.countUsers = async () => {
+  const users = await User.find({ isLock: false, isAdmin: false });
+  console.log(users);
+  let count = 0;
+  for (let user of users) {
+    count += 1;
+  }
+  return count;
+};
+
 exports.getUsersApi = (filter) => {
   return User.find(filter).select("email name _id isLock isAdmin");
 };
