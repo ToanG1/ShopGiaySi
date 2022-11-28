@@ -1,11 +1,11 @@
-$('.response-form').on('submit', function (e) {
+$(".response-form").on("submit", function (e) {
   e.preventDefault(); // avoid to execute the actual submit of the form.
   const form = $(this);
-  const url = form.attr('action');
+  const url = form.attr("action");
   const data = form.serialize();
-  if (data !== 'response=') {
+  if (data !== "response=") {
     $.ajax({
-      type: 'POST',
+      type: "POST",
       url: url,
       data,
       success: function (data) {
@@ -14,7 +14,7 @@ $('.response-form').on('submit', function (e) {
       },
       error: function (error) {},
     });
-    $('.rep-comment').val('');
+    $(".rep-comment").val("");
   }
 });
 

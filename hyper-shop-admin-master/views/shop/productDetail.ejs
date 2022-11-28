@@ -41,8 +41,10 @@
                         <ul class="unstyle">
                             <li><b class="propertyname">Thương hiệu: </b><%=product.brand%></li>
                             <li><b class="propertyname">Mẫu màu: </b><%=product.color%></li>
-                            <li><b class="propertyname">Giá cả: </b><%=product.price%> $</li>
-                            <li><b class="propertyname">Chất liệu: </b><%=product.material%></li>
+                            <li><b class="propertyname">Giá cả: </b><%=product.price%> VND</li>
+                            <li><b class="propertyname">Chất liệu: </b><% if (product.material == "plastic") { %>
+                             Nhựa
+                            <% } %> </li>
 
                         </ul>
                     </div>
@@ -66,7 +68,7 @@
                     </form>
                     <div style="margin-top: 20px;">
                         <div class="col-md-6">
-                            <a href="/products/editProduct/<%=product._id%>" class="btn btn-buynow" style="border-radius: 10px;">Cập nhật</a>
+                            <a href="/products/editProduct/<%=product._id%>" class="btn btn-buynow" style="border-radius: 10px; width: fit-content;">Cập nhật</a>
                         </div>
                         <div class="col-md-6">
                             <form action="/products/deleteProduct" method="post">
