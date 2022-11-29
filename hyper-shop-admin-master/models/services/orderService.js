@@ -107,6 +107,7 @@ exports.getOrderById = async (orderId) => {
 exports.getOrderByOrderedDate = async (date) => {
   const orders = await Order.find({});
   let count = 0;
+
   for (let order of orders) {
     if (order.orderedDate.toDateString() == date) {
       count += 1;
@@ -116,7 +117,15 @@ exports.getOrderByOrderedDate = async (date) => {
 };
 
 exports.getOrderByOrderedMonth = async (month, year) => {
-  const orders = await Order.find({});
+  const orders = await Order.find({}).populate({
+    path: "orderItems",
+    model: "OrderItem",
+    populate: {
+      path: "product",
+      model: "Product",
+    },
+  });
+  console.log(orders);
   let count = 0;
   for (let order of orders) {
     if (

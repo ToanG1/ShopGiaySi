@@ -31,6 +31,7 @@
                   class="form-control"
                   value="<%=product.countInStock[i].size%>"
                   disabled
+                  autocomplete="off"
                 />
               </div>
             </div>
@@ -43,7 +44,8 @@
                   name="quantity<%=i%>"
                   type="number"
                   class="form-control"
-                  value="<%=i%>"
+                  value="<%=product.countInStock[i].quantity%>"
+                  autocomplete="off"
                   min="0"
                 />
               </div>
@@ -115,6 +117,7 @@
                     name="newSize${index}"
                     type="number"
                     class="form-control"
+                  autocomplete="off"
                     min="3"
                   />
                 </div>
@@ -128,6 +131,7 @@
                     name="newQuantity${index}"
                     type="number"
                     class="form-control"
+                  autocomplete="off"
                     min="0"
                   />
                 </div>

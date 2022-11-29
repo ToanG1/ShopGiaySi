@@ -4,7 +4,6 @@
 </head>
 <body>
     <%- include('../includes/subHeader', {user})%>
-
 	<section class="tag container">
 		<!-- SEARCH BAR ======================================== -->
 		<div class="search-box">
@@ -14,22 +13,12 @@
 			</div>
 		</div>
 	</section>
+	
 	<!-- CONTENT =============================-->
 	<section class="item content container">
 		<div class="row justify-content-between">
-			<div class="col-md-3">
-				<%- include('../includes/sideBar/category')%>
-				
-
-				<%- include('../includes/sideBar/brandFilterCard')%>
-				<%- include('../includes/sideBar/closureTypeFilterCard')%>
-				<%- include('../includes/sideBar/colorFilterCard')%>
-				<%- include('../includes/sideBar/genderFilterCard')%>
-				<%- include('../includes/sideBar/materialFilterCard')%>
-				<%- include('../includes/sideBar/shoesHeightFilterCard')%>
-
-			</div>
-			<div class="col-md-9 ">
+			
+			<div class="col-md-12 ">
 				<div class="toparea">
 					<div class="underlined-title">
 						<div class="editContent">
@@ -44,13 +33,45 @@
 						</div>
 					</div>
 					<div class="row products">
+						<table class="table table-striped" style="width:95%; margin-left:30px;">
+							<thead>
+							  <tr>
+							    <th scope="col">Tên</th>
+							    <th scope="col">Màu</th>
+							    <th scope="col">Loại</th>
+							    <th scope="col">Số lượng</th>
+								<th>Sửa</th>
+								<th>Nhập hàng</th>
+								
+							  </tr>
+							</thead>
+						<tbody>
 						<% if (products.length>0){ %>
 							<% for(product of products ){ %>
-								<%-include("../includes/bodyContent/productBox")%>
+								<tr>
+							    <td><a href="/products/<%=product._id%>"
+									class="learn-more detailslearn col-6"
+									><%= product.name %></a></td>
+							    <td><%= product.color %></td>
+							    <td><%= product.category %></td>
+							    <td><%= product.countInStock.reduce((qty,currentSize)=>qty+currentSize.quantity,0) %></td>
+								<td><a href="/products/editProduct/<%=product._id%>"
+									class="learn-more detailslearn col-6"
+									><i class="fa fa-pen-to-square"></i></a
+								></td>
+								<td><a href="/products/import/<%=product._id%>"
+									class="learn-more detailslearn col-6"
+									><i class="fa fa-warehouse"></i>
+								</a></td>
+								
+							</tr>
 							<% } %>
 						<% }else { %>
 							<p style="text-align: center">Không có sản phẩm</p>
 						<% } %>
+					</tbody>
+				</table>
+							
 						<%/*%>
 						fix cái there is no product ở file products-ajax.js dòng 61 luôn nha
 						<%*/%>
