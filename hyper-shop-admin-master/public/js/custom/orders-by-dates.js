@@ -28,6 +28,7 @@ const getOrdersByDates = async () => {
   }).then((response) => {
     if (response.status >= 200 && response.status < 300) {
       return response.json().then((result) => {
+        console.log(result);
         let newDateChart = new Chart(dateChart, {
           type: "bar",
           data: {
@@ -43,7 +44,11 @@ const getOrdersByDates = async () => {
             datasets: [
               {
                 label: "Số đơn hàng",
-                data: result,
+                data: result.countDates,
+              },
+              {
+                label: "Doanh thu",
+                data: result.priceDates,
               },
             ],
           },
