@@ -2,6 +2,37 @@
 Scorilo 1.0.1 - HTML Template by WowThemes.net
 Visit: https://www.wowthemes.net
 ================================================== */
+
+
+.sidebar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 200px;
+	background: white;
+	padding: 0;
+  }
+
+.sidebar__ul {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	width: 200px;
+	box-sizing: border-box;
+	margin: 0;
+}
+
+.sidebar__ul > a {
+	margin-bottom: 8px;
+}
+
+.sidebar__ul > li{
+	width: 200px;
+	font-weight: 500;
+	border-bottom: 1px solid #000;
+}
+
 body {
 	font-family:Roboto;
 	font-weight:300;
@@ -9,7 +40,7 @@ body {
 	color:#777;
 	line-height:1.7;
 	background-color: rgb(236, 236, 236);
-	padding-top: 120px;
+	/* padding-top: 120px; */
 }
 h1,h2,h3,h4,h5,h6 {
 	font-family:Roboto;

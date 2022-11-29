@@ -544,3 +544,11 @@ input:focus+label {
   flex: 0 0 100%;
   max-width: 100%;
 }
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 200px;
+}
