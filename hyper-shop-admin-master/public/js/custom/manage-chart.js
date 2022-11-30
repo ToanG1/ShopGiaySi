@@ -18,5 +18,11 @@ let massPopChart = new Chart(myChart, {
         data: [10, 20, 13, 15, 17, 7, 2],
       },
     ],
+    datasets: [
+      {
+        label: "Doanh thu",
+        data: [10, 20, 13, 15, 17, 7, 2],
+      },
+    ],
   },
 });

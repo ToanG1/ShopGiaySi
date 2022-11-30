@@ -1,6 +1,6 @@
-const bcrypt = require('bcrypt'); //để băm pass
+const bcrypt = require("bcrypt"); //để băm pass
 //từ nay mọi thao tác đến db mình sẽ làm trong folder Service, code cũ sẽ refactor sau
-const User = require('../user');
+const User = require("../user");
 
 exports.signup = async (newUser) => {
   //them nguoi dung
@@ -8,6 +8,7 @@ exports.signup = async (newUser) => {
   const hashedPassword = await bcrypt.hash(newUser.password, saltRounds); //hash password được gửi đến server từ form
   newUser.password = hashedPassword;
   newUser.isLock = true;
+  newUser.createdDate = new Date();
   return User.create(newUser); //luu vao db
 };
 

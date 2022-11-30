@@ -7,6 +7,11 @@
 </head>
 <body>
     <%- include('../includes/subHeader', {user})%>
+<h2>Số lượng user hợp pháp: <%= countUser.count %></h2>
+<h2>Số lượng user mới trong tháng: <%= countUser.countNewUser %></h2>
+<h2>Số lượng đơn hàng thành công: <%= countOrder.count %></h2>
+<h2>Số lượng đơn hàng mới trong tháng: <%= countOrder.countNewOrder %></h2>
+<h2>Tổng thu nhập: <%= countOrder.totalPrice %></h2>
 
 	<!-- CONTENT =============================-->
 	<section class="item content container">

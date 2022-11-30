@@ -169,25 +169,45 @@ exports.getRevenue = async (req, res, next) => {
     user: req.user,
     topProducts: await ProductService.getTopProducts(),
     countUser: await UserService.countUsers(),
+    countOrder: await OrderService.getInfoOrders(),
   });
 };
 
 exports.getRevenueDates = async (req, res, next) => {
   const weeks = req.body;
-  revenueDates = [];
+  countDates = [];
+  priceDates = [];
+  var revenueDates = {
+    countDates: 0,
+    priceDates: 0,
+  };
   for (date of weeks) {
-    const count = await OrderService.getOrderByOrderedDate(date);
-    revenueDates.push(count);
+    const countDate = await OrderService.getOrderByOrderedDate(date);
+    countDates.push(countDate.count);
+    priceDates.push(countDate.countPrice);
   }
+  revenueDates.countDates = countDates;
+  revenueDates.priceDates = priceDates;
   res.status(200).send(revenueDates);
 };
 
 exports.getRevenueMonth = async (req, res, next) => {
   const data = req.body;
-  revenueMonths = [];
+  countMonth = [];
+  priceMonth = [];
+  var revenueMonths = {
+    countMonth: 0,
+    priceMonth: 0,
+  };
   for (month of data.months) {
-    const count = await OrderService.getOrderByOrderedMonth(month, data.year);
-    revenueMonths.push(count);
+    const countMonths = await OrderService.getOrderByOrderedMonth(
+      month,
+      data.year
+    );
+    countMonth.push(countMonths.count);
+    priceMonth.push(countMonths.countPrice);
   }
+  revenueMonths.countMonth = countMonth;
+  revenueMonths.priceMonth = priceMonth;
   res.status(200).send(revenueMonths);
 };

@@ -9,13 +9,25 @@ exports.getUsers = (filter) => {
   return User.find(filter);
 };
 exports.countUsers = async () => {
+  var countUser = {
+    count: 0,
+    countNewUser: 0,
+  };
   const users = await User.find({ isLock: false, isAdmin: false });
-  console.log(users);
   let count = 0;
+  let countNewUser = 0;
   for (let user of users) {
     count += 1;
+    if (
+      user.createdDate.toDateString().substring(4, 7) ==
+      new Date().toLocaleString("default", { month: "short" })
+    ) {
+      countNewUser += 1;
+    }
   }
-  return count;
+  countUser.count = count;
+  countUser.countNewUser = countNewUser;
+  return countUser;
 };
 
 exports.getUsersApi = (filter) => {
