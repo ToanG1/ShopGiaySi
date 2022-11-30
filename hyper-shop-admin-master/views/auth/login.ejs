@@ -21,6 +21,13 @@
                <br>
                <div class="field-set">
 
+                  <div
+                  hidden
+                  id="displayError"
+                  class="alert alert-warning"
+                  role="alert"
+               ></div>
+
                   <!--   user name Input-->
                   <input class="form-input" id="txt-input" type="text" placeholder="Tài khoản" name="email" required>
 
@@ -53,10 +60,12 @@
 
             <!-- End Form -->
          </form>
+         <%-include('../includes/foot')%>
       </div>
       <%- //include("../includes/foot") %> 
 
    </body>
    <script src="/ajax/auth-ajax.js"></script>
+
 
    </html>
