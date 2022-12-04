@@ -3,6 +3,7 @@
 <link href="/css/custom.css" rel="stylesheet">
 </head>
 <body>
+	<!-- <%- include('../includes/head') %> -->
     <%- include('../includes/subHeader', {user})%>
 
     <!-- CONTENT ================================ -->
@@ -121,10 +122,10 @@
 		</div>
 	</div>
 	
-	</section>
-    <script src="/ajax/user-ajax.js"></script>
-
-    <%- include('../includes/foot')%>
+</section>
+<%- include('../includes/foot')%>
+<script src="ajax/user-ajax.js"></script>
+    
    
 </body>
 </html>
