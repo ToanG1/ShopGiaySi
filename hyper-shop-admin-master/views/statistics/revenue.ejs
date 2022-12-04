@@ -1,22 +1,87 @@
 <%- include('../includes/head.ejs') %>
 <link href="/css/style.css" rel="stylesheet">
+<link href="/css/revenue.css" rel="stylesheet">
 <link href="/css/custom.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.js" 
 		integrity="sha512-uLlukEfSLB7gWRBvzpDnLGvzNUluF19IDEdUoyGAtaO0MVSBsQ+g3qhLRL3GTVoEzKpc24rVT6X1Pr5fmsShBg==" 
 		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0" />
 <body>
-    <%- include('../includes/subHeader', {user})%>
-<h2>Số lượng user hợp pháp: <%= countUser.count %></h2>
-<h2>Số lượng user mới trong tháng: <%= countUser.countNewUser %></h2>
-<h2>Số lượng đơn hàng thành công: <%= countOrder.count %></h2>
-<h2>Số lượng đơn hàng mới trong tháng: <%= countOrder.countNewOrder %></h2>
-<h2>Tổng thu nhập: <%= countOrder.totalPrice %></h2>
+<%- include('../includes/subHeader', {user})%>
 
 	<!-- CONTENT =============================-->
-	<section class="item content container">
+	<section class="item content container wrapper-profile bg-white mt-sm-5" style=" max-width: none" style="margin-right: 0; width: -webkit-fill-available;">
+		<div class="dashboardNotify__wrapper">
+			<div class="dashboardNotify">
+				<span class="dashboardNotify__icon">
+					<span class="material-symbols-sharp">
+						group
+					</span>
+				</span>
+				<div class="dashboardNotify__info">
+					<span class="dashboardNotify__info-number">
+						<%= countUser.count %>
+					</span>
+					Số lượng user hợp pháp
+				</div>
+			</div>
+			<div class="dashboardNotify">
+				<span class="dashboardNotify__icon">
+					<span class="material-symbols-sharp">
+						group
+					</span>
+				</span>
+				<div class="dashboardNotify__info">
+					<span class="dashboardNotify__info-number">
+						<%= countUser.countNewUser %>
+					</span>
+					SSố lượng user mới trong tháng
+				</div>
+			</div>
+			<div class="dashboardNotify">
+				<span class="dashboardNotify__icon">
+					<span class="material-symbols-sharp">
+						group
+					</span>
+				</span>
+				<div class="dashboardNotify__info">
+					<span class="dashboardNotify__info-number">
+						<%= countOrder.count %>	
+					</span>
+					Số lượng đơn hàng thành công
+				</div>
+			</div>
+			<div class="dashboardNotify">
+				<span class="dashboardNotify__icon">
+					<span class="material-symbols-sharp">
+						group
+					</span>
+				</span>
+				<div class="dashboardNotify__info">
+					<span class="dashboardNotify__info-number">
+						<%= countOrder.countNewOrder %>
+					</span>
+					Số lượng đơn hàng mới trong tháng
+				</div>
+			</div>
+			<div class="dashboardNotify">
+				<span class="dashboardNotify__icon">
+					<span class="material-symbols-sharp">
+						group
+					</span>
+				</span>
+				<div class="dashboardNotify__info">
+					<span class="dashboardNotify__info-number">
+						<%= countOrder.totalPrice %>
+					</span>
+					Tổng thu nhập
+				</div>
+			</div>
+		</div>
 		<div class="row justify-content-between">
-			<div class="col-md-3">
+			<!-- <div class="col-md-3">
 				<div class="card sidebar-menu mb-4">
 					<div class="card-header">
 					  <h3 class="h4 card-title">Lựa chọn theo</h3>
@@ -49,19 +114,25 @@
 					</div>
 				  </div>
 
-			</div>
-			<div class="col-md-9 ">
-				<div class="toparea" id="date-revenue">
+			</div> -->
+			<div class="col-md-9" 
+				style="
+					display: flex;
+					flex-direction: row;
+					width: -webkit-fill-available;
+				"
+			>
+				<div class="toparea" id="date-revenue"
+					style="
+						width: 45%;
+						margin-right: 1rem;
+						padding: 2rem;
+						height: fit-content;
+						border-radius: 1rem;"
+				>
 					<div class="underlined-title">
 						<div class="editContent">
 							<h1 class="text-center latestitems">THỐNG KÊ THEO NGÀY</h1>
-						</div>
-						<div class="wow-hr type_short">
-							<span class="wow-hr-h">
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							</span>
 						</div>
 					</div>
 					<div class="card-box mb-30">
@@ -86,7 +157,9 @@
 						<canvas id="lineChart"></canvas>
 					</div>
 				</div>
-				<div class="toparea hidden" id="year-revenue">
+				<div class="toparea hidden" id="year-revenue"
+
+				>
 					<div class="underlined-title">
 						<div class="editContent">
 							<h1 class="text-center latestitems">THỐNG KÊ THEO NĂM</h1>
@@ -104,7 +177,13 @@
 						<canvas id="yearChart"></canvas>
 					</div>
 				</div>
-				<div class="toparea">
+				<div class="toparea"
+					style="
+						padding: 2rem;
+						height: fit-content;
+						border-radius: 1rem;"
+					"
+				>
 					<div class="underlined-title">
 						<div class="editContent">
 							<h1 class="text-center latestitems">SẢN PHẨM BÁN CHẠY</h1>

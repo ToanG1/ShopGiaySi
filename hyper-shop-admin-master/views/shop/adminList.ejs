@@ -6,9 +6,9 @@
     <%- include('../includes/subHeader', {user})%>
 
     <!-- CONTENT ================================ -->
-    <section class="item content container">
+    <section class="item content container wrapper-profile bg-white mt-sm-5" style="padding-top: 0 !important; max-width: none">
         <div class="search-box">
-			<div class="container-1 d-flex align-items-center">
+			<div class="searchBar d-flex align-items-center">
 				<button class="icon btn" style="margin-top: 8px;" id="searchBtn"><i class="fa fa-search"></i></button>
 				<input type="search" id="search" style="text-align:center" placeholder="Tìm kiếm..." />
 			</div>
@@ -18,13 +18,22 @@
 				<%- include('../includes/userFilterCard')%>
 			</div> -->
 			<div class="col-md-12 ">
-				<div class="toparea">
+				<div class="toparea" 
+					style="border-radius: 1rem;
+					border: 1px solid #dedede;"
+				>
 					<div class="underlined-title">
 						<div class="editContent">
 							<h1 class="text-center latestitems">DANH SÁCH ADMINS</h1>
 						</div>
 						<!-- 3 state button (lock, active, all) -->
-						<div class="o-switch btn-group" data-toggle="buttons" role="group" name="StateButton">
+						<div 
+							class="o-switch btn-group" 
+							data-toggle="buttons" 
+							role="group" 
+							name="StateButton"
+							style="margin: 1rem;"
+							>
 							<label class="btn btn-primary active">
 							  <input type="radio" name="options" > Tất cả
 							</label>
@@ -34,14 +43,6 @@
 							<label class="btn btn-primary">
 							  <input type="radio" name="options" id="true" > Đã khóa
 							</label>
-						        </div>
-						<!-- 3 state button (lock, active, all) -->
-						<div class="wow-hr type_short">
-							<span class="wow-hr-h">
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							</span>
 						</div>
 					</div>
 					<div class="user-list">

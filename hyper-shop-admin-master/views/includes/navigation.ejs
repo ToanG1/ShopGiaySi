@@ -1,27 +1,31 @@
-<div class=" sidebar">
-  <ul class="sidebar__ul nav navbar-nav navbar-right">
-    <a href="/" class="navbar-brand home"><img src="/img/newlogo.jpg" alt="Hyper logo"
-        class="d-none d-md-inline-block" />
-    </a>
-    <% if(user) { %>
-      <li class="propClone"><a href="/admins/revenue">Trang chủ</a></li>
+<div class="sidebar">
+	<ul class="sidebar__ul nav navbar-nav navbar-right">
+		<a href="/" class="navbar-brand home"
+			><img
+				src="/img/newlogo.jpg"
+				alt="Hyper logo"
+				class="d-none d-md-inline-block"
+			/>
+		</a>
+		<% if(user) { %>
+		<li class="propClone"><a href="/admins/revenue">Trang chủ</a></li>
 
-      <li class="propClone"><a href="/admins/profile">Hồ sơ</a></li>
-      <li class="propClone"><a href="/products">Cửa hàng</a></li>
+		<li class="propClone"><a href="/admins/profile">Hồ sơ</a></li>
+		<li class="propClone"><a href="/products">Cửa hàng</a></li>
 
-      <li class="propClone">
-        <a href="/products/addProduct">Thêm sản phẩm</a>
-      </li>
+		<li class="propClone">
+			<a href="/products/addProduct">Thêm sản phẩm</a>
+		</li>
 
-      <li class="propClone"><a href="/users">Danh sách users</a></li>
-      <li class="propClone"><a href="/admins">Danh sách admins</a></li>
-      <li class="propClone">
-        <a href="/admins/add">Thêm admin</a>
-      </li>
-      <li class="propClone"><a href="/orders">Đơn hàng</a></li>
-      <li class="propClone"><a href="/auth/logout">Đăng xuất</a></li>
-      <% }else{ %>
-        <li class="propClone"><a href="/auth/login">Đăng nhập</a></li>
-        <% } %>
-  </ul>
+		<li class="propClone"><a href="/users">Danh sách users</a></li>
+		<li class="propClone"><a href="/admins">Danh sách admins</a></li>
+		<li class="propClone">
+			<a href="/admins/add">Thêm admin</a>
+		</li>
+		<li class="propClone"><a href="/orders">Đơn hàng</a></li>
+		<li class="propClone"><a href="/auth/logout">Đăng xuất</a></li>
+		<% }else{ %>
+		<li class="propClone"><a href="/auth/login">Đăng nhập</a></li>
+		<% } %>
+	</ul>
 </div>

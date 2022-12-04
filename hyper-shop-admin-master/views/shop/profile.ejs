@@ -4,8 +4,8 @@
 </head>
 <body>
     <%- include('../includes/subHeader',{user})%>
-    <section class="item content">
-        <div class="container toparea">
+    <!-- <section class="item content">
+        <div class = "toparea">
             <div class="underlined-title">
                 <div class="editContent">
                     <h1 class="text-center latestitems">HỒ SƠ</h1>
@@ -19,9 +19,9 @@
                 </div>
             </div>
         </div>
-    </section>
-    <div class="wrapper-profile bg-white mt-sm-5">
-        <h4 class="pb-4 border-bottom">Cài đặt tài khoản</h4>
+    </section> -->
+    <div class="container wrapper-profile bg-white mt-sm-5 updateInfoForm box">
+        <h2 class="pb-8  border-bottom">CẬP NHẬT THÔNG TIN TÀI KHOẢN</h2>
       
         <form action="/admins/profile" method="POST">
             <!-- Errors display -->
@@ -35,8 +35,7 @@
                 <div class="alert alert-success" role="alert"><%= success_msg%></div>
       <% } %>
         <div class="py-2">
-            <div class="row py-2">
-
+            <div class="row py-2" style="margin-bottom: 2rem;">
                 <div class="col-md-6"> <label for="firstname">Tên</label> <input autocomplete="off" type="text" class="bg-light form-control" name="name" value="<%= user.name %>"> </div>
                 <div class="col-md-6 pt-md-0 pt-3"> <label for="lastname">Địa chỉ</label> <input autocomplete="off" type="text" class="bg-light form-control" name="address" value="<%= user.address %>"> </div>
             </div>
@@ -46,12 +45,12 @@
 
             </div>
         </div>
-    </div>
-    <div id="save-profile">
-        <a style="margin-right: 20px;"class="btn btn-warning" href="/admins/updatepassword">Đổi mật khẩu</a>
 
-            <button>Xác nhận lưu</button>
+        <div id="save-profile">
+            <a style="margin-right: 20px;" class="btn btn-warning" href="/admins/updatepassword">Đổi mật khẩu</a>
+            <button class="btn btn-warning" style="width: fit-content; height: fit-content; ">Xác nhận lưu</button>
         </div>
+    </div>
     </form>
    
 </body>

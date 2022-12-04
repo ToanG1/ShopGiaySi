@@ -4,47 +4,34 @@
 </head>
 <body>
     <%- include('../includes/subHeader', {user})%>
-    <section class="item content">
-        <div class="container toparea">
-            <div class="underlined-title">
-                <div class="editContent">
-                    <h1 class="text-center latestitems">Hồ sơ</h1>
-                </div>
-                <div class="wow-hr type_short">
-                    <span class="wow-hr-h">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    </span>
-                </div>
+    <form action="/admins/add" method="post" 
+        class="container wrapper-profile bg-white mt-sm-5 updateInfoForm box"
+        style="display: flex; flex-direction: column; max-width: none;"
+    >
+        <div >
+            <h2 class="pb-4 border-bottom">Cài đặt tài khoản</h2>
+            <div class="py-2">
+                    <div class="col-md-6"> 
+                        <label for="email">Email</label> 
+                        <input type="text" name="email" class="bg-light form-control" placeholder="Email"> 
+                    </div>
+                    <div class="col-md-6">
+                        <label for="password">Mật khẩu</label>
+                        <input type="password" name="password" class="bg-light form-control" placeholder="Mật khẩu" > 
+                    </div>
+                    <div class="col-md-6">
+                        <label for="firstname">Tên</label>
+                        <input type="text" name="name" class="bg-light form-control" placeholder="Tên" > 
+                    </div>
+                    <div class="col-md-6 pt-md-0 pt-3">
+                        <label for="phone">SỐ điện thoại</label>
+                        <input type="tel" name="phone" class="bg-light form-control" placeholder="Số điện thoại"> 
+                    </div>
             </div>
         </div>
-    </section>
-
-    <form action="/admins/add" method="post">
-    <div class="wrapper-profile bg-white mt-sm-5">
-        
-        <h4 class="pb-4 border-bottom">Cài đặt tài khoản</h4>
-        <div class="py-2">
-            <div class="row py-2">
-                
-                <div class="col-md-6"> <label for="email">Email</label> <input type="text" name="email" class="bg-light form-control" placeholder="Email"> </div>
-                <div class="col-md-6"> <label for="password">Mật khẩu</label> <input type="password" name="password" class="bg-light form-control" placeholder="Mật khẩu" > </div>
-            </div>
-            <div class="row py-2">
-                <div class="col-md-6"> <label for="firstname">Tên</label> <input type="text" name="name" class="bg-light form-control" placeholder="Tên" > </div>
-                <div class="col-md-6 pt-md-0 pt-3"> <label for="phone">SỐ điện thoại</label> <input type="tel" name="phone" class="bg-light form-control" placeholder="Số điện thoại"> </div>
-            </div>
-        </div>
-    
-        </div>
-        <br>
         <div id="save-profile">
             <button type="submit" style="border: none;" class="btn btn-primary">Thêm admin</button>
         </div>
     </form>
-    </div>
-    
-   
 </body>
 </html>
