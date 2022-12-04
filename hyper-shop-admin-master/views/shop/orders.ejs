@@ -6,10 +6,10 @@
     <%- include('../includes/subHeader', {user})%>
 
     <!-- CONTENT ================================ -->
-    <section class="item content container">
+    <section class="item content container wrapper-profile bg-white mt-sm-5" style=" max-width: none">
 		<div class="clearfix mb-20 card">
 			<div class="pull-left">
-					<h4 class="text-blue h4" id="order-table-name">Danh sách đơn hàng đang chờ xử lý</h4>
+					<h2 class="text-blue h4" id="order-table-name">Danh sách đơn hàng đang chờ xử lý</h2>
 			</div>
 			<div class="col-md-6 col-sm-12 pull-right ">
 				<div class="dropdown row ">
@@ -31,13 +31,13 @@
 			</div>
 			<% */%>
 
-			<div style="margin-bottom: 200px;"class="col-md-12 card" id="pending-table">
+			<div style="margin-bottom: 200px;"class="col-md-12 " id="pending-table">
 				<%- include('../includes/order/ordersTable', {orders: pendingOrders})%>
 			</div>
-			<div style="margin-bottom: 200px;"class="col-md-12 card hidden" id="delivering-table">
+			<div style="margin-bottom: 200px;"class="col-md-12 hidden" id="delivering-table">
 				<%- include('../includes/order/ordersTable', {orders: deliveringOrders})%>
 			</div>
-			<div style="margin-bottom: 200px;"class="col-md-12 card hidden" id="delivered-table">
+			<div style="margin-bottom: 200px;"class="col-md-12 hidden" id="delivered-table">
 				<%- include('../includes/order/ordersTable', {orders: deliveredOrders})%>
 			</div>
 		</div>
