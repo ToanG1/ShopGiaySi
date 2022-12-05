@@ -43,8 +43,8 @@ function getUserBox(user, number) {
           <td>
           ${
             !user.isLock
-              ? `<button id="${user._id}" class="btn btn-danger btn-sm ActionOnUserBtn">Block</button>`
-              : `<button id="${user._id}" class="btn btn-success btn-sm ActionOnUserBtn">Unblock</button>`
+              ? `<button id="${user._id}" class="btn btn-danger btn-sm ActionOnUserBtn">Khóa</button>`
+              : `<button id="${user._id}" class="btn btn-success btn-sm ActionOnUserBtn">Mở Khóa</button>`
           }
         
             </td>      
@@ -72,12 +72,12 @@ function ActionOnUserHandler(e) {
   e.preventDefault();
 
   //đổi trạng thái nút block hoặc unblock
-  if ($(this).text() === 'Block') {
-    $(this).text('Unblock');
+  if ($(this).text() === 'Khóa') {
+    $(this).text('Mở Khóa');
     $(this).removeClass('btn-danger');
     $(this).addClass('btn-success');
   } else {
-    $(this).text('Block');
+    $(this).text('Khóa');
     $(this).removeClass('btn-success');
     $(this).addClass('btn-danger');
   }
