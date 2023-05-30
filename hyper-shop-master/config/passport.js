@@ -4,7 +4,6 @@ const bcrypt = require("bcrypt");
 const authService = require("../models/services/authService");
 const userService = require("../models/services/userService");
 
-//cách t làm là theo tutorial 30p gửi tối thứ 4
 function initialize(passport) {
   const isValidPassword = (user, password) => {
     return bcrypt.compare(password, user.password);
