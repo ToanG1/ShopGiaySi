@@ -15,16 +15,11 @@ router.post(
   passport.authenticate("local", {
     failureRedirect: "/auth/signin",
     failureFlash: true,
-  }),
-  authController.signin
+  }),authController.signin
 );
 router.get("/logout", (req, res, next) => {
-  req.logout(function (err) {
-    if (err) {
-      return next(err);
-    }
-    res.redirect("/auth/signin");
-  });
+  req.logout();
+  res.redirect("/auth/signin");
 });
 
 router.get("/reset", authController.getReset);

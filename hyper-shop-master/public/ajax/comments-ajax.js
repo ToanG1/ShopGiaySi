@@ -1,84 +1,58 @@
-$(".comment-form").on("submit", async function (e) {
+$('.comment-form').on('submit', function (e) {
   e.preventDefault(); // avoid to execute the actual submit of the form.
   const form = $(this);
 
-  const url = form.attr("action");
+  const url = form.attr('action');
   const data = form.serialize();
-  if (data !== "comment=") {
+  if (data !== 'comment=') {
     //input is not leave blank
-    // await fetch(url, {
-    //   method: "POST",
-    //   body: data,
-    //   headers: {
-    //     "Content-type": "application/json; charset=utf-8",
-    //   }})
-    //   .then(async (data) => {
-    //     let commentsList = "";
-    //     //reverse for showing comment in better order
-    //     for (comment of data.comments.reverse()) {
-    //       commentsList += getComment(comment, data.responses);
-    //     }
-    //     $(".comments-list").html(commentsList);
-    //     $(".pages").html(getPagesNumber(data.commentsLastPage, 1));
-    //   }).catch((error) => {
-    //     if (error.status === 401) {
-    //       alert("Please Login");
-    //     } else if (error.status === 402) {
-    //       alert("Sorry, You have not bought this product yet");
-    //     } else {
-    //       alert("Something bad happend");
-    //     }
-    //   })
     $.ajax({
-      type: "POST",
+      type: 'POST',
       url: url,
       data,
       success: function (data) {
-        let commentsList = "";
+        let commentsList = '';
         //reverse for showing comment in better order
         for (comment of data.comments.reverse()) {
           commentsList += getComment(comment, data.responses);
         }
-        $(".comments-list").html(commentsList);
-        $(".pages").html(getPagesNumber(data.commentsLastPage, 1));
+        $('.comments-list').html(commentsList);
+        $('.pages').html(getPagesNumber(data.commentsLastPage, 1));
       },
       error: function (error) {
         if (error.status === 401) {
-          alert("Please Login");
+          alert('Please Login');
         } else if (error.status === 402) {
-          alert("Sorry, You have not bought this product yet");
+          alert('Sorry, You have not bought this product yet');
         } else {
-          alert("Something bad happend");
+          alert('Something bad happend');
         }
       },
     });
-    $(".comment-input").val("");
+    $('.comment-input').val('');
   }
 });
 
-$(".pages").on("click", ".page-link", function (e) {
+$('.pages').on('click', '.page-link', function (e) {
   e.preventDefault();
   let commentsCurrentPage = $(this).text();
-  if (commentsCurrentPage === "First") commentsCurrentPage = 1;
-  else if (commentsCurrentPage === "Last")
-    commentsCurrentPage = $(this).attr("id");
-  const productId = $("#productId").val();
-  const url = "/api/comments/" + productId;
-  if (commentsCurrentPage !== "...") {
+  if (commentsCurrentPage === 'First') commentsCurrentPage = 1;
+  else if (commentsCurrentPage === 'Last') commentsCurrentPage = $(this).attr('id');
+  const productId = $('#productId').val();
+  const url = '/api/comments/' + productId;
+  if (commentsCurrentPage !== '...') {
     $.ajax({
       url,
-      data: { page: commentsCurrentPage },
-      dataType: "json",
+      data: {page: commentsCurrentPage},
+      dataType: 'json',
       success: function (data) {
-        let commentsList = "";
+        let commentsList = '';
         //reverse để hiện thị bình luận mới nhất xuống dưới
         for (comment of data.comments.reverse()) {
           commentsList += getComment(comment, data.responses);
         }
-        $(".comments-list").html(commentsList);
-        $(".pages").html(
-          getPagesNumber(data.commentsLastPage, commentsCurrentPage)
-        );
+        $('.comments-list').html(commentsList);
+        $('.pages').html(getPagesNumber(data.commentsLastPage, commentsCurrentPage));
       },
       error: function (error) {
         console.log(error);

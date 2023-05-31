@@ -208,6 +208,7 @@
   <form class="comment-form" action="/api/comments/<%=product._id%>" method="post">
     <div class="add-comment">
       <input
+        maxlength="50"
         type="text"
         name="comment"
         class="comment-input mb-3"
@@ -219,4 +220,4 @@
   </form>
 </div>
 
-<input type="hidden" id="productId" value="<%=product._id%>" />
+<input maxlength="50" type="hidden" id="productId" value="<%=product._id%>" />
