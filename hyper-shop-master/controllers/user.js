@@ -41,6 +41,26 @@ exports.postProfile = async (req, res, next) => {
   }
 };
 
+exports.createToken = async (req, res, next) => {
+  const isMatch = await bcrypt.compare(
+    req.body.currentpassword,
+    req.user.password
+  );
+  console.log(req.user.password);
+  if (isMatch) {
+    res.redirect(
+      "/user/updatePassword/" + Math.floor(Math.random() * 10000000000000000)
+    );
+  } else {
+    res.render("auth/checkPassword", {
+      errors: [{ msg: "Mật khẩu hiện tại sai" }],
+      categories: await ProductService.getCategoriesQuantity(),
+      brands: await ProductService.getBrands(),
+      user: req.user,
+    });
+  }
+};
+
 exports.getUpdatePassword = async (req, res, next) => {
   res.status(200).render("auth/updatePassword", {
     categories: await ProductService.getCategoriesQuantity(),
@@ -50,26 +70,23 @@ exports.getUpdatePassword = async (req, res, next) => {
   });
 };
 
+exports.getCheckPassword = async (req, res, next) => {
+  res.status(200).render("auth/checkPassword", {
+    categories: await ProductService.getCategoriesQuantity(),
+    brands: await ProductService.getBrands(),
+    profile: req.user,
+    user: true,
+  });
+};
+
 exports.postUpdatePassword = async (req, res, next) => {
-  const isMatch = await bcrypt.compare(
-    req.body.currentpassword,
-    req.user.password
-  );
-  if (isMatch) {
-    const user = {
-      password: req.body.password,
-      _id: req.user._id,
-    };
-    const remp = await UserService.updatePassword(user);
-    res.render("auth/updatePassword", {
-      success_msg: "Đã thay đổi mật khẩu",
-      categories: await ProductService.getCategoriesQuantity(),
-      brands: await ProductService.getBrands(),
-      user: req.user,
-    });
-  }
+  const user = {
+    password: req.body.password,
+    _id: req.user._id,
+  };
+  const remp = await UserService.updatePassword(user);
   res.render("auth/updatePassword", {
-    errors: [{ msg: "Mật khẩu hiện tại sai" }],
+    success_msg: "Đã thay đổi mật khẩu",
     categories: await ProductService.getCategoriesQuantity(),
     brands: await ProductService.getBrands(),
     user: req.user,

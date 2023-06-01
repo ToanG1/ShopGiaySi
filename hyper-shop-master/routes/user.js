@@ -7,8 +7,12 @@ router.get("/profile", userController.getProfile);
 
 router.post("/profile", userController.postProfile);
 
-router.get("/updatepassword", userController.getUpdatePassword);
+router.get("/checkPassword/", userController.getCheckPassword);
 
-router.post("/updatepassword", userController.postUpdatePassword);
+router.post("/checkPassword/", userController.createToken);
+
+router.get("/updatepassword/:token", userController.getUpdatePassword);
+
+router.post("/updatepassword/:token", userController.postUpdatePassword);
 
 module.exports = router;
